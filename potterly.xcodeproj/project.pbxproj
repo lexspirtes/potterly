@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DD319304AF142A58129E68D /* Pods_potterlyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E294BB060E66F06DE700B985 /* Pods_potterlyTests.framework */; };
+		4A293668E85C401410D3964B /* Pods_potterlyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 546B51802731381C44B673FD /* Pods_potterlyUITests.framework */; };
+		D4A64F8CC04A612B0C2100FD /* Pods_potterly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95985F7D8789406AA8AE389E /* Pods_potterly.framework */; };
 		D70ADA57229DA05A007AA724 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA56229DA05A007AA724 /* AppDelegate.swift */; };
 		D70ADA59229DA05A007AA724 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA58229DA05A007AA724 /* FirstViewController.swift */; };
 		D70ADA5B229DA05A007AA724 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA5A229DA05A007AA724 /* SecondViewController.swift */; };
@@ -35,6 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0DB27C20C43A86EE53E3AAFF /* Pods-potterly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-potterly.debug.xcconfig"; path = "Target Support Files/Pods-potterly/Pods-potterly.debug.xcconfig"; sourceTree = "<group>"; };
+		49B28CA9EAD3041EAAB4FEEE /* Pods-potterlyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-potterlyUITests.debug.xcconfig"; path = "Target Support Files/Pods-potterlyUITests/Pods-potterlyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		546B51802731381C44B673FD /* Pods_potterlyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_potterlyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B3699060465E8B1DA885483 /* Pods-potterlyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-potterlyTests.release.xcconfig"; path = "Target Support Files/Pods-potterlyTests/Pods-potterlyTests.release.xcconfig"; sourceTree = "<group>"; };
+		95985F7D8789406AA8AE389E /* Pods_potterly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_potterly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC7AEFD2A3C96C51C2099710 /* Pods-potterly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-potterly.release.xcconfig"; path = "Target Support Files/Pods-potterly/Pods-potterly.release.xcconfig"; sourceTree = "<group>"; };
+		C131AFB8CFBB976B5C0CDBE0 /* Pods-potterlyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-potterlyUITests.release.xcconfig"; path = "Target Support Files/Pods-potterlyUITests/Pods-potterlyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D70ADA53229DA05A007AA724 /* potterly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = potterly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70ADA56229DA05A007AA724 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D70ADA58229DA05A007AA724 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +59,8 @@
 		D70ADA74229DA05C007AA724 /* potterlyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = potterlyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70ADA78229DA05C007AA724 /* potterlyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = potterlyUITests.swift; sourceTree = "<group>"; };
 		D70ADA7A229DA05C007AA724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E294BB060E66F06DE700B985 /* Pods_potterlyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_potterlyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3BF3D15F7E6C210D546EAEB /* Pods-potterlyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-potterlyTests.debug.xcconfig"; path = "Target Support Files/Pods-potterlyTests/Pods-potterlyTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4A64F8CC04A612B0C2100FD /* Pods_potterly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DD319304AF142A58129E68D /* Pods_potterlyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +84,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A293668E85C401410D3964B /* Pods_potterlyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A435B9BFDA5F4912BE9FA90F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95985F7D8789406AA8AE389E /* Pods_potterly.framework */,
+				E294BB060E66F06DE700B985 /* Pods_potterlyTests.framework */,
+				546B51802731381C44B673FD /* Pods_potterlyUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D70ADA4A229DA059007AA724 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +108,8 @@
 				D70ADA6C229DA05C007AA724 /* potterlyTests */,
 				D70ADA77229DA05C007AA724 /* potterlyUITests */,
 				D70ADA54229DA05A007AA724 /* Products */,
+				F35E93E2B15321AE1C5997B3 /* Pods */,
+				A435B9BFDA5F4912BE9FA90F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +155,20 @@
 			path = potterlyUITests;
 			sourceTree = "<group>";
 		};
+		F35E93E2B15321AE1C5997B3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0DB27C20C43A86EE53E3AAFF /* Pods-potterly.debug.xcconfig */,
+				BC7AEFD2A3C96C51C2099710 /* Pods-potterly.release.xcconfig */,
+				E3BF3D15F7E6C210D546EAEB /* Pods-potterlyTests.debug.xcconfig */,
+				8B3699060465E8B1DA885483 /* Pods-potterlyTests.release.xcconfig */,
+				49B28CA9EAD3041EAAB4FEEE /* Pods-potterlyUITests.debug.xcconfig */,
+				C131AFB8CFBB976B5C0CDBE0 /* Pods-potterlyUITests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +176,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D70ADA7D229DA05C007AA724 /* Build configuration list for PBXNativeTarget "potterly" */;
 			buildPhases = (
+				62812EB8A1FD81349E3FFA8E /* [CP] Check Pods Manifest.lock */,
 				D70ADA4F229DA05A007AA724 /* Sources */,
 				D70ADA50229DA05A007AA724 /* Frameworks */,
 				D70ADA51229DA05A007AA724 /* Resources */,
+				BF95C3B2955B3478D881D54E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +195,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D70ADA80229DA05C007AA724 /* Build configuration list for PBXNativeTarget "potterlyTests" */;
 			buildPhases = (
+				D4255084C08C0A2E589DE4B5 /* [CP] Check Pods Manifest.lock */,
 				D70ADA65229DA05C007AA724 /* Sources */,
 				D70ADA66229DA05C007AA724 /* Frameworks */,
 				D70ADA67229DA05C007AA724 /* Resources */,
@@ -170,6 +214,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D70ADA83229DA05C007AA724 /* Build configuration list for PBXNativeTarget "potterlyUITests" */;
 			buildPhases = (
+				7576FC88A2B5EE1893C98215 /* [CP] Check Pods Manifest.lock */,
 				D70ADA70229DA05C007AA724 /* Sources */,
 				D70ADA71229DA05C007AA724 /* Frameworks */,
 				D70ADA72229DA05C007AA724 /* Resources */,
@@ -253,6 +298,92 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		62812EB8A1FD81349E3FFA8E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-potterly-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7576FC88A2B5EE1893C98215 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-potterlyUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF95C3B2955B3478D881D54E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-potterly/Pods-potterly-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-potterly/Pods-potterly-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-potterly/Pods-potterly-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4255084C08C0A2E589DE4B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-potterlyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D70ADA4F229DA05A007AA724 /* Sources */ = {
@@ -434,6 +565,7 @@
 		};
 		D70ADA7E229DA05C007AA724 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DB27C20C43A86EE53E3AAFF /* Pods-potterly.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -452,6 +584,7 @@
 		};
 		D70ADA7F229DA05C007AA724 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC7AEFD2A3C96C51C2099710 /* Pods-potterly.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -470,6 +603,7 @@
 		};
 		D70ADA81229DA05C007AA724 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3BF3D15F7E6C210D546EAEB /* Pods-potterlyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -491,6 +625,7 @@
 		};
 		D70ADA82229DA05C007AA724 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B3699060465E8B1DA885483 /* Pods-potterlyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +647,7 @@
 		};
 		D70ADA84229DA05C007AA724 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49B28CA9EAD3041EAAB4FEEE /* Pods-potterlyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -532,6 +668,7 @@
 		};
 		D70ADA85229DA05C007AA724 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C131AFB8CFBB976B5C0CDBE0 /* Pods-potterlyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

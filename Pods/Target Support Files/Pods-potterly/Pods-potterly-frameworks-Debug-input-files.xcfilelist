@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-potterly/Pods-potterly-frameworks.sh
+${BUILT_PRODUCTS_DIR}/FlexLayout/FlexLayout.framework
+${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
+${BUILT_PRODUCTS_DIR}/SnapLayout/SnapLayout.framework
+${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework
