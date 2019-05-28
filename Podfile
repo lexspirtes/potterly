@@ -8,8 +8,12 @@ target 'potterly' do
   # pods for potterly
   pod 'SnapLayout', '1.9.7'
   pod 'Kingfisher', '~> 4.0'
+  pod 'SnapKit', '~> 4.0'
   pod 'FlexLayout'
-  pod 'XLPagerTabStrip', '~> 8.0' 
+  pod 'XLPagerTabStrip', '~> 8.0'
+  pod 'RxSwift'
+  pod 'RxDataSources'
+  pod 'RxSwiftExt' 
 
   # Pods for potterly
 

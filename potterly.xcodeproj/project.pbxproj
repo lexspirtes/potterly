@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,13 +11,13 @@
 		4A293668E85C401410D3964B /* Pods_potterlyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 546B51802731381C44B673FD /* Pods_potterlyUITests.framework */; };
 		D4A64F8CC04A612B0C2100FD /* Pods_potterly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95985F7D8789406AA8AE389E /* Pods_potterly.framework */; };
 		D70ADA57229DA05A007AA724 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA56229DA05A007AA724 /* AppDelegate.swift */; };
-		D70ADA59229DA05A007AA724 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA58229DA05A007AA724 /* FirstViewController.swift */; };
+		D70ADA59229DA05A007AA724 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA58229DA05A007AA724 /* RootViewController.swift */; };
 		D70ADA5B229DA05A007AA724 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA5A229DA05A007AA724 /* SecondViewController.swift */; };
-		D70ADA5E229DA05A007AA724 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70ADA5C229DA05A007AA724 /* Main.storyboard */; };
 		D70ADA60229DA05C007AA724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70ADA5F229DA05C007AA724 /* Assets.xcassets */; };
-		D70ADA63229DA05C007AA724 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70ADA61229DA05C007AA724 /* LaunchScreen.storyboard */; };
 		D70ADA6E229DA05C007AA724 /* potterlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA6D229DA05C007AA724 /* potterlyTests.swift */; };
 		D70ADA79229DA05C007AA724 /* potterlyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA78229DA05C007AA724 /* potterlyUITests.swift */; };
+		D73CC1B5229DC22100B4A04B /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CC1B4229DC22100B4A04B /* NavViewController.swift */; };
+		D73CC1B7229DC23900B4A04B /* StageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CC1B6229DC23900B4A04B /* StageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,11 +47,9 @@
 		C131AFB8CFBB976B5C0CDBE0 /* Pods-potterlyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-potterlyUITests.release.xcconfig"; path = "Target Support Files/Pods-potterlyUITests/Pods-potterlyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D70ADA53229DA05A007AA724 /* potterly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = potterly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70ADA56229DA05A007AA724 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D70ADA58229DA05A007AA724 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		D70ADA58229DA05A007AA724 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		D70ADA5A229DA05A007AA724 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		D70ADA5D229DA05A007AA724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D70ADA5F229DA05C007AA724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D70ADA62229DA05C007AA724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D70ADA64229DA05C007AA724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D70ADA69229DA05C007AA724 /* potterlyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = potterlyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70ADA6D229DA05C007AA724 /* potterlyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = potterlyTests.swift; sourceTree = "<group>"; };
@@ -59,6 +57,8 @@
 		D70ADA74229DA05C007AA724 /* potterlyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = potterlyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70ADA78229DA05C007AA724 /* potterlyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = potterlyUITests.swift; sourceTree = "<group>"; };
 		D70ADA7A229DA05C007AA724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D73CC1B4229DC22100B4A04B /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
+		D73CC1B6229DC23900B4A04B /* StageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageViewController.swift; sourceTree = "<group>"; };
 		E294BB060E66F06DE700B985 /* Pods_potterlyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_potterlyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3BF3D15F7E6C210D546EAEB /* Pods-potterlyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-potterlyTests.debug.xcconfig"; path = "Target Support Files/Pods-potterlyTests/Pods-potterlyTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,11 +127,11 @@
 			isa = PBXGroup;
 			children = (
 				D70ADA56229DA05A007AA724 /* AppDelegate.swift */,
-				D70ADA58229DA05A007AA724 /* FirstViewController.swift */,
+				D70ADA58229DA05A007AA724 /* RootViewController.swift */,
+				D73CC1B4229DC22100B4A04B /* NavViewController.swift */,
+				D73CC1B6229DC23900B4A04B /* StageViewController.swift */,
 				D70ADA5A229DA05A007AA724 /* SecondViewController.swift */,
-				D70ADA5C229DA05A007AA724 /* Main.storyboard */,
 				D70ADA5F229DA05C007AA724 /* Assets.xcassets */,
-				D70ADA61229DA05C007AA724 /* LaunchScreen.storyboard */,
 				D70ADA64229DA05C007AA724 /* Info.plist */,
 			);
 			path = potterly;
@@ -165,7 +165,6 @@
 				49B28CA9EAD3041EAAB4FEEE /* Pods-potterlyUITests.debug.xcconfig */,
 				C131AFB8CFBB976B5C0CDBE0 /* Pods-potterlyUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -277,9 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D70ADA63229DA05C007AA724 /* LaunchScreen.storyboard in Resources */,
 				D70ADA60229DA05C007AA724 /* Assets.xcassets in Resources */,
-				D70ADA5E229DA05A007AA724 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +389,9 @@
 			files = (
 				D70ADA5B229DA05A007AA724 /* SecondViewController.swift in Sources */,
 				D70ADA57229DA05A007AA724 /* AppDelegate.swift in Sources */,
-				D70ADA59229DA05A007AA724 /* FirstViewController.swift in Sources */,
+				D73CC1B7229DC23900B4A04B /* StageViewController.swift in Sources */,
+				D73CC1B5229DC22100B4A04B /* NavViewController.swift in Sources */,
+				D70ADA59229DA05A007AA724 /* RootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,25 +425,6 @@
 			targetProxy = D70ADA75229DA05C007AA724 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		D70ADA5C229DA05A007AA724 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D70ADA5D229DA05A007AA724 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D70ADA61229DA05C007AA724 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D70ADA62229DA05C007AA724 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D70ADA7B229DA05C007AA724 /* Debug */ = {
