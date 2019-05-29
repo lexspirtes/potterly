@@ -14,6 +14,7 @@ target 'potterly' do
   pod 'RxSwift'
   pod 'RxDataSources'
   pod 'RxSwiftExt' 
+  pod 'PinLayout' 
 
   # Pods for potterly
 
