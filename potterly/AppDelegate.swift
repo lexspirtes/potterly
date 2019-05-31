@@ -17,26 +17,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let color = colors()
+        let tabBar = TabController();
+        let navigationController = UINavigationController(rootViewController: tabBar)
+        
+        //writing appearance settings
+        let navigationBarAppearace = UINavigationBar.appearance()
+        if let font = UIFont(name: "BodoniSvtyTwoITCTT-Book", size: 30) {
+            
+            UINavigationBar.appearance().titleTextAttributes = [
+                NSAttributedString.Key.font: font,
+                NSAttributedString.Key.foregroundColor: color.darkBlue,
+                NSAttributedString.Key.kern:CGFloat(3.0)]
+            
+        }
+        navigationBarAppearace.barTintColor = color.lightPurple
+        navigationBarAppearace.shadowImage = UIImage()
+        //creating window
         window = UIWindow(frame:UIScreen.main.bounds)
+        window?.rootViewController = homeTabStrip()
         window?.makeKeyAndVisible()
-        window?.rootViewController = SecondViewController()
         return true
     }
-    
-//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        // Override point for customization after application launch.
-//
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//
-//        if let window = window {
-//            let mainVC = UIViewController()
-//            navigationController = UINavigationController(rootViewController: mainVC)
-//            window.rootViewController = navigationController
-//            window.makeKeyAndVisible()
-//        }
-//
-//        return true
-//    }
     
 
     func applicationWillResignActive(_ application: UIApplication) {

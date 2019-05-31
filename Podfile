@@ -15,7 +15,7 @@ target 'potterly' do
   pod 'RxDataSources'
   pod 'RxSwiftExt' 
   pod 'PinLayout' 
-
+  pod 'LZViewPager', '~> 1.1.0'
   # Pods for potterly
 
   target 'potterlyTests' do

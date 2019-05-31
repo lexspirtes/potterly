@@ -12,7 +12,7 @@
 		D4A64F8CC04A612B0C2100FD /* Pods_potterly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95985F7D8789406AA8AE389E /* Pods_potterly.framework */; };
 		D70ADA57229DA05A007AA724 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA56229DA05A007AA724 /* AppDelegate.swift */; };
 		D70ADA59229DA05A007AA724 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA58229DA05A007AA724 /* RootViewController.swift */; };
-		D70ADA5B229DA05A007AA724 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA5A229DA05A007AA724 /* SecondViewController.swift */; };
+		D70ADA5B229DA05A007AA724 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA5A229DA05A007AA724 /* TabView.swift */; };
 		D70ADA60229DA05C007AA724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70ADA5F229DA05C007AA724 /* Assets.xcassets */; };
 		D70ADA6E229DA05C007AA724 /* potterlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA6D229DA05C007AA724 /* potterlyTests.swift */; };
 		D70ADA79229DA05C007AA724 /* potterlyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA78229DA05C007AA724 /* potterlyUITests.swift */; };
@@ -20,6 +20,10 @@
 		D73CC1B7229DC23900B4A04B /* StageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CC1B6229DC23900B4A04B /* StageViewController.swift */; };
 		D73CC1BB229ED10800B4A04B /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CC1BA229ED10800B4A04B /* RootViewModel.swift */; };
 		D73CC1BD229ED49300B4A04B /* potterly icons in Resources */ = {isa = PBXBuildFile; fileRef = D73CC1BC229ED49200B4A04B /* potterly icons */; };
+		D73CC20422A1A1E000B4A04B /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CC20322A1A1E000B4A04B /* AddView.swift */; };
+		D73CC20622A1A52A00B4A04B /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CC20522A1A52A00B4A04B /* NotesView.swift */; };
+		D73CC20822A1A55500B4A04B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CC20722A1A55500B4A04B /* HomeView.swift */; };
+		D73CC20A22A1A59C00B4A04B /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CC20922A1A59C00B4A04B /* DoneView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +54,7 @@
 		D70ADA53229DA05A007AA724 /* potterly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = potterly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70ADA56229DA05A007AA724 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D70ADA58229DA05A007AA724 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		D70ADA5A229DA05A007AA724 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		D70ADA5A229DA05A007AA724 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		D70ADA5F229DA05C007AA724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D70ADA64229DA05C007AA724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D70ADA69229DA05C007AA724 /* potterlyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = potterlyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +67,10 @@
 		D73CC1B6229DC23900B4A04B /* StageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageViewController.swift; sourceTree = "<group>"; };
 		D73CC1BA229ED10800B4A04B /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		D73CC1BC229ED49200B4A04B /* potterly icons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "potterly icons"; path = "potterly/potterly icons"; sourceTree = "<group>"; };
+		D73CC20322A1A1E000B4A04B /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		D73CC20522A1A52A00B4A04B /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		D73CC20722A1A55500B4A04B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D73CC20922A1A59C00B4A04B /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
 		E294BB060E66F06DE700B985 /* Pods_potterlyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_potterlyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3BF3D15F7E6C210D546EAEB /* Pods-potterlyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-potterlyTests.debug.xcconfig"; path = "Target Support Files/Pods-potterlyTests/Pods-potterlyTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,7 +144,11 @@
 				D73CC1BA229ED10800B4A04B /* RootViewModel.swift */,
 				D73CC1B4229DC22100B4A04B /* NavViewController.swift */,
 				D73CC1B6229DC23900B4A04B /* StageViewController.swift */,
-				D70ADA5A229DA05A007AA724 /* SecondViewController.swift */,
+				D73CC20322A1A1E000B4A04B /* AddView.swift */,
+				D70ADA5A229DA05A007AA724 /* TabView.swift */,
+				D73CC20922A1A59C00B4A04B /* DoneView.swift */,
+				D73CC20522A1A52A00B4A04B /* NotesView.swift */,
+				D73CC20722A1A55500B4A04B /* HomeView.swift */,
 				D70ADA5F229DA05C007AA724 /* Assets.xcassets */,
 				D70ADA64229DA05C007AA724 /* Info.plist */,
 			);
@@ -394,11 +406,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D70ADA5B229DA05A007AA724 /* SecondViewController.swift in Sources */,
+				D73CC20822A1A55500B4A04B /* HomeView.swift in Sources */,
+				D73CC20422A1A1E000B4A04B /* AddView.swift in Sources */,
+				D70ADA5B229DA05A007AA724 /* TabView.swift in Sources */,
 				D70ADA57229DA05A007AA724 /* AppDelegate.swift in Sources */,
 				D73CC1B7229DC23900B4A04B /* StageViewController.swift in Sources */,
 				D73CC1B5229DC22100B4A04B /* NavViewController.swift in Sources */,
 				D73CC1BB229ED10800B4A04B /* RootViewModel.swift in Sources */,
+				D73CC20622A1A52A00B4A04B /* NotesView.swift in Sources */,
+				D73CC20A22A1A59C00B4A04B /* DoneView.swift in Sources */,
 				D70ADA59229DA05A007AA724 /* RootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
