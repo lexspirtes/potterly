@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.shadowImage = UIImage()
         //creating window
         window = UIWindow(frame:UIScreen.main.bounds)
-        window?.rootViewController = homeTabStrip()
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         return true
     }
