@@ -56,8 +56,11 @@ class TabController: UITabBarController {
         
         //appearance for title
         self.navigationItem.title = "potterly"
-        //        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Montserrat-Medium" as String, size: 11)], for: .normal)
-//        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Montserrat-Medium", size: 11)], for: .selected)
+        //text for icons
+        UITabBarItem.appearance().setTitleTextAttributes([
+            NSAttributedString.Key.font: UIFont(name: "Karla-Regular", size: 11)!,
+            NSAttributedString.Key.kern: CGFloat(0.5)], for: .normal)
+
     }
 
 

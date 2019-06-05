@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 import AVKit
 
+
 class AddView: UIViewController {
     let containerView = UIView()
     let color = colors()
-   
+    let buttonView = UIView()
 
     
     public let libraryButton:UIButton = {
@@ -25,11 +26,10 @@ class AddView: UIViewController {
              NSAttributedString.Key.foregroundColor: color.lightPurple
             ])
         let button = UIButton(type: UIButton.ButtonType.custom)
-      //  button.setTitle("library", for: .normal)
-       // button.setTitleColor(color.lightPurple, for: .normal)
         button.setAttributedTitle(myMutableString, for: .normal)
         return button
     }()
+
     
     public let photoButton:UIButton = {
         let color = colors()
@@ -47,33 +47,40 @@ class AddView: UIViewController {
     func makeConstraints(){
         //containerView constraints
         containerView.snp.makeConstraints { (make) in
-            make.top.equalTo(view).offset(64)
-            make.bottom.equalTo(view).offset(-64)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
             make.left.right.equalTo(view)}
         
         //libraryButton constraints
         libraryButton.snp.makeConstraints { (make) in
-            make.centerX.centerY.equalTo(view)
-            make.top.bottom.equalTo(containerView)
+            make.centerY.equalTo(self.buttonView)
+            make.centerX.equalTo(self.buttonView).multipliedBy(1.5)
         }
         //photoButton constraints
         photoButton.snp.makeConstraints { (make) in
-            make.centerX.centerY.equalTo(containerView).offset(50)
-            make.top.bottom.equalTo(containerView)
+            make.centerY.equalTo(self.buttonView)
+            make.centerX.equalTo(self.buttonView).multipliedBy(0.5)
+            //make.top.bottom.equalTo(containerView)
+        }
+        //photo preview
+        buttonView.snp.makeConstraints { (make) in
+            make.bottom.left.right.equalTo(containerView)
+            make.height.equalTo(containerView).dividedBy(10)
+            
         }
     }
-
-    
-
     override func viewDidLoad() {
       //  proceedWithCameraAccess(identifier: "hi")
+        view.backgroundColor = .white
         containerView.backgroundColor = .white
         view.addSubview(containerView)
-        containerView.addSubview(libraryButton)
-        containerView.addSubview(photoButton)
+        containerView.addSubview(buttonView)
+        buttonView.addSubview(libraryButton)
+        buttonView.addSubview(photoButton)
         makeConstraints()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.title = "add"
     }
 }
+
