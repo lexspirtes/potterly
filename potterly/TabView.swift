@@ -9,7 +9,6 @@
 import UIKit
 
 class TabController: UITabBarController {
-    let color = colors()
     //defining home VC
     let homeViewController = homeTabStrip()
 
@@ -49,14 +48,16 @@ class TabController: UITabBarController {
         let viewControllerList = [ homeViewController, notesViewController, addViewController, doneViewController]
         viewControllers = viewControllerList
         UITabBar.appearance().barTintColor = UIColor.white
-        self.tabBar.tintColor = color.darkBlue
-        self.tabBar.unselectedItemTintColor = color.lightPurple
+        self.tabBar.tintColor = UIColor.customColors.midnight
+        self.tabBar.unselectedItemTintColor = UIColor.customColors.lilac
         self.tabBar.layer.borderWidth = 1
-        self.tabBar.layer.borderColor = color.lightPurple.cgColor
+        self.tabBar.layer.borderColor = UIColor.customColors.lilac.cgColor
         
         //appearance for title
         self.navigationItem.title = "potterly"
-        //        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Montserrat-Medium" as String, size: 11)], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [NSAttributedString.Key.font: UIFont(name: "Karla-Regular" as String, size: 11)!,
+             NSAttributedString.Key.kern : CGFloat(0.7)], for: .normal)
 //        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Montserrat-Medium", size: 11)], for: .selected)
     }
 

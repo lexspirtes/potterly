@@ -99,7 +99,7 @@ extension UIButton {
 //    }
     
     func formatButton(spacing: CGFloat){
-        self.titleLabel?.font = UIFont(name: "Karla-Regular", size: 14)
+        self.titleLabel?.font = UIFont(name: "BodoniSvtyTwoITCTT-Book", size: 14)
      //   self.addTextSpacing(spacing: spacing)
         self.titleLabel?.textColor = UIColor(red:0.82, green:0.81, blue:0.87, alpha:1.0)
     }
@@ -114,7 +114,7 @@ extension UILabel {
         self.attributedText = attributedString
         }
     
-    func formatLabel(text: String, spacing: CGFloat = 0.7, font: String = "Karla-Regular", fontSize: CGFloat = 12, textColor: UIColor = .white) {
+    func formatLabel(text: String, spacing: CGFloat = 0.7, font: String = "BodoniSvtyTwoITCTT-Book", fontSize: CGFloat = 12, textColor: UIColor = .white) {
         self.text = text
         self.font = UIFont(name: font, size: fontSize)
         self.textColor = textColor
@@ -122,10 +122,6 @@ extension UILabel {
     }
 }
 
-struct colors {
-    var lightPurple = UIColor(red:0.82, green:0.81, blue:0.87, alpha:1.0)
-    var darkBlue = UIColor(red:0.13, green:0.10, blue:0.25, alpha:1.0)
-}
 
 //camera stuff
 class CameraHandler: NSObject{

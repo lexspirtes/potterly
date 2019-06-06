@@ -14,7 +14,6 @@ import SnapKit
 class homeTabStrip: ButtonBarPagerTabStripViewController, UICollectionViewDelegateFlowLayout {
     let scrollView = UIScrollView()
     var isReload = false
-    let color = colors()
     let myContainer = UIView()
     //also collection view stuff
     var collectionview: UICollectionView!
@@ -23,11 +22,11 @@ class homeTabStrip: ButtonBarPagerTabStripViewController, UICollectionViewDelega
     override func viewDidLoad() {
         settings.style.buttonBarBackgroundColor = .white
         settings.style.buttonBarItemBackgroundColor = .white
-        settings.style.selectedBarBackgroundColor = color.darkBlue
+        settings.style.selectedBarBackgroundColor = UIColor.customColors.midnight
         settings.style.buttonBarItemFont = UIFont(name: "Karla-Regular", size: 14) ?? .boldSystemFont(ofSize: 14)
         settings.style.selectedBarHeight = 2.0
         settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = color.lightPurple
+        settings.style.buttonBarItemTitleColor = UIColor.customColors.lilac
         settings.style.buttonBarItemsShouldFillAvailiableWidth = true
         settings.style.buttonBarLeftContentInset = 0
         settings.style.buttonBarRightContentInset = 0
@@ -35,9 +34,8 @@ class homeTabStrip: ButtonBarPagerTabStripViewController, UICollectionViewDelega
         //changes color of current index
         changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
-            let color = colors()
-            oldCell?.label.textColor = color.lightPurple
-            newCell?.label.textColor = color.darkBlue
+            oldCell?.label.textColor = UIColor.customColors.lilac
+            newCell?.label.textColor = UIColor.customColors.midnight
         }
        //collection view stuff
         // Create an instance of UICollectionViewFlowLayout since you cant

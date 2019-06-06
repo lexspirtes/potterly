@@ -18,7 +18,6 @@ class NavBar: UIView {
     fileprivate let contentView = UIScrollView()
     fileprivate let navView = UIView()
     fileprivate let view2 = UIView()
-    let color = colors()
     init() {
         super.init(frame: .zero)
         backgroundColor = .white
@@ -29,7 +28,7 @@ class NavBar: UIView {
         potterly.formatLabel(text: "potterly", spacing: 2, font: "BodoniSvtyTwoITCTT-Book", fontSize: 30)
         
         //creating topBanner as flex container
-        topBanner.flex.addItem().height(96).direction(.column).backgroundColor(color.darkBlue).define { (flex) in
+        topBanner.flex.addItem().height(96).direction(.column).backgroundColor(UIColor.customColors.midnight).define { (flex) in
             flex.justifyContent(.end).alignItems(.center).paddingBottom(10).addItem(potterly)
         }
         
@@ -38,14 +37,14 @@ class NavBar: UIView {
         
         //done button and label
         let doneLabel = UILabel()
-        doneLabel.formatLabel(text: "done", textColor: color.lightPurple)
+        doneLabel.formatLabel(text: "done", textColor: UIColor.customColors.lilac)
         let potImage = UIImage(named: "potsmall")
         let doneButton = UIButton(type: UIButton.ButtonType.custom)
         doneButton.setImage(potImage, for: .normal)
         
         //home button and label
         let homeLabel = UILabel()
-        homeLabel.formatLabel(text: "home", textColor: color.lightPurple)
+        homeLabel.formatLabel(text: "home", textColor: UIColor.customColors.lilac)
         homeLabel.numberOfLines = 0
         let homeImage = UIImage(named: "home")
         let homeButton = UIButton(type: UIButton.ButtonType.custom)
@@ -53,7 +52,7 @@ class NavBar: UIView {
         
         //notes button and label
         let notesLabel = UILabel()
-        notesLabel.formatLabel(text: "notes", textColor: color.lightPurple)
+        notesLabel.formatLabel(text: "notes", textColor: UIColor.customColors.lilac)
         notesLabel.numberOfLines = 0
         let notesImage = UIImage(named: "notes")
         let notesButton = UIButton(type: UIButton.ButtonType.custom)
@@ -61,7 +60,7 @@ class NavBar: UIView {
         
         //add button and label
         let addLabel = UILabel()
-        addLabel.formatLabel(text: "add", textColor: color.lightPurple)
+        addLabel.formatLabel(text: "add", textColor: UIColor.customColors.lilac)
         addLabel.numberOfLines = 0
         let addImage = UIImage(named: "add")
         let addButton = UIButton(type: UIButton.ButtonType.custom)
@@ -70,7 +69,7 @@ class NavBar: UIView {
     
         navView.flex.direction(.column).direction(.column).addItem().backgroundColor(.white).marginBottom(10).define { (flex) in
             //adding purple line to bottom
-            flex.addItem().height(2).backgroundColor(color.lightPurple).marginBottom(10)
+            flex.addItem().height(2).backgroundColor(UIColor.customColors.lilac).marginBottom(10)
             flex.addItem().backgroundColor(.white).direction(.row).alignItems(.center).justifyContent(.spaceAround).define { (flex) in
                 //creating home button
                 flex.addItem().direction(.column).justifyContent(.center).define { (flex) in
