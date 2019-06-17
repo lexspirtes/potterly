@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let tabBar = TabController();
         let navigationController = UINavigationController(rootViewController: tabBar)
-        
+        navigationController.navigationBar.isTranslucent = false
         //writing appearance settings
         let navigationBarAppearace = UINavigationBar.appearance()
         if let font = UIFont(name: "BodoniSvtyTwoITCTT-Book", size: 30) {
@@ -35,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.shadowImage = UIImage()
         //creating window
         window = UIWindow(frame:UIScreen.main.bounds)
-        window?.rootViewController = navigationController
+        window?.rootViewController =  navigationController
         window?.makeKeyAndVisible()
         return true
     }

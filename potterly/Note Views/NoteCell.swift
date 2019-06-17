@@ -8,12 +8,10 @@
 
 import Foundation
 import UIKit
+import RxCocoa
+import CoreData
 
-struct Note {
-    let title:String?
-    let text:String?
-    let date:String?
-}
+
 
 class NoteAPI {
     static func getNotes() -> [Note]{
@@ -30,6 +28,76 @@ class NoteAPI {
         ]
         return notes
     }
+}
+
+class DataFunctions {
+    func createData(){
+        
+        //As we know that container is set up in the AppDelegates so we need to refer that container.
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        //We need to create a context from this container
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //Now let’s create an entity and new user records.
+        let noteEntity = NSEntityDescription.entity(forEntityName: "Note", in: managedContext)!
+        
+        //final, we need to add some data to our newly created record for each keys using
+        //here adding 5 data with loop
+        
+        //date stuff
+        let isoDate = "2016-04-14T10:44:00+0000"
+        let dateFormatter = ISO8601DateFormatter()
+        let date = dateFormatter.date(from:isoDate)!
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour], from: date)
+        
+        for i in 1...5 {
+            
+            let note = NSManagedObject(entity: noteEntity, insertInto: managedContext)
+            note.setValue("note\(i)", forKey: "title")
+            note.setValue("note text\(i)", forKey: "text")
+            note.setValue(calendar.date(from:components), forKey: "timestamp")
+        }
+    
+        //Now we have set all the values. The next step is to save them inside the Core Data
+        
+        do {
+            try managedContext.save()
+            
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+
+    func retrieveData() {
+        
+        //As we know that container is set up in the AppDelegates so we need to refer that container.
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        //We need to create a context from this container
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //Prepare the request of type NSFetchRequest  for the entity
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+        
+        //        fetchRequest.fetchLimit = 1
+        //        fetchRequest.predicate = NSPredicate(format: "username = %@", "Ankur")
+        //        fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "email", ascending: false)]
+        //
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [NSManagedObject] {
+                print(data.value(forKey: "id") as! UUID)
+            }
+            
+        } catch {
+            
+            print("Failed")
+        }
+    }
+    
+
 }
 
 class NoteTableViewCell: UITableViewCell {

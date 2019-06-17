@@ -65,6 +65,7 @@ class AddView: UIViewController {
             
         }
     }
+    
     override func viewDidLoad() {
         //  proceedWithCameraAccess(identifier: "hi")
         view.backgroundColor = .white

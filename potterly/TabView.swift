@@ -11,12 +11,14 @@ import UIKit
 class TabController: UITabBarController {
     //defining home VC
     let homeViewController = homeTabStrip()
+        //ButtonBarExampleViewController()
+        //homeTabStrip()
 
     //definine notes
     let notesViewController = NotesView()
     
     //definine add
-    let addViewController = AddView()
+    let addViewController = DemoViewController()
     
     //defining done
     let doneViewController = DoneView()
