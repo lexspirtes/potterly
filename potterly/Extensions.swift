@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+//custom color definitions
 extension UIColor {
     struct customColors {
         static let lilac = UIColor(red:0.82, green:0.81, blue:0.87, alpha:1.0)
@@ -18,6 +19,7 @@ extension UIColor {
     }
 }
 
+//extensions of UIImage in order to get plus button logo with custom button action
 extension UIImage {
     
     public convenience init?(systemItem sysItem: UIBarButtonItem.SystemItem, renderingMode:UIImage.RenderingMode = .automatic) {
@@ -50,5 +52,15 @@ extension UIImage {
         }
         
         return nil
+    }
+}
+
+//extension of Date class to create seconds
+extension Date {
+    func toSeconds() -> Int64 {
+        return Int64((self.timeIntervalSince1970).rounded())
+    }
+    init(seconds:Int64!){
+        self = Date(timeIntervalSince1970: TimeInterval(Double.init(seconds)))
     }
 }

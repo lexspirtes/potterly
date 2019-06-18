@@ -18,7 +18,7 @@ class TabController: UITabBarController {
     let notesViewController = NotesView()
     
     //definine add
-    let addViewController = DemoViewController()
+    let addViewController = NotesView()
     
     //defining done
     let doneViewController = DoneView()
@@ -60,7 +60,6 @@ class TabController: UITabBarController {
         UITabBarItem.appearance().setTitleTextAttributes(
             [NSAttributedString.Key.font: UIFont(name: "Karla-Regular" as String, size: 11)!,
              NSAttributedString.Key.kern : CGFloat(0.7)], for: .normal)
-//        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Montserrat-Medium", size: 11)], for: .selected)
     }
 
 

@@ -11,16 +11,11 @@ import UIKit
 import CoreData
 import ReactiveSwift
 import ReactiveCocoa
+import Result
 
 
 class NotesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    //assigning APP Delegate
-    let appDelegateObj : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-    var dataArray = [NSManagedObject]()
-    let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private let notes = NoteAPI.getNotes() // model
- //   private let notes = DataFunctions.createData()
     let notesTableView = UITableView() // view
     //var viewModel : NoteListViewModel!
     
@@ -69,7 +64,6 @@ class NotesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.notesTableView.tableFooterView = UIView()
         view.backgroundColor = .white
         notesTableView.separatorColor = UIColor.customColors.lilac
-       // cellLabel.reactive.text <~ viewModel.currentProgress
         notesTableView.tableHeaderView = cellLabel
         view.addSubview(notesTableView)
         notesTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -77,30 +71,13 @@ class NotesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
         notesTableView.dataSource = self
         notesTableView.delegate = self
         notesTableView.register(NoteTableViewCell.self, forCellReuseIdentifier: "noteCell")
-
     
     }
     
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
-        fetchData()
     }
     
-    func fetchData() {
-        let entityDescription = NSEntityDescription.entity(forEntityName: "Note", in: managedContext)
-        
-        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Note")
-        fetchRequest.entity = entityDescription
-        
-        do {
-            dataArray = try managedContext.fetch(fetchRequest) as! [NSManagedObject]
-         //   self.tableView.reloadData()
-            
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-        }
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notes.count
@@ -109,7 +86,6 @@ class NotesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath) as! NoteTableViewCell
         cell.note = notes[indexPath.row]
-        
         //change the selected cell color
         let selectedView = UIView()
         selectedView.backgroundColor = UIColor.customColors.lilac.withAlphaComponent(0.3)
@@ -118,10 +94,16 @@ class NotesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    //clicking
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+    
     //sets height of each cell
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+    //trying to get reactive button to tap
     private func onButtonTap() {
         print("Button was tapped.")
     }

@@ -8,6 +8,7 @@
 
 import UIKit
 
+//placheholder for when you click add what will come up
 class AddNoteViewController: UIViewController {
 
     

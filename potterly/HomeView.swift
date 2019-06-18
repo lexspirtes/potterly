@@ -25,7 +25,6 @@ class homeTabStrip: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarItemsShouldFillAvailiableWidth = true
         settings.style.buttonBarLeftContentInset = 0
         settings.style.buttonBarRightContentInset = 0
-        scrollView.contentInsetAdjustmentBehavior = .never
         //changes color of current index
         changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
@@ -46,6 +45,11 @@ class homeTabStrip: ButtonBarPagerTabStripViewController {
         let child4 = Glazed()
         return [child1, child2, child3, child4]
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
+    }
 }
 
 
@@ -54,7 +58,7 @@ class toDry: UIViewController, IndicatorInfoProvider {
     override func viewDidLoad() {
         super.viewDidLoad()
         let subview = UIView()
-        subview.backgroundColor = UIColor.customColors.mauve
+        subview.backgroundColor = .white
         view.addSubview(subview)
         subview.snp.makeConstraints { (make) in
             make.top.trailing.equalTo(view)
@@ -94,7 +98,7 @@ class Bisqued: UIViewController, IndicatorInfoProvider {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        subview.backgroundColor = UIColor.customColors.midnight
+        subview.backgroundColor = .white
         view.addSubview(subview)
         subview.snp.makeConstraints { (make) in
             make.top.trailing.equalTo(view)
@@ -113,7 +117,7 @@ class Glazed: UIViewController, IndicatorInfoProvider {
         super.viewDidLoad()
         let subview = UIView()
         // Do any additional setup after loading the view.
-        subview.backgroundColor = .purple
+        subview.backgroundColor = .white
         view.addSubview(subview)
         view.backgroundColor = .white
         subview.snp.makeConstraints { (make) in
