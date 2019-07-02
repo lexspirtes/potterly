@@ -15,10 +15,10 @@ class TabController: UITabBarController {
         //homeTabStrip()
 
     //definine notes
-    let notesViewController = NotesView()
+    let notesViewController = NotesView(viewModel: NotesTableViewModel())
     
     //definine add
-    let addViewController = NotesView()
+    let addViewController = NotesView(viewModel: NotesTableViewModel())
     
     //defining done
     let doneViewController = DoneView()
@@ -55,11 +55,7 @@ class TabController: UITabBarController {
         self.tabBar.layer.borderWidth = 1
         self.tabBar.layer.borderColor = UIColor.customColors.lilac.cgColor
         
-        //appearance for title
-        self.navigationItem.title = "potterly"
-        UITabBarItem.appearance().setTitleTextAttributes(
-            [NSAttributedString.Key.font: UIFont(name: "Karla-Regular" as String, size: 11)!,
-             NSAttributedString.Key.kern : CGFloat(0.7)], for: .normal)
+
     }
 
 

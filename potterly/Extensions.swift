@@ -64,3 +64,14 @@ extension Date {
         self = Date(timeIntervalSince1970: TimeInterval(Double.init(seconds)))
     }
 }
+
+
+extension String {
+    func date(format: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.timeZone = TimeZone.current
+        let date = dateFormatter.date(from: self)
+        return date
+    }
+}

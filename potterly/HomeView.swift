@@ -37,6 +37,11 @@ class homeTabStrip: ButtonBarPagerTabStripViewController {
             make.bottom.equalTo(view)
             make.left.right.equalTo(view)}
         super.viewDidLoad()
+        
+        //appearance for title
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [NSAttributedString.Key.font: UIFont(name: "Karla-Regular" as String, size: 11)!,
+             NSAttributedString.Key.kern : CGFloat(0.7)], for: .normal)
     }
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let child1 = toDry()
@@ -49,6 +54,7 @@ class homeTabStrip: ButtonBarPagerTabStripViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         self.tabBarController?.navigationItem.rightBarButtonItem = nil
+        self.tabBarController?.navigationItem.title = "potterly"
     }
 }
 

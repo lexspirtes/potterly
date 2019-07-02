@@ -14,25 +14,10 @@ import Result
 import CoreData
 
 
-class NoteTableViewCell: UITableViewCell {
-    var note: Note? {
-        didSet {
-            guard let noteItem = note else {return}
-            if let title = noteItem.title {
-                titleLabel.text = title
-            }
-            if let date = noteItem.date {
-                dateLabel.text = " \(date) "
-            }
 
-            if let text = noteItem.text {
-                detailLabel.text = text
-            }
-        }
-    }
-    
+class NoteTableCell: UITableViewCell {
+    var viewModel: NoteCellViewModel!
     let button = UIButton()
-    var buttonClickedSignal: SignalProducer<AnyObject?, NSError>?
     let containerView:UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -90,8 +75,11 @@ class NoteTableViewCell: UITableViewCell {
             make.centerY.centerX.equalTo(containerView)
         }
     }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        //adding the subviews
         containerView.addSubview(titleLabel)
         containerView.addSubview(dateLabel)
         self.contentView.addSubview(containerView)
@@ -100,9 +88,26 @@ class NoteTableViewCell: UITableViewCell {
         makeConstraints()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    func configure(viewModel: NoteCellViewModel){
+        self.viewModel = viewModel
+        //setting the label text
+        titleLabel.text = viewModel.title
+        detailLabel.text = viewModel.text
+        dateLabel.text = viewModel.date
+    }
+    
+    convenience init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, viewModel: NoteCellViewModel){
+        self.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.viewModel = viewModel
+        //setting the label text
+        titleLabel.text = viewModel.title
+        detailLabel.text = viewModel.text
+        dateLabel.text = viewModel.date
         
-        super.init(coder: aDecoder)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }

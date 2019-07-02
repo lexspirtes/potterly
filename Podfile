@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
- platform :ios, '9.0'
+ platform :ios, '10.0'
 
 target 'potterly' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -10,12 +10,11 @@ target 'potterly' do
   pod 'Kingfisher', '~> 4.0'
   pod 'SnapKit', '~> 4.0'
   pod 'FlexLayout'
+  pod 'Changeset'
   pod 'XLPagerTabStrip', '~> 8.0'
-  pod 'RxSwift'
-  pod 'RxDataSources'
-  pod 'RxSwiftExt' 
-  pod 'PinLayout' 
   pod 'ReactiveCocoa', '~> 9.0'
+  pod 'ReactiveSwift', '~> 5.0'
+  pod 'PinLayout' 
   pod 'LZViewPager', '~> 1.1.0'
   # Pods for potterly
 
