@@ -137,7 +137,6 @@ class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         newNote.setValue(viewModel.title.value, forKey: "title")
         newNote.setValue(viewModel.note.value, forKey: "text")
         newNote.setValue(Date(), forKey: "lastEdited")
-        newNote.setValue(UUID(), forKeyPath: "id")
         // Save the data to coredata
         do {
             try context.save()
