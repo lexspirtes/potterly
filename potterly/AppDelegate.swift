@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import CoreData
+import IQKeyboardManagerSwift
+import RealmSwift
 
 
 @UIApplicationMain
@@ -18,26 +19,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var navigationController: UINavigationController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        let tabBar = TabController();
+        //realm initialization
+        let realm = try! Realm()
+        //tabbar
+        let tabBar = TabController(viewModel: TabBarViewModel(NoteData: NoteRealmData(context: realm)))
         let navigationController = UINavigationController(rootViewController: tabBar)
         navigationController.navigationBar.isTranslucent = false
         //writing appearance settings
         let navigationBarAppearace = UINavigationBar.appearance()
-        if let font = UIFont(name: "BodoniSvtyTwoITCTT-Book", size: 30) {
-            
+        if let font = UIFont(name: "SFMono-Medium", size: 20) {
             UINavigationBar.appearance().titleTextAttributes = [
                 NSAttributedString.Key.font: font,
                 NSAttributedString.Key.foregroundColor: UIColor.customColors.midnight,
-                NSAttributedString.Key.kern:CGFloat(3.0)]
-            
+                NSAttributedString.Key.kern:CGFloat(2.0)]
         }
-        navigationBarAppearace.barTintColor = UIColor.customColors.lilac
+        navigationBarAppearace.barTintColor = UIColor.customColors.lighty
         navigationBarAppearace.shadowImage = UIImage()
+        
         //creating window
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.rootViewController =  navigationController
         window?.makeKeyAndVisible()
+        
+        //jumps up keyboard
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+
+
         return true
     }
     
@@ -63,52 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        self.saveContext()
     }
-    
-    // MARK: - Core Data stack
-    lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-         */
-        let container = NSPersistentContainer(name: "PotterlyData")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-    
-    // MARK: - Core Data Saving support
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
-
 
 
 }

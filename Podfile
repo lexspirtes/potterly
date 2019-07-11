@@ -15,6 +15,8 @@ target 'potterly' do
   pod 'ReactiveCocoa', '~> 9.0'
   pod 'ReactiveSwift', '~> 5.0'
   pod 'PinLayout' 
+  pod 'IQKeyboardManagerSwift'
+  pod 'RealmSwift'
   pod 'LZViewPager', '~> 1.1.0'
   # Pods for potterly
 

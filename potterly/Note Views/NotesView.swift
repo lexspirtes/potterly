@@ -57,63 +57,34 @@ class NotesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
         notesTableView.delegate = self
         notesTableView.register(NoteTableCell.self, forCellReuseIdentifier: "noteCell")
 
-        //trying this here
-        let buttonView = UIButton()
-        buttonView.setImage(UIImage(named: "create"), for: .normal)
-        let button = UIBarButtonItem(customView: buttonView)
-        buttonView.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.tapButton() }
+        
         viewModel.buttonSignal.observeValues(self.navigateToNewNote)
-        self.tabBarController?.navigationItem.rightBarButtonItem = button
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "notes"
         super.viewWillAppear(animated)
-        getData()
         notesTableView.reloadData()
+        
         //bar button comes up every time the view is loaded
+        let buttonView = UIButton()
+        buttonView.setImage(UIImage(named: "create"), for: .normal)
+        let button = UIBarButtonItem(customView: buttonView)
+        buttonView.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.tapButton() }
+        self.tabBarController?.navigationItem.rightBarButtonItem = button
 
     }
-    //fetching coredata
-    func getData() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "NoteData")
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try context.fetch(request)
-            for data in result as! [NSManagedObject] {
-                print(data.value(forKey: "title") as! String)
-            }
-            //changing it to Note() to be used by viewModel
-            viewModel.notes = resultToNote(dataList: result as! [NSManagedObject])
-        }
-        catch {
-            print("Failed")
-        }
-    }
     
-    func resultToNote(dataList: [NSManagedObject]) -> [Note] {
-        let noteArray = dataList.map {
-            Note(title: $0.value(forKey: "title") as! String, text: $0.value(forKey: "text") as! String, lastEdited: $0.value(forKey: "lastEdited") as! Date)
-        }
-        return noteArray
-    }
     
         
     func navigateToNewNote() {
-        let outputView = NoteDetailView(viewModel: NoteViewModel(withNote: Note(title: "", text: "", lastEdited: Date())))
+        let outputView = NoteDetailView(viewModel: viewModel.getNewNoteViewModel())
         self.navigationController?.pushViewController(outputView, animated: true)
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if let count = viewModel.notes.count {
             return viewModel.notes.count
-//        }
-//        else {
-//            return 0
-//        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -140,4 +111,12 @@ class NotesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return 60
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+          viewModel.deleteNote(atIndex: indexPath.row)
+            self.notesTableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
 }
+

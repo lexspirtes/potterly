@@ -9,21 +9,31 @@
 import UIKit
 
 class TabController: UITabBarController {
+    let viewModel: TabBarViewModel!
     //defining home VC
     let homeViewController = homeTabStrip()
         //ButtonBarExampleViewController()
         //homeTabStrip()
 
     //definine notes
-    let notesViewController = NotesView(viewModel: NotesTableViewModel())
+    lazy var notesViewController = NotesView(viewModel: viewModel.getNoteViewModel())
     
     //definine add
-    let addViewController = NotesView(viewModel: NotesTableViewModel())
+    lazy var addViewController = AddView()
     
     //defining done
     let doneViewController = DoneView()
    
    
+    init(viewModel: TabBarViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // creating views as TabBarItems

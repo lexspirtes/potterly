@@ -15,6 +15,7 @@ extension UIColor {
         static let lilac = UIColor(red:0.82, green:0.81, blue:0.87, alpha:1.0)
         static let midnight = UIColor(red:0.13, green:0.10, blue:0.25, alpha:1.0)
         static let mauve = UIColor(red:0.44, green:0.37, blue:0.51, alpha:1.0)
+        static let lighty = UIColor(red:0.95, green:0.95, blue:0.97, alpha:1.0)
         
     }
 }
@@ -57,13 +58,10 @@ extension UIImage {
 
 //extension of Date class to create seconds
 extension Date {
-    func toSeconds() -> Int64 {
-        return Int64((self.timeIntervalSince1970).rounded())
+        static func - (lhs: Date, rhs: Date) -> TimeInterval {
+            return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+        }
     }
-    init(seconds:Int64!){
-        self = Date(timeIntervalSince1970: TimeInterval(Double.init(seconds)))
-    }
-}
 
 
 extension String {

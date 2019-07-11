@@ -43,26 +43,20 @@ class AddView: UIViewController {
     func makeConstraints(){
         //containerView constraints
         containerView.snp.makeConstraints { (make) in
-            make.top.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.top)
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
-            make.left.right.equalTo(view)}
+            make.top.equalTo(view.safeAreaInsets)
+            make.bottom.equalTo(view.safeAreaInsets)
+            make.width.equalTo(view.safeAreaInsets)}
         
         //libraryButton constraints
         libraryButton.snp.makeConstraints { (make) in
-            make.centerY.equalTo(self.buttonView)
-            make.centerX.equalTo(self.buttonView).multipliedBy(1.5)
+            make.centerY.equalTo(self.containerView)
+            make.centerX.equalTo(self.containerView).multipliedBy(1.5)
         }
         //photoButton constraints
         photoButton.snp.makeConstraints { (make) in
-            make.centerY.equalTo(self.buttonView)
-            make.centerX.equalTo(self.buttonView).multipliedBy(0.5)
+            make.centerY.equalTo(self.containerView)
+            make.trailing.equalTo(self.containerView).multipliedBy(0.5)
             //make.top.bottom.equalTo(containerView)
-        }
-        //photo preview
-        buttonView.snp.makeConstraints { (make) in
-            make.bottom.left.right.equalTo(containerView)
-            make.height.equalTo(containerView).dividedBy(10)
-            
         }
     }
     
@@ -72,8 +66,8 @@ class AddView: UIViewController {
         containerView.backgroundColor = .white
         view.addSubview(containerView)
         containerView.addSubview(buttonView)
-        buttonView.addSubview(libraryButton)
-        buttonView.addSubview(photoButton)
+        containerView.addSubview(libraryButton)
+        containerView.addSubview(photoButton)
         makeConstraints()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
