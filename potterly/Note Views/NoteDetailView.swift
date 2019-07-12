@@ -12,55 +12,8 @@ import ReactiveSwift
 import ReactiveCocoa
 import Result
 import os.log
-import CoreData
 import RealmSwift
 
-class NoteViewModel {
-    let note: MutableProperty<String>
-    let title: MutableProperty<String>
-    let date: Date
-    let (buttonSignal, buttonTapped) = Signal<(), NoError>.pipe()
-    let NoteData: NoteData
-    let new : Bool
-    let id : Int
-    
-    init(note: Note, NoteData: NoteData) {
-        self.title = MutableProperty(note.title)
-        self.note = MutableProperty(note.text)
-        self.id = note.id
-        self.new = NoteViewModel.newNote(title: self.title.value)
-        self.date = Date()
-        self.NoteData = NoteData
-    }
-    
-    func tapButton() {
-        self.buttonTapped.send(value: ())
-        print("tapped")
-        let newNote = Note()
-        newNote.title = self.title.value
-        newNote.text = self.note.value
-        newNote.lastEdited = self.date
-        if self.id == 0 {
-            self.NoteData.saveNote(note: newNote)
-        }
-        else {
-            newNote.id = self.id
-            self.NoteData.updateNote(note: newNote)
-        }
-    }
-    
-    class func newNote(title: String) -> Bool {
-        if title.count == 0 {
-            return true
-        }
-        else {
-            return false
-            
-        }
-    }
-    //maybe have toolbar for pushing done currently
-
-}
 
 //currently just a placeholder UIViewController to display when clicked into specific note
 class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate {
@@ -72,7 +25,6 @@ class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         field.keyboardType = UIKeyboardType.default
         field.returnKeyType = UIReturnKeyType.done
         field.clearButtonMode = UITextField.ViewMode.whileEditing
-       // field.backgroundColor = .white
         return field
     }()
     
@@ -80,9 +32,6 @@ class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         let field = UITextView()
         field.font = UIFont(name: "Karla", size: 14)
         field.keyboardType = UIKeyboardType.default
-      //  field.returnKeyType = UIReturnKeyType.enter
-        //field.clearButtonMode = UITextField.ViewMode.whileEditing
-      //  field.backgroundColor = .green
         return field
     }()
     
@@ -103,6 +52,18 @@ class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         }
 
     }
+    
+    let postAction: Action<String, Void, NoError> = Action<String, Void, NoError> { (input: String) in
+        return SignalProducer<Void, NoError> { _ , _ in
+            let data = input
+            print("hihihi")
+        }
+    }
+        //zipping properties together, waiting for signal to come through both of them
+        //turn into signal
+        //map because signal doesn't care about extra information, return type ()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -121,10 +82,18 @@ class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         //trying this here
         let buttonView = UIButton()
         buttonView.setTitle("done", for: .normal)
+        self.navigationItem.backBarButtonItem?.reactive.pressed = CocoaAction(postAction) { button in
+            _ = button
+            return "hi"
+            }
+        self.postAction.values.observeValues { data in
+            print("Received data: \(data)")
+        }
         let button = UIBarButtonItem(customView: buttonView)
         buttonView.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.tapButton() }
         self.navigationItem.rightBarButtonItem = button
         placeHolder()
+        
     }
     
     init(viewModel: NoteViewModel){

@@ -33,6 +33,7 @@
 		D786B9A522CD061F00E18AB5 /* RealmHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786B9A422CD061F00E18AB5 /* RealmHelpers.swift */; };
 		D786B9AA22D679E600E18AB5 /* SFMono-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D786B9A822D661DB00E18AB5 /* SFMono-Medium.otf */; };
 		D786B9AB22D679E900E18AB5 /* SFMono-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D786B9A922D661E500E18AB5 /* SFMono-Semibold.otf */; };
+		D786B9B022D7E48D00E18AB5 /* InsideNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786B9AF22D7E48D00E18AB5 /* InsideNoteViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		D786B9A422CD061F00E18AB5 /* RealmHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RealmHelpers.swift; path = potterly/RealmHelpers.swift; sourceTree = SOURCE_ROOT; };
 		D786B9A822D661DB00E18AB5 /* SFMono-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-Medium.otf"; sourceTree = "<group>"; };
 		D786B9A922D661E500E18AB5 /* SFMono-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-Semibold.otf"; sourceTree = "<group>"; };
+		D786B9AF22D7E48D00E18AB5 /* InsideNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideNoteViewModel.swift; sourceTree = "<group>"; };
 		E294BB060E66F06DE700B985 /* Pods_potterlyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_potterlyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3BF3D15F7E6C210D546EAEB /* Pods-potterlyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-potterlyTests.debug.xcconfig"; path = "Target Support Files/Pods-potterlyTests/Pods-potterlyTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -212,6 +214,7 @@
 				D786B99E22C6734500E18AB5 /* NoteCellViewModel.swift */,
 				D786B9A022C6738900E18AB5 /* TableViewModel.swift */,
 				D7318B7522A97EE8009D14A9 /* NoteDetailView.swift */,
+				D786B9AF22D7E48D00E18AB5 /* InsideNoteViewModel.swift */,
 			);
 			path = "Note Views";
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				D7318B7122A86312009D14A9 /* NoteCell.swift in Sources */,
 				D70ADA57229DA05A007AA724 /* AppDelegate.swift in Sources */,
 				D7318B6922A82B62009D14A9 /* PotterlyData.xcdatamodeld in Sources */,
+				D786B9B022D7E48D00E18AB5 /* InsideNoteViewModel.swift in Sources */,
 				D7318B7322A96AD3009D14A9 /* Extensions.swift in Sources */,
 				D73CC20622A1A52A00B4A04B /* NotesView.swift in Sources */,
 				D73CC20A22A1A59C00B4A04B /* DoneView.swift in Sources */,

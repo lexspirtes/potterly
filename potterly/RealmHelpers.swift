@@ -8,9 +8,6 @@
 
 import RealmSwift
 
-protocol RealmData {
-    func saveNote(note: Note)
-}
 
 class NoteRealmData: NoteData {
     let realm: Realm!

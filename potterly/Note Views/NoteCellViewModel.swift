@@ -23,10 +23,11 @@ class NoteCellViewModel {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateString = formatter.string(from: date)
         let newDate = formatter.date(from: dateString)
-        if NoteCellViewModel.compareDate(date1: today, date2: date) < 24 {
+        if NoteCellViewModel.compareDate(date1: date, date2: today) < 1 {
+            print(NoteCellViewModel.compareDate(date1: date, date2: today))
             formatter.dateFormat = "h:mm a"
         }
-        else if NoteCellViewModel.compareDate(date1: today, date2: date) < 168 {
+        else if NoteCellViewModel.compareDate(date1: date, date2: today) < 7 {
             formatter.dateFormat = "EEEE"
             }
             
@@ -40,10 +41,12 @@ class NoteCellViewModel {
     
     
     class func compareDate(date1:Date, date2:Date) -> Int {
-        let units = Set<Calendar.Component>([.hour, .year, .minute, .second])
+        let units = Set<Calendar.Component>([.day])
         let cal = NSCalendar.current
-        let return_value = cal.dateComponents(units, from: date1, to: date2)
-        return return_value.hour!
+        let day1 = cal.dateComponents(units, from: date1)
+        let day2 = cal.dateComponents(units, from: date2)
+        let daysBetween = day2.day! - day1.day!
+        return daysBetween
     }
     
     init(withNote note: Note){
