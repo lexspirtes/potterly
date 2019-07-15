@@ -13,8 +13,10 @@ import SnapKit
 //parent VC
 class homeTabStrip: ButtonBarPagerTabStripViewController {
     var isReload = false
+    let line = UIView()
     let myContainer = UIView()
     override func viewDidLoad() {
+        line.backgroundColor = UIColor.customColors.lilac
         settings.style.buttonBarBackgroundColor = .white
         settings.style.buttonBarItemBackgroundColor = .white
         settings.style.selectedBarBackgroundColor = UIColor.customColors.midnight
@@ -32,10 +34,16 @@ class homeTabStrip: ButtonBarPagerTabStripViewController {
             newCell?.label.textColor = UIColor.customColors.midnight
         }
         view.addSubview(myContainer)
+        view.addSubview(line)
         myContainer.snp.makeConstraints { (make) in
-            make.top.trailing.equalTo(view)
-            make.bottom.equalTo(view)
-            make.left.right.equalTo(view)}
+            make.top.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.left.right.equalTo(view.safeAreaLayoutGuide)}
+        line.snp.makeConstraints { (make) in
+            make.height.equalTo(1)
+            make.width.equalTo(view.safeAreaInsets)
+            make.top.equalTo(myContainer)
+            }
         super.viewDidLoad()
         
         //appearance for title
@@ -60,16 +68,26 @@ class homeTabStrip: ButtonBarPagerTabStripViewController {
 
 
 class toDry: UIViewController, IndicatorInfoProvider {
+    let line = UIView()
+    let subview = UIScrollView()
     
+    func makeConstraints() {
+        subview.snp.makeConstraints { (make) in
+            make.top.trailing.bottom.leading.equalTo(view.safeAreaLayoutGuide)
+        }
+        line.snp.makeConstraints { (make) in
+            make.width.equalTo(subview)
+            make.height.equalTo(1)
+            make.top.equalTo(subview)}
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let subview = UIView()
+        line.backgroundColor = UIColor.customColors.lilac
         subview.backgroundColor = .white
+        view.backgroundColor = .white
         view.addSubview(subview)
-        subview.snp.makeConstraints { (make) in
-            make.top.trailing.equalTo(view)
-            make.bottom.equalTo(view)
-            make.left.right.equalTo(view)}
+        subview.addSubview(line)
+        makeConstraints()
         // Do any additional setup after loading the view.
         //view.addSubview(scrollView)
         self.title = "toDry"
@@ -82,16 +100,28 @@ class toDry: UIViewController, IndicatorInfoProvider {
 
 class toTrim: UIViewController, IndicatorInfoProvider {
     let subview = UIScrollView()
+    let line = UIView()
+    
+    func makeConstraints() {
+        subview.snp.makeConstraints { (make) in
+            make.top.trailing.bottom.leading.equalTo(view.safeAreaLayoutGuide)
+        }
+        line.snp.makeConstraints { (make) in
+            make.width.equalTo(subview)
+            make.height.equalTo(1)
+            make.top.equalTo(subview)}
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         subview.backgroundColor = .white
         view.addSubview(subview)
-        subview.snp.makeConstraints { (make) in
-            make.top.trailing.equalTo(view)
-            make.bottom.equalTo(view)
-            make.left.right.equalTo(view)}
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
+        line.backgroundColor = UIColor.customColors.lilac
+        subview.addSubview(line)
+        makeConstraints()
+        
         self.title = "toTrim"
     }
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -101,16 +131,27 @@ class toTrim: UIViewController, IndicatorInfoProvider {
 
 class Bisqued: UIViewController, IndicatorInfoProvider {
     let subview = UIScrollView()
+    let line = UIView()
+    
+    func makeConstraints() {
+        subview.snp.makeConstraints { (make) in
+            make.top.trailing.bottom.leading.equalTo(view.safeAreaLayoutGuide)
+        }
+        line.snp.makeConstraints { (make) in
+            make.width.equalTo(subview)
+            make.height.equalTo(1)
+            make.top.equalTo(subview)}
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        line.backgroundColor = UIColor.customColors.lilac
         subview.backgroundColor = .white
         view.addSubview(subview)
-        subview.snp.makeConstraints { (make) in
-            make.top.trailing.equalTo(view)
-            make.bottom.equalTo(view)
-            make.left.right.equalTo(view)}
-        view.backgroundColor = .lightGray
+        subview.addSubview(line)
+        makeConstraints()
+        view.backgroundColor = .white
         self.title = "Bisqued"
     }
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -119,18 +160,27 @@ class Bisqued: UIViewController, IndicatorInfoProvider {
 }
 
 class Glazed: UIViewController, IndicatorInfoProvider {
+    let line = UIView()
+    let subview = UIScrollView()
+    
+    func makeConstraints() {
+        subview.snp.makeConstraints { (make) in
+            make.top.trailing.bottom.leading.equalTo(view.safeAreaLayoutGuide)
+        }
+        line.snp.makeConstraints { (make) in
+            make.width.equalTo(subview)
+            make.height.equalTo(1)
+            make.top.equalTo(subview)}
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let subview = UIView()
+        line.backgroundColor = UIColor.customColors.lilac
         // Do any additional setup after loading the view.
         subview.backgroundColor = .white
         view.addSubview(subview)
+        subview.addSubview(line)
         view.backgroundColor = .white
-        subview.snp.makeConstraints { (make) in
-            make.top.trailing.equalTo(view)
-            make.bottom.equalTo(view)
-            make.left.right.equalTo(view)}
-        
+        makeConstraints()
         self.title = "Glazed"
     }
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {

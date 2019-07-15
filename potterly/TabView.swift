@@ -19,7 +19,7 @@ class TabController: UITabBarController {
     lazy var notesViewController = NotesView(viewModel: viewModel.getNoteViewModel())
     
     //definine add
-    lazy var addViewController = AddView()
+    lazy var addViewController = AddView(viewModel: viewModel.getAddViewModel())
     
     //defining done
     let doneViewController = DoneView()

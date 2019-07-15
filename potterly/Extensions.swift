@@ -54,6 +54,10 @@ extension UIImage {
         
         return nil
     }
+    
+    func imageToData(image: UIImage) -> Data? {
+        return image.jpegData(compressionQuality: 1.0) ?? nil
+    }
 }
 
 //extension of Date class to create seconds

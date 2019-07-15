@@ -16,6 +16,7 @@ class NoteViewModel {
     let title: MutableProperty<String>
     let date: Date
     let (buttonSignal, buttonTapped) = Signal<(), NoError>.pipe()
+    let (saveSignal, saveTapped) = Signal<(), NoError>.pipe()
     let NoteData: NoteData
     let new : Bool
     let id : Int
@@ -28,6 +29,22 @@ class NoteViewModel {
         self.date = Date()
         self.NoteData = NoteData
     }
+    
+//    var postAction: Action<UIBarButtonItem, (), NoError> {
+//        return Action<UIBarButtonItem, (), NoError> { _ in
+//            SignalProducer { observer, _ in
+//                observer.send(value: ())
+//                observer.sendCompleted()
+//            }
+//        }
+//    }
+        var postAction: Action<UIBarButtonItem, (), NoError> {
+            return Action<UIBarButtonItem, (), NoError> { _ in
+                SignalProducer { _ , _ in
+                    self.saveTapped.send(value: ())
+                }
+            }
+        }
     
     func tapButton() {
         self.buttonTapped.send(value: ())

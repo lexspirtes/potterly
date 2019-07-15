@@ -19,10 +19,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var navigationController: UINavigationController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        //realm initialization
-        let realm = try! Realm()
+        //Realm configuration: does necessary migrations
+        let config = Realm.Configuration(
+            // Set the new schema version. This must be greater than the previously used
+            // version (if you've never set a schema version before, the version is 0).
+            schemaVersion: 1,
+            migrationBlock: { migration, oldSchemaVersion in
+                if oldSchemaVersion < 1 {
+                    migration.enumerateObjects(ofType: Pot.className()) { (_, newPot) in
+                        newPot?["photo"] = nil
+                    }
+                }
+        })
+        Realm.Configuration.defaultConfiguration = config
+        let realm = try! Realm(configuration: config)
         //tabbar
-        let tabBar = TabController(viewModel: TabBarViewModel(NoteData: NoteRealmData(context: realm)))
+        let tabBar = TabController(viewModel: TabBarViewModel(NoteData: NoteRealmData(context: realm), CeramicData: CeramicRealmData(context: realm)))
         let navigationController = UINavigationController(rootViewController: tabBar)
         navigationController.navigationBar.isTranslucent = false
         //writing appearance settings

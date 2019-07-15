@@ -53,10 +53,10 @@ class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate 
 
     }
     
-    let postAction: Action<String, Void, NoError> = Action<String, Void, NoError> { (input: String) in
-        return SignalProducer<Void, NoError> { _ , _ in
-            let data = input
-            print("hihihi")
+    let copyAction = Action<UIBarButtonItem, (), NoError> { _ in
+        return SignalProducer { observer, _ in
+            observer.send(value: ())
+            observer.sendCompleted()
         }
     }
         //zipping properties together, waiting for signal to come through both of them
@@ -82,18 +82,23 @@ class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         //trying this here
         let buttonView = UIButton()
         buttonView.setTitle("done", for: .normal)
-        self.navigationItem.backBarButtonItem?.reactive.pressed = CocoaAction(postAction) { button in
-            _ = button
-            return "hi"
-            }
-        self.postAction.values.observeValues { data in
-            print("Received data: \(data)")
+        self.navigationItem.backBarButtonItem?.reactive.pressed = CocoaAction(self.viewModel.postAction) { sender in
+            return sender
         }
         let button = UIBarButtonItem(customView: buttonView)
+//        button.reactive.pressed = CocoaAction(self.viewModel.postAction) {sender in return sender}
+        viewModel.postAction.events.observeValues { _ in
+            self.printHi()
+        }
+        viewModel.saveSignal.observeValues(self.printHi)
         buttonView.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.tapButton() }
         self.navigationItem.rightBarButtonItem = button
         placeHolder()
         
+    }
+    
+    func printHi() {
+        print("maybethisworks")
     }
     
     init(viewModel: NoteViewModel){

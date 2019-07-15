@@ -11,12 +11,19 @@ import Foundation
 
 class TabBarViewModel {
     let NoteData: NoteData
+    let CeramicData: CeramicData
     
-    init(NoteData: NoteData) {
+    init(NoteData: NoteData, CeramicData: CeramicData) {
         self.NoteData = NoteData
+        self.CeramicData = CeramicData
     }
     
     func getNoteViewModel() -> NotesTableViewModel {
         return NotesTableViewModel(NoteData: self.NoteData)
     }
+    
+    func getAddViewModel() -> AddViewModel {
+        return AddViewModel(CeramicData: self.CeramicData)
+    }
+    
 }

@@ -34,6 +34,7 @@
 		D786B9AA22D679E600E18AB5 /* SFMono-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D786B9A822D661DB00E18AB5 /* SFMono-Medium.otf */; };
 		D786B9AB22D679E900E18AB5 /* SFMono-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D786B9A922D661E500E18AB5 /* SFMono-Semibold.otf */; };
 		D786B9B022D7E48D00E18AB5 /* InsideNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786B9AF22D7E48D00E18AB5 /* InsideNoteViewModel.swift */; };
+		D786B9B222DD11FC00E18AB5 /* AddCeramicItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786B9B122DD11FC00E18AB5 /* AddCeramicItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		D786B9A822D661DB00E18AB5 /* SFMono-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-Medium.otf"; sourceTree = "<group>"; };
 		D786B9A922D661E500E18AB5 /* SFMono-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-Semibold.otf"; sourceTree = "<group>"; };
 		D786B9AF22D7E48D00E18AB5 /* InsideNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideNoteViewModel.swift; sourceTree = "<group>"; };
+		D786B9B122DD11FC00E18AB5 /* AddCeramicItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCeramicItem.swift; sourceTree = "<group>"; };
 		E294BB060E66F06DE700B985 /* Pods_potterlyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_potterlyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3BF3D15F7E6C210D546EAEB /* Pods-potterlyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-potterlyTests.debug.xcconfig"; path = "Target Support Files/Pods-potterlyTests/Pods-potterlyTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,7 +164,7 @@
 				D70ADA56229DA05A007AA724 /* AppDelegate.swift */,
 				D786B9A222CCF52A00E18AB5 /* NavigationViewModel.swift */,
 				D73CC20722A1A55500B4A04B /* HomeView.swift */,
-				D73CC20322A1A1E000B4A04B /* AddView.swift */,
+				D786B9B322DD126D00E18AB5 /* Add Item */,
 				D70ADA5A229DA05A007AA724 /* TabView.swift */,
 				D73CC20922A1A59C00B4A04B /* DoneView.swift */,
 				D7318B7422A97ECC009D14A9 /* Note Views */,
@@ -217,6 +219,15 @@
 				D786B9AF22D7E48D00E18AB5 /* InsideNoteViewModel.swift */,
 			);
 			path = "Note Views";
+			sourceTree = "<group>";
+		};
+		D786B9B322DD126D00E18AB5 /* Add Item */ = {
+			isa = PBXGroup;
+			children = (
+				D786B9B122DD11FC00E18AB5 /* AddCeramicItem.swift */,
+				D73CC20322A1A1E000B4A04B /* AddView.swift */,
+			);
+			path = "Add Item";
 			sourceTree = "<group>";
 		};
 		F35E93E2B15321AE1C5997B3 /* Pods */ = {
@@ -468,6 +479,7 @@
 				D7318B6922A82B62009D14A9 /* PotterlyData.xcdatamodeld in Sources */,
 				D786B9B022D7E48D00E18AB5 /* InsideNoteViewModel.swift in Sources */,
 				D7318B7322A96AD3009D14A9 /* Extensions.swift in Sources */,
+				D786B9B222DD11FC00E18AB5 /* AddCeramicItem.swift in Sources */,
 				D73CC20622A1A52A00B4A04B /* NotesView.swift in Sources */,
 				D73CC20A22A1A59C00B4A04B /* DoneView.swift in Sources */,
 				D7318B7F22B8444E009D14A9 /* TrimCollectionView.swift in Sources */,
