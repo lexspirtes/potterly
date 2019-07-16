@@ -10,6 +10,17 @@ import RealmSwift
 import UIKit
 
 
+class Note: Object {
+    @objc dynamic var id = 0
+    @objc dynamic var title = ""
+    @objc dynamic var lastEdited = Date()
+    @objc dynamic var text = ""
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+}
+
 class NoteRealmData: NoteData {
     let realm: Realm!
     
@@ -63,37 +74,3 @@ protocol NoteData {
     func updateNote(note: Note)
 }
 
-@objc enum Status: Int {
-    case trim, dry, bisqued, glazed
-}
-
-class Pot: Object {
-    @objc dynamic var id = 0
-    @objc dynamic var status = Status.trim
-    @objc dynamic var lastEdited = Date()
-    @objc dynamic var photo: Data? = nil
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-}
-
-protocol CeramicData {
-    func saveItem(pot: Pot)
-    func convertToData(photo: UIImage) -> Data?
-}
-
-class CeramicRealmData: CeramicData {
-    func saveItem(pot: Pot) {
-        print("save pot")
-    }
-    
-    func convertToData(photo: UIImage) -> Data? {
-        return photo.jpegData(compressionQuality: 1.0) ?? nil
-    }
-    
-    let realm: Realm!
-    init(context: Realm){
-        self.realm = context
-    }
-}

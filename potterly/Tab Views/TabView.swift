@@ -11,7 +11,7 @@ import UIKit
 class TabController: UITabBarController {
     let viewModel: TabBarViewModel!
     //defining home VC
-    let homeViewController = homeTabStrip()
+    lazy var homeViewController = homeTabStrip(viewModel: viewModel.getHomeViewModel())
         //ButtonBarExampleViewController()
         //homeTabStrip()
 

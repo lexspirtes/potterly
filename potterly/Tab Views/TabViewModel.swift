@@ -26,4 +26,8 @@ class TabBarViewModel {
         return AddViewModel(CeramicData: self.CeramicData)
     }
     
+    func getHomeViewModel() -> HomeViewModel {
+        return HomeViewModel(CeramicData: self.CeramicData)
+    }
+    
 }

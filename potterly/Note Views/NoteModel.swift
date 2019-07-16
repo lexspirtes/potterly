@@ -9,15 +9,5 @@
 import RealmSwift
 
 
-class Note: Object {
-    @objc dynamic var id = 0
-    @objc dynamic var title = ""
-    @objc dynamic var lastEdited = Date()
-    @objc dynamic var text = ""
-
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-}
 
 
