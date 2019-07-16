@@ -18,11 +18,9 @@
 		D7318B6422A8236E009D14A9 /* Karla-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7318B6322A82365009D14A9 /* Karla-Regular.ttf */; };
 		D7318B6522A82370009D14A9 /* Karla-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7318B6222A82362009D14A9 /* Karla-Bold.ttf */; };
 		D7318B6922A82B62009D14A9 /* PotterlyData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7318B6722A82B62009D14A9 /* PotterlyData.xcdatamodeld */; };
-		D7318B6D22A8338D009D14A9 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7318B6C22A8338D009D14A9 /* NoteModel.swift */; };
 		D7318B7122A86312009D14A9 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7318B7022A86312009D14A9 /* NoteCell.swift */; };
 		D7318B7322A96AD3009D14A9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7318B7222A96AD3009D14A9 /* Extensions.swift */; };
 		D7318B7622A97EE8009D14A9 /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7318B7522A97EE8009D14A9 /* NoteDetailView.swift */; };
-		D7318B7F22B8444E009D14A9 /* TrimCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7318B7E22B8444E009D14A9 /* TrimCollectionView.swift */; };
 		D73CC20422A1A1E000B4A04B /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CC20322A1A1E000B4A04B /* AddView.swift */; };
 		D73CC20622A1A52A00B4A04B /* NotesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CC20522A1A52A00B4A04B /* NotesTableView.swift */; };
 		D73CC20822A1A55500B4A04B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CC20722A1A55500B4A04B /* HomeView.swift */; };
@@ -82,11 +80,9 @@
 		D7318B6222A82362009D14A9 /* Karla-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Bold.ttf"; sourceTree = "<group>"; };
 		D7318B6322A82365009D14A9 /* Karla-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Regular.ttf"; sourceTree = "<group>"; };
 		D7318B6822A82B62009D14A9 /* NotesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NotesModel.xcdatamodel; sourceTree = "<group>"; };
-		D7318B6C22A8338D009D14A9 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
 		D7318B7022A86312009D14A9 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		D7318B7222A96AD3009D14A9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D7318B7522A97EE8009D14A9 /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
-		D7318B7E22B8444E009D14A9 /* TrimCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimCollectionView.swift; sourceTree = "<group>"; };
 		D73CC20322A1A1E000B4A04B /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		D73CC20522A1A52A00B4A04B /* NotesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableView.swift; sourceTree = "<group>"; };
 		D73CC20722A1A55500B4A04B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -220,7 +216,6 @@
 		D7318B7422A97ECC009D14A9 /* Note Views */ = {
 			isa = PBXGroup;
 			children = (
-				D7318B6C22A8338D009D14A9 /* NoteModel.swift */,
 				D7318B7022A86312009D14A9 /* NoteCell.swift */,
 				D73CC20522A1A52A00B4A04B /* NotesTableView.swift */,
 				D786B99E22C6734500E18AB5 /* NoteCellViewModel.swift */,
@@ -246,7 +241,6 @@
 			isa = PBXGroup;
 			children = (
 				D786B9B422DE2B3800E18AB5 /* HomeViewModel.swift */,
-				D7318B7E22B8444E009D14A9 /* TrimCollectionView.swift */,
 				D73CC20722A1A55500B4A04B /* HomeView.swift */,
 				D786B9BE22DE2CFC00E18AB5 /* StageView.swift */,
 				D786B9C022DE2D0300E18AB5 /* StageViewModel.swift */,
@@ -519,7 +513,6 @@
 				D786B9B522DE2B3800E18AB5 /* HomeViewModel.swift in Sources */,
 				D73CC20822A1A55500B4A04B /* HomeView.swift in Sources */,
 				D786B9A122C6738900E18AB5 /* TableViewModel.swift in Sources */,
-				D7318B6D22A8338D009D14A9 /* NoteModel.swift in Sources */,
 				D7318B7622A97EE8009D14A9 /* NoteDetailView.swift in Sources */,
 				D786B9BD22DE2BAF00E18AB5 /* CeramicRealm.swift in Sources */,
 				D73CC20422A1A1E000B4A04B /* AddView.swift in Sources */,
@@ -536,7 +529,6 @@
 				D786B9B222DD11FC00E18AB5 /* AddCeramicViewModel.swift in Sources */,
 				D73CC20622A1A52A00B4A04B /* NotesTableView.swift in Sources */,
 				D73CC20A22A1A59C00B4A04B /* DoneView.swift in Sources */,
-				D7318B7F22B8444E009D14A9 /* TrimCollectionView.swift in Sources */,
 				D786B99F22C6734500E18AB5 /* NoteCellViewModel.swift in Sources */,
 				D786B9C122DE2D0300E18AB5 /* StageViewModel.swift in Sources */,
 				D786B9C522DE481200E18AB5 /* AddCeramicView.swift in Sources */,

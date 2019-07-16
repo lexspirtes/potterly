@@ -16,7 +16,7 @@ class HomeViewModel {
         self.CeramicData = CeramicData
     }
     
-    func getChildViewModel() -> StageViewModel {
-        return StageViewModel(CeramicData: self.CeramicData)
+    func getChildViewModel(status: Status) -> StageViewModel {
+        return StageViewModel(CeramicData: self.CeramicData, status: status)
     }
 }

@@ -55,10 +55,10 @@ class homeTabStrip: ButtonBarPagerTabStripViewController {
              NSAttributedString.Key.kern : CGFloat(0.7)], for: .normal)
     }
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let child1 = Stage(viewModel: viewModel.getChildViewModel(), title: "toDry", infoTitle: "to dry")
-        let child2 = Stage(viewModel: viewModel.getChildViewModel(), title: "toTrim", infoTitle: "to trim")
-        let child3 = Stage(viewModel: viewModel.getChildViewModel(), title: "glazed", infoTitle: "glazed")
-        let child4 = Stage(viewModel: viewModel.getChildViewModel(), title: "bisqued", infoTitle: "bisqued")
+        let child1 = Stage(viewModel: viewModel.getChildViewModel(status: Status.dry), title: "toDry", infoTitle: "to dry")
+        let child2 = Stage(viewModel: viewModel.getChildViewModel(status: Status.trim), title: "toTrim", infoTitle: "to trim")
+        let child3 = Stage(viewModel: viewModel.getChildViewModel(status: Status.bisqued), title: "bisqued", infoTitle: "bisqued")
+        let child4 = Stage(viewModel: viewModel.getChildViewModel(status: Status.glazed), title: "glazed", infoTitle: "glazed")
         return [child1, child2, child3, child4]
     }
     

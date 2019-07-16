@@ -100,7 +100,6 @@ class NotesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //clicking
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
         let outputViewModel = viewModel.getNoteViewModel(atIndex: indexPath.row)
         let outputView = NoteDetailView(viewModel: outputViewModel)
         self.navigationController?.pushViewController(outputView, animated: true)

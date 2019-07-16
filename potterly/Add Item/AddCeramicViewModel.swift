@@ -39,6 +39,9 @@ class AddCeramic {
         newPot.lastEdited = self.date.value
         self.CeramicData.saveItem(pot: newPot)
         }
-    
+
+    func getHomeViewModel() -> HomeViewModel {
+        return HomeViewModel(CeramicData: self.CeramicData)
+    }
 }
 

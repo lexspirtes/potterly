@@ -138,7 +138,7 @@ class AddCeramicView: UIViewController {
             self.highlight(status: value)
         }
         //addbutton
-        viewModel.addSignal.observeValues(self.printHi)
+        viewModel.addSignal.observeValues(self.navigateToHomeView)
         addButton.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.addTap() }
 
     }
@@ -148,8 +148,9 @@ class AddCeramicView: UIViewController {
         toDry.isSelected = true
     }
     
-    func printHi() {
-        print("add me baby")
+    func navigateToHomeView() {
+        //do i want to go back to home or stay in add? adding a lot of things at once?
+        self.navigationController?.popViewController(animated: true)
     }
     
     func highlight(status: Status) {

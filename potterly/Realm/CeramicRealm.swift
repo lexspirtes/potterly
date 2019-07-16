@@ -37,6 +37,7 @@ class CeramicRealmData: CeramicData {
             try self.realm.write {
                 self.realm.add(pot)
             }
+            print("added pot!!")
         }
         catch {
             print(error)
@@ -44,7 +45,8 @@ class CeramicRealmData: CeramicData {
     }
     
     func getPotteryData(status: Status) -> Results<Pot> {
-        let pots = realm.objects(Pot.self).filter("status == \(status)").sorted(byKeyPath: "lastEdited", ascending: false)
+        let statusEnum = status.getEnum()
+        let pots = realm.objects(Pot.self).filter("status == \(statusEnum)").sorted(byKeyPath: "lastEdited", ascending: false)
         return pots
     }
     

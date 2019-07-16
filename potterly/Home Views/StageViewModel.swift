@@ -8,12 +8,16 @@
 
 import ReactiveSwift
 import ReactiveCocoa
+import RealmSwift
 
 
 class StageViewModel {
     let CeramicData: CeramicData
+    var pots: Results<Pot>
     
-    init(CeramicData: CeramicData) {
+    init(CeramicData: CeramicData, status: Status) {
         self.CeramicData = CeramicData
+        self.pots = self.CeramicData.getPotteryData(status: status)
     }
+    
 }

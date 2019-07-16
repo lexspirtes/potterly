@@ -23,6 +23,14 @@ extension UIColor {
 }
 
 extension String {
+    func date(format: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.timeZone = TimeZone.current
+        let date = dateFormatter.date(from: self)
+        return date
+    }
+    
     func attrBoldString(color: UIColor) -> NSMutableAttributedString {
         return NSMutableAttributedString(string: self, attributes:
             [NSAttributedString.Key.font:UIFont(name: "Karla-Bold", size: 18.0)!,
@@ -103,12 +111,20 @@ extension Date {
     }
 
 
-extension String {
-    func date(format: String) -> Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        dateFormatter.timeZone = TimeZone.current
-        let date = dateFormatter.date(from: self)
-        return date
+//takes status and returns as enum for realm entry
+extension Status {
+    func getEnum() -> Int {
+        if self == Status.trim {
+            return 0
+        }
+        else if self == Status.dry {
+            return 1
+        }
+        else if self == Status.bisqued {
+            return 2
+        }
+        else {
+            return 3
+        }
     }
 }
