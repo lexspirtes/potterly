@@ -26,16 +26,26 @@ class Pot: Object {
 
 protocol CeramicData {
     func saveItem(pot: Pot)
-    func convertToData(photo: UIImage) -> Data?
+    func getPotteryData(status: Status) -> Results<Pot>
 }
 
 class CeramicRealmData: CeramicData {
     func saveItem(pot: Pot) {
-        print("save pot")
+        do {
+            let maxID = self.realm.objects(Pot.self).max(ofProperty: "id") as Int? ?? 0
+            pot.id = maxID + 1
+            try self.realm.write {
+                self.realm.add(pot)
+            }
+        }
+        catch {
+            print(error)
+        }
     }
     
-    func convertToData(photo: UIImage) -> Data? {
-        return photo.jpegData(compressionQuality: 1.0) ?? nil
+    func getPotteryData(status: Status) -> Results<Pot> {
+        let pots = realm.objects(Pot.self).filter("status == \(status)").sorted(byKeyPath: "lastEdited", ascending: false)
+        return pots
     }
     
     let realm: Realm!

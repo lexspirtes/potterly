@@ -48,7 +48,6 @@ class NoteViewModel {
     
     func tapButton() {
         self.buttonTapped.send(value: ())
-        print("tapped")
         let newNote = Note()
         newNote.title = self.title.value
         newNote.text = self.note.value

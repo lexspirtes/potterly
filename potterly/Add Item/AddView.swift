@@ -14,25 +14,8 @@ import ReactiveSwift
 
 
 
-class AddViewModel {
-    let CeramicData: CeramicData
-    let photo: Data?
-    
-    init(CeramicData: CeramicData) {
-        self.CeramicData = CeramicData
-        self.photo = nil
-    }
-    
-    
-    func getAddPhotoViewModel() -> AddPhotoViewModel {
-        return AddPhotoViewModel(photo: self.photo, CeramicData: self.CeramicData)
-    }
-}
-
 class AddView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     let containerView = UIView()
-    let buttonView = UIView()
-    let imageView = UIImageView()
     var pickedImage: Bool = false
     let viewModel: AddViewModel
     
@@ -48,17 +31,10 @@ class AddView: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
         return button
     }()
     
-    init(viewModel: AddViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     public let lineView: UIView = {
         let view = UIView()
+        view.backgroundColor = UIColor.customColors.lilac
         return view
     }()
    
@@ -69,16 +45,23 @@ class AddView: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
              NSAttributedString.Key.kern: CGFloat(0.7),
              NSAttributedString.Key.foregroundColor: UIColor.customColors.lilac
             ])
+        let myMutableStringHighlighted = NSMutableAttributedString(string: myString, attributes:
+            [NSAttributedString.Key.font:UIFont(name: "Karla-Regular", size: 18.0)!,
+             NSAttributedString.Key.kern: CGFloat(0.7),
+             NSAttributedString.Key.foregroundColor: UIColor.customColors.midnight
+            ])
         let button = UIButton(type: UIButton.ButtonType.custom)
         button.setAttributedTitle(myMutableString, for: .normal)
+        button.setAttributedTitle(myMutableStringHighlighted, for: .highlighted)
         return button
     }()
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-      //  imageView.image = image
-        let resizedImage = resizeImage(image: image!, newWidth: 200.0)
-        imageView.image = resizedImage
+        let data = image?.imageToData()
+        viewModel.photo = data
+        navigateToAddItemView()
+     //   imageView.image = resizedImage
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -93,31 +76,35 @@ class AddView: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
         return newImage
     }
     
+    func navigateToAddItemView() {
+        self.tabBarController?.navigationItem.title = ""
+        let outputView = AddCeramicView(viewModel: viewModel.getAddCeramicViewModel())
+        self.navigationController?.pushViewController(outputView, animated: true)
+    }
+    
     func makeConstraints(){
-//        //containerView constraints
+        //containerView constraints
         containerView.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaInsets)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             make.leading.trailing.equalTo(view.safeAreaInsets)}
-//
-//        //libraryButton constraints
+
+        //libraryButton constraints
         libraryButton.snp.makeConstraints { (make) in
-            make.bottom.equalTo(self.containerView).offset(-32)
+            make.centerY.equalTo(self.containerView.snp.bottom).multipliedBy(0.95)
             make.centerX.equalTo(self.containerView.snp.centerX).multipliedBy(0.5)
         }
-//        imageView.snp.makeConstraints { (make) in
-//            make.centerY.equalTo(self.containerView)
-//            make.centerX.equalTo(self.containerView)
-//        }
-//        //photoButton constraints
+
+        //photoButton constraints
         photoButton.snp.makeConstraints { (make) in
-            make.bottom.equalTo(self.containerView).offset(-32)
+            make.centerY.equalTo(self.containerView.snp.bottom).multipliedBy(0.95)
             make.centerX.equalTo(self.containerView.snp.centerX).multipliedBy(1.5)
         }
+        
         //lineView
-        buttonView.snp.makeConstraints { (make) in
-            make.height.equalTo(2)
-            make.bottom.equalTo(photoButton.snp.top).offset(-16)
+        lineView.snp.makeConstraints { (make) in
+            make.height.equalTo(1)
+            make.bottom.equalTo(containerView.snp.bottom).multipliedBy(0.9)
             make.width.equalTo(containerView)
         }
     }
@@ -125,33 +112,68 @@ class AddView: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
     
     
     override func viewDidLoad() {
-        //  proceedWithCameraAccess(identifier: "hi")
+        super.viewDidLoad()
         view.backgroundColor = .white
         containerView.backgroundColor = .white
-        buttonView.backgroundColor = UIColor.customColors.lilac
+        
+        //adding subviews
         view.addSubview(containerView)
-      //  containerView.addSubview(buttonView)
         containerView.addSubview(libraryButton)
         containerView.addSubview(photoButton)
-        containerView.addSubview(buttonView)
-//        containerView.addSubview(imageView)
+        containerView.addSubview(lineView)
+        
+        //making constraints
         makeConstraints()
-        super.viewDidLoad()
+        
+        //reactive for camera
+        photoButton.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.tapPhoto()}
+        viewModel.photoSignal.observeValues(self.makeCameraAppear)
+        
+        //reactive for library
+        libraryButton.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.tapLibrary()}
+        viewModel.librarySignal.observeValues(self.makeLibraryAppear)
+        
         // Do any additional setup after loading the view.
         self.title = "add"
+        
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        if UIImagePickerController.isSourceTypeAvailable(.camera) && !pickedImage {
-//            let imagePickerController = UIImagePickerController()
-//            imagePickerController.delegate = self;
-//            imagePickerController.sourceType = .camera
-//            self.present(imagePickerController, animated: true, completion: nil)
-//            pickedImage = true
-//        }
         super.viewWillAppear(animated)
+        self.tabBarController?.navigationItem.title = "photo"
+    }
+    
+
+    func makeLibraryAppear() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self;
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+    }
+    func makeCameraAppear() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self;
+            imagePickerController.sourceType = .camera
+            self.present(imagePickerController, animated: true, completion: nil)
+            pickedImage = true
+            
+            
+        }
+    }
+    
+    
+    init(viewModel: AddViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

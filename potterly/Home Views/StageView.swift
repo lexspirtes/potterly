@@ -12,10 +12,15 @@ import ReactiveCocoa
 import XLPagerTabStrip
 
 class Stage: UIViewController, IndicatorInfoProvider {
-    let line = UIView()
     let subview = UIScrollView()
     let viewModel: StageViewModel!
     let infoTitle: String
+    
+    let line: UIView = {
+        let lineView = UIView()
+        lineView.backgroundColor = UIColor.customColors.lilac
+        return lineView
+    }()
     
     func makeConstraints() {
         subview.snp.makeConstraints { (make) in
@@ -26,17 +31,14 @@ class Stage: UIViewController, IndicatorInfoProvider {
             make.height.equalTo(1)
             make.top.equalTo(subview)}
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        line.backgroundColor = UIColor.customColors.lilac
         subview.backgroundColor = .white
         view.backgroundColor = .white
         view.addSubview(subview)
         subview.addSubview(line)
         makeConstraints()
-        // Do any additional setup after loading the view.
-        //view.addSubview(scrollView)
-        //self.title = "toDry"
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {

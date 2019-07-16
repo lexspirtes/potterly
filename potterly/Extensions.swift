@@ -16,7 +16,42 @@ extension UIColor {
         static let midnight = UIColor(red:0.13, green:0.10, blue:0.25, alpha:1.0)
         static let mauve = UIColor(red:0.44, green:0.37, blue:0.51, alpha:1.0)
         static let lighty = UIColor(red:0.95, green:0.95, blue:0.97, alpha:1.0)
+        static let appleBlue = UIColor(red:0.0, green:0.47, blue:1.0, alpha:1.0)
+        static let appleHighlight = UIColor(red:0.0, green:0.47, blue:1.0, alpha:0.4)
         
+    }
+}
+
+extension String {
+    func attrBoldString(color: UIColor) -> NSMutableAttributedString {
+        return NSMutableAttributedString(string: self, attributes:
+            [NSAttributedString.Key.font:UIFont(name: "Karla-Bold", size: 18.0)!,
+             NSAttributedString.Key.kern: CGFloat(0.7),
+             NSAttributedString.Key.foregroundColor: color
+            ])
+    }
+    
+    func attrString(color: UIColor) -> NSMutableAttributedString {
+        return NSMutableAttributedString(string: self, attributes:
+            [NSAttributedString.Key.font:UIFont(name: "Karla-Regular", size: 18.0)!,
+             NSAttributedString.Key.kern: CGFloat(0.7),
+             NSAttributedString.Key.foregroundColor: color
+            ])
+    }
+    
+    func attrSmallString(color: UIColor, bold: Bool) -> NSMutableAttributedString {
+        let font: String
+        if bold == true {
+            font = "Karla-Bold"
+        }
+        else {
+            font = "Karla-Regular"
+        }
+        return NSMutableAttributedString(string: self, attributes:
+            [NSAttributedString.Key.font:UIFont(name: font, size: 16.0)!,
+             NSAttributedString.Key.kern: CGFloat(0.3),
+             NSAttributedString.Key.foregroundColor: color
+            ])
     }
 }
 
@@ -55,8 +90,8 @@ extension UIImage {
         return nil
     }
     
-    func imageToData(image: UIImage) -> Data? {
-        return image.jpegData(compressionQuality: 1.0) ?? nil
+    func imageToData() -> Data? {
+        return self.jpegData(compressionQuality: 1.0) ?? nil
     }
 }
 
