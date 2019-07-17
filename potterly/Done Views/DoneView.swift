@@ -12,94 +12,95 @@ import ReactiveSwift
 import Result
 
 //placeholder of DoneView
-class DoneView: UIViewController {
+class DoneStage: UIViewController {
+    let viewModel: StageViewModel!
     
-    var cocoaActionAdd: CocoaAction<Any>!
+    let cellId = "cellId"
     
-    public let exampleLabel:UILabel = {
-        let label = UILabel()
-        let myString = ""
-        let myMutableString = NSMutableAttributedString(string: myString, attributes:
-            [NSAttributedString.Key.font:UIFont(name: "Karla-Regular", size: 18.0)!,
-             NSAttributedString.Key.kern: CGFloat(0.7),
-             NSAttributedString.Key.foregroundColor: UIColor.customColors.lilac
-            ])
-        let button = UIButton(type: UIButton.ButtonType.custom)
-        button.setAttributedTitle(myMutableString, for: .normal)
-        return label
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.backgroundColor = UIColor.darkGray
+        collection.isScrollEnabled = true
+        // collection.contentSize = CGSize(width: 2000 , height: 400)
+        return collection
     }()
     
-    public let textField:UITextField = {
-        let label = UITextField()
-        label.backgroundColor = UIColor.customColors.mauve
-        let myString = ""
-        let myMutableString = NSMutableAttributedString(string: myString, attributes:
-            [NSAttributedString.Key.font:UIFont(name: "Karla-Regular", size: 18.0)!,
-             NSAttributedString.Key.kern: CGFloat(0.7),
-             NSAttributedString.Key.foregroundColor: UIColor.customColors.lilac
-            ])
-        let button = UIButton(type: UIButton.ButtonType.custom)
-        button.setAttributedTitle(myMutableString, for: .normal)
-        return label
+    let line: UIView = {
+        let lineView = UIView()
+        lineView.backgroundColor = UIColor.customColors.lilac
+        return lineView
     }()
     
-    public let photoButton:UIButton = {
-        let myString = "photo"
-        let myMutableString = NSMutableAttributedString(string: myString, attributes:
-            [NSAttributedString.Key.font:UIFont(name: "Karla-Regular", size: 18.0)!,
-             NSAttributedString.Key.kern: CGFloat(0.7),
-             NSAttributedString.Key.foregroundColor: UIColor.customColors.lilac
-            ])
-        let button = UIButton(type: UIButton.ButtonType.custom)
-        button.setAttributedTitle(myMutableString, for: .normal)
-        return button
-    }()
-
-    func makeConstraints(){
-        //containerView constraints
-        textField.snp.makeConstraints { (make) in
-            make.centerY.equalTo(view).offset(-120)
-            make.centerX.equalTo(view)
-        }
+    func makeConstraints() {
+        //        scrollView.snp.makeConstraints { (make) in
+        //            make.top.trailing.bottom.leading.equalTo(view.safeAreaLayoutGuide)
+        //        }
         
-        //libraryButton constraints
-        exampleLabel.snp.makeConstraints { (make) in
-            make.centerY.centerX.equalTo(self.view)
+        collectionView.snp.makeConstraints { (make) in
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(32)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).offset(-16)
+            make.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
         }
-        
-        //libraryButton constraints
-        photoButton.snp.makeConstraints { (make) in
-            make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(60)
-        }
+        line.snp.makeConstraints { (make) in
+            make.width.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(1)
+            make.top.equalTo(view.safeAreaLayoutGuide)}
     }
     
     override func viewDidLoad() {
-        view.addSubview(exampleLabel)
-        view.addSubview(textField)
-        view.addSubview(photoButton)
-        exampleLabel.reactive.text <~ textField.reactive.continuousTextValues
-        //other stuff
-//        let addAction = Action<Void, Void, NSError> {
-//            if let navigationController = self.navigationController {
-//                navigationController.pushViewController(navigationController, animated: true)
-//            }
-//            return SignalProducer.empty
-//        }
-//        cocoaActionAdd = CocoaAction(addAction, input: ())
-//        photoButton.addTarget(cocoaActionAdd, action: CocoaAction<Any>.selector, for: .touchUpInside)
-//        //ending
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        collectionView.backgroundColor = .white
         view.backgroundColor = .white
-        self.title = "done"
+        view.addSubview(collectionView)
+        collectionView.addSubview(line)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(CeramicCell.self, forCellWithReuseIdentifier: "cellId")
+        //  collectionView.addSubview(line)
         makeConstraints()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //makes sure that plus button doesn't show on this view
-        super.viewWillAppear(animated);
-        self.tabBarController?.navigationItem.rightBarButtonItem = nil
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+        self.tabBarController?.navigationItem.title = "finished work"
+    }
+
+    
+    
+    init(viewModel: StageViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension DoneStage: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.pots.count
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CeramicCell
+        cell.configure(viewModel: viewModel.getCeramicCellViewModel(atIndex: indexPath.row))
+      //  cell.backgroundColor = UIColor.customColors.midnight
+        cell.layer.cornerRadius = 5
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
     }
 }

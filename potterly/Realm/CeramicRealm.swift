@@ -10,13 +10,13 @@ import RealmSwift
 import UIKit
 
 @objc enum Status: Int {
-    case trim, dry, bisqued, glazed
+    case trim, dry, bisqued, glazed, done
 }
 
 class Pot: Object {
     @objc dynamic var id = 0
     @objc dynamic var status = Status.trim
-    @objc dynamic var lastEdited = Date()
+    @objc dynamic var lastEdited = Date().removeTimeStamp()
     @objc dynamic var photo: Data? = nil
     
     override static func primaryKey() -> String? {
@@ -27,9 +27,12 @@ class Pot: Object {
 protocol CeramicData {
     func saveItem(pot: Pot)
     func getPotteryData(status: Status) -> Results<Pot>
+    func getSections(status: Status) -> Int
 }
 
 class CeramicRealmData: CeramicData {
+    
+
     func saveItem(pot: Pot) {
         do {
             let maxID = self.realm.objects(Pot.self).max(ofProperty: "id") as Int? ?? 0
@@ -42,6 +45,10 @@ class CeramicRealmData: CeramicData {
         catch {
             print(error)
         }
+    }
+    func getSections(status: Status) -> Int {
+        let pots = getPotteryData(status: status)
+        return 4
     }
     
     func getPotteryData(status: Status) -> Results<Pot> {

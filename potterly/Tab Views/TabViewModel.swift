@@ -30,4 +30,8 @@ class TabBarViewModel {
         return HomeViewModel(CeramicData: self.CeramicData)
     }
     
+    func getStageViewModel() -> StageViewModel {
+        return StageViewModel(CeramicData: self.CeramicData, status: Status.done)
+    }
+    
 }

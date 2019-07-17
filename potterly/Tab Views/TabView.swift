@@ -22,7 +22,7 @@ class TabController: UITabBarController {
     lazy var addViewController = AddView(viewModel: viewModel.getAddViewModel())
     
     //defining done
-    let doneViewController = DoneView()
+    lazy var doneViewController = DoneStage(viewModel: viewModel.getStageViewModel())
    
    
     init(viewModel: TabBarViewModel) {

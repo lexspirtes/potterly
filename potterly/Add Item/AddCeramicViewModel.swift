@@ -36,7 +36,8 @@ class AddCeramic {
         let newPot = Pot()
         newPot.status = self.status
         newPot.photo = self.photo
-        newPot.lastEdited = self.date.value
+        newPot.lastEdited = self.date.value.removeTimeStamp()
+        print(newPot.lastEdited)
         self.CeramicData.saveItem(pot: newPot)
         }
 

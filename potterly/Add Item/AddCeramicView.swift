@@ -84,22 +84,19 @@ class AddCeramicView: UIViewController {
         return button
     }()
     
+    let done: UIButton = {
+        let button = UIButton()
+        let title = "done"
+        button.setAttributedTitle(title.attrSmallString(color: UIColor.customColors.midnight, bold: true), for: .selected)
+        button.setAttributedTitle(title.attrSmallString(color: UIColor.customColors.mauve, bold: false), for: .normal)
+        return button
+    }()
+    
     let toggleContainer: UIView = {
         let view = UIView()
         return view
     }()
     
-    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(containerView)
@@ -113,14 +110,14 @@ class AddCeramicView: UIViewController {
         toggleContainer.addSubview(toTrim)
         toggleContainer.addSubview(bisqued)
         toggleContainer.addSubview(glazed)
+        toggleContainer.addSubview(done)
         containerView.addSubview(dateTitle)
         containerView.addSubview(datePicker)
         view.backgroundColor = .white
         
         //setting imageView to chosen imave
         let image = UIImage(data: viewModel.photo!)
-        let width = UIScreen.main.bounds.width * 0.3
-        imageView.image = resizeImage(image: image!, newWidth: width)
+        imageView.image = UIImage.resize(image: image!, targetSize: CGSize(width: 100, height: 100))
         
         //bar button item
         let barButton = UIBarButtonItem(customView: addButton)
@@ -134,6 +131,7 @@ class AddCeramicView: UIViewController {
         toTrim.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.toggleTap(buttonTitle: Status.trim)}
         bisqued.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.toggleTap(buttonTitle: Status.bisqued)}
         glazed.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.toggleTap(buttonTitle: Status.glazed)}
+        done.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.toggleTap(buttonTitle: Status.done)}
         viewModel.toggleSignal.observeValues { (value) in
             self.highlight(status: value)
         }
@@ -159,24 +157,36 @@ class AddCeramicView: UIViewController {
             toTrim.isSelected = false
             bisqued.isSelected = false
             glazed.isSelected = false
+            done.isSelected = false
         }
         else if status == Status.trim {
             toDry.isSelected = false
             toTrim.isSelected = true
             bisqued.isSelected = false
             glazed.isSelected = false
+            done.isSelected = false
         }
         else if status == Status.bisqued {
             toDry.isSelected = false
             toTrim.isSelected = false
             bisqued.isSelected = true
             glazed.isSelected = false
+            done.isSelected = false
         }
-        else {
+        else if status == Status.glazed {
             toDry.isSelected = false
             toTrim.isSelected = false
             bisqued.isSelected = false
             glazed.isSelected = true
+            done.isSelected = false
+        }
+        
+        else {
+            toDry.isSelected = false
+            toTrim.isSelected = false
+            bisqued.isSelected = false
+            glazed.isSelected = false
+            done.isSelected = true
         }
     }
     
@@ -230,22 +240,28 @@ class AddCeramicView: UIViewController {
             make.leading.equalTo(statusTitle).offset(16)
         }
         
-        //toDry constraints
+        //toTrim constraints
         toTrim.snp.makeConstraints { (make) in
             make.centerY.equalTo(toggleContainer)
-            make.leading.equalTo(toDry.snp.trailing).offset(32)
+            make.leading.equalTo(toDry.snp.trailing).offset(16)
         }
         
-        //toDry constraints
+        //bisqued constraints
         bisqued.snp.makeConstraints { (make) in
             make.centerY.equalTo(toggleContainer)
-            make.leading.equalTo(toTrim.snp.trailing).offset(32)
+            make.leading.equalTo(toTrim.snp.trailing).offset(16)
         }
         
-        //toDry constraints
+        //glazed constraints
         glazed.snp.makeConstraints { (make) in
             make.centerY.equalTo(toggleContainer)
-            make.leading.equalTo(bisqued.snp.trailing).offset(32)
+            make.leading.equalTo(bisqued.snp.trailing).offset(16)
+        }
+        
+        //done constraints
+        done.snp.makeConstraints { (make) in
+            make.centerY.equalTo(toggleContainer)
+            make.leading.equalTo(glazed.snp.trailing).offset(16)
         }
         
         

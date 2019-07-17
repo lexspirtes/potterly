@@ -59,8 +59,8 @@ class Stage: UIViewController, IndicatorInfoProvider {
         collectionView.addSubview(line)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(CustomeCell.self, forCellWithReuseIdentifier: "cellId")
-      //  collectionView.addSubview(line)
+        collectionView.register(CeramicCell.self, forCellWithReuseIdentifier: "cellId")
+        view.addSubview(line)
         makeConstraints()
     }
     
@@ -86,6 +86,7 @@ class Stage: UIViewController, IndicatorInfoProvider {
     }
 }
 
+
 extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.pots.count
@@ -93,11 +94,10 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CustomeCell
-        cell.backgroundColor = UIColor.customColors.midnight
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CeramicCell
+        cell.configure(viewModel: viewModel.getCeramicCellViewModel(atIndex: indexPath.row))
+       // cell.backgroundColor = UIColor.customColors.lilac
         cell.layer.cornerRadius = 5
-        cell.layer.borderWidth = 2
-        cell.layer.borderColor = UIColor.white.cgColor
         return cell
     }
     
@@ -108,17 +108,11 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
     }
-}
-
-
-
-class CustomeCell: UICollectionViewCell {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+            //viewModel.sections
     }
 }
+
+
