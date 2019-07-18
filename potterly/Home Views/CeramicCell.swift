@@ -25,6 +25,7 @@ class CeramicCell: UICollectionViewCell {
     
     let imageView: UIImageView = {
         let view = UIImageView()
+        view.contentMode = .scaleAspectFit
         return view
     }()
     

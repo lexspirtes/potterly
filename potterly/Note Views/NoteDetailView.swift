@@ -85,17 +85,19 @@ class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         self.navigationItem.backBarButtonItem?.reactive.pressed = CocoaAction(self.viewModel.postAction) { sender in
             return sender
         }
-        let button = UIBarButtonItem(customView: buttonView)
-//        button.reactive.pressed = CocoaAction(self.viewModel.postAction) {sender in return sender}
+        let button = UIBarButtonItem(title: "done", style: .done, target: nil, action: nil)
+        button.reactive.pressed = CocoaAction(self.viewModel.postAction) {sender in return sender}
         viewModel.postAction.events.observeValues { _ in
             self.printHi()
         }
         viewModel.saveSignal.observeValues(self.printHi)
-        buttonView.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.tapButton() }
+   //     buttonView.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.tapButton() }
         self.navigationItem.rightBarButtonItem = button
         placeHolder()
         
     }
+    
+    //view did disappear
     
     func printHi() {
         print("maybethisworks")

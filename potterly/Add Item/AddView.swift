@@ -136,6 +136,8 @@ class AddView: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
         // Do any additional setup after loading the view.
         self.title = "add"
         
+        //
+        viewModel.navSignal.observeValues(self.switchTab)
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
@@ -144,6 +146,10 @@ class AddView: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "photo"
+    }
+    
+    func switchTab() {
+  //      self.tabBarController?.selectedIndex = 0
     }
     
 

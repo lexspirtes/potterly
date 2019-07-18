@@ -38,13 +38,15 @@ class NoteViewModel {
 //            }
 //        }
 //    }
-        var postAction: Action<UIBarButtonItem, (), NoError> {
-            return Action<UIBarButtonItem, (), NoError> { _ in
-                SignalProducer { _ , _ in
-                    self.saveTapped.send(value: ())
-                }
+    var postAction: Action<UIBarButtonItem, (), NoError> {
+        return Action<UIBarButtonItem, (), NoError> { _ in
+            return SignalProducer { observer , _ in
+                observer.send(value: ())
+                self.saveTapped.send(value:())
+                observer.sendCompleted()
             }
         }
+    }
     
     func tapButton() {
         self.buttonTapped.send(value: ())

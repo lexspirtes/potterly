@@ -16,6 +16,7 @@ class Stage: UIViewController, IndicatorInfoProvider {
     let infoTitle: String
 
     let cellId = "cellId"
+    let headerId = "headerId"
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -60,6 +61,7 @@ class Stage: UIViewController, IndicatorInfoProvider {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(CeramicCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         view.addSubview(line)
         makeConstraints()
     }
@@ -89,7 +91,7 @@ class Stage: UIViewController, IndicatorInfoProvider {
 
 extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.pots.count
+        return viewModel.getTotalForDates()[section].count
     }
     
     
@@ -110,9 +112,27 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-            //viewModel.sections
+        return viewModel.sections
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width, height: 40)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+            
+        case UICollectionView.elementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! SectionHeader
+            headerView.configure(viewModel: viewModel.getSectionViewModel(date: viewModel.getDates()[indexPath.section]))
+            //  headerView.backgroundColor = .blue
+            return headerView
+        default:
+            assert(false, "Unexpected element kind")
+        }
     }
 }
+
+
 
 

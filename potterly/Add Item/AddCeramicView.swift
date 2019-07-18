@@ -206,6 +206,9 @@ class AddCeramicView: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //segmented control
+    //stack views list and lays out one by one
+    //look for instagram style photo picker 
     
     func makeConstraints() {
         
