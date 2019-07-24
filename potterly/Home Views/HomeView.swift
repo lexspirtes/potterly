@@ -45,7 +45,7 @@ class homeTabStrip: ButtonBarPagerTabStripViewController {
         line.snp.makeConstraints { (make) in
             make.height.equalTo(1)
             make.width.equalTo(view.safeAreaInsets)
-            make.top.equalTo(myContainer)
+            make.top.equalTo(view.safeAreaInsets)
             }
         super.viewDidLoad()
         

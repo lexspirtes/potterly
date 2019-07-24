@@ -85,10 +85,16 @@
       "scale" : "2x"
     },
     {
+        "size" : "76x76",
+        "idiom" : "ipad",
+        "filename" : "icon_76pt.png",
+        "scale" : "1x"
+    },
+    {
       "size" : "76x76",
       "idiom" : "ipad",
       "filename" : "icon_76pt@2x.png",
-      "scale" : "1x"
+      "scale" : "2x"
     },
     {
       "size" : "76x76",

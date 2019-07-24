@@ -64,10 +64,22 @@ class Stage: UIViewController, IndicatorInfoProvider {
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         view.addSubview(line)
         makeConstraints()
+        viewModel.singleSignal.observeValues(self.printHi)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+       // collectionView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        collectionView.reloadData()
+    }
+    
+    func printHi(){
+        print("talk to me")
+        //currently reloadData, change to changeset
         collectionView.reloadData()
     }
     
@@ -97,8 +109,8 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CeramicCell
-        cell.configure(viewModel: viewModel.getCeramicCellViewModel(atIndex: indexPath.row))
-       // cell.backgroundColor = UIColor.customColors.lilac
+        cell.configure(viewModel: viewModel.getCeramicSectionViewModel(section: indexPath.section, atIndex: indexPath.row))
+        cell.backgroundColor = UIColor.customColors.midnight
         cell.layer.cornerRadius = 5
         return cell
     }
@@ -113,6 +125,10 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.sections
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.singleTap(section: indexPath.section, row: indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

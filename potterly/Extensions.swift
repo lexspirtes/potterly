@@ -130,6 +130,21 @@ extension Status {
             return 4
         }
     }
+    
+    func getNextStatus() -> Status {
+        if self == Status.dry {
+            return Status.trim
+        }
+        else if self == Status.trim {
+            return Status.bisqued
+        }
+        else if self == Status.bisqued {
+            return Status.glazed
+        }
+        else {
+            return Status.done
+        }
+    }
 }
 
 

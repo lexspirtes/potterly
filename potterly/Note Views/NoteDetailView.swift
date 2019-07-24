@@ -11,7 +11,6 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 import Result
-import os.log
 import RealmSwift
 
 
@@ -53,17 +52,6 @@ class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate 
 
     }
     
-    let copyAction = Action<UIBarButtonItem, (), NoError> { _ in
-        return SignalProducer { observer, _ in
-            observer.send(value: ())
-            observer.sendCompleted()
-        }
-    }
-        //zipping properties together, waiting for signal to come through both of them
-        //turn into signal
-        //map because signal doesn't care about extra information, return type ()
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -73,35 +61,22 @@ class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         titleField.text = viewModel.title.value
         viewModel.title <~ titleField.reactive.continuousTextValues
         viewModel.note <~ bodyField.reactive.continuousTextValues
-        self.bodyField.keyboardDistanceFromTextField = 8
+        self.bodyField.keyboardDistanceFromTextField = -8
         print(viewModel.title.value)
         makeConstraints()
         titleField.delegate = self
         bodyField.delegate = self
         navigationItem.reactive.title <~ viewModel.title
-        //trying this here
-        let buttonView = UIButton()
-        buttonView.setTitle("done", for: .normal)
-        self.navigationItem.backBarButtonItem?.reactive.pressed = CocoaAction(self.viewModel.postAction) { sender in
-            return sender
-        }
-        let button = UIBarButtonItem(title: "done", style: .done, target: nil, action: nil)
-        button.reactive.pressed = CocoaAction(self.viewModel.postAction) {sender in return sender}
-        viewModel.postAction.events.observeValues { _ in
-            self.printHi()
-        }
-        viewModel.saveSignal.observeValues(self.printHi)
-   //     buttonView.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.tapButton() }
-        self.navigationItem.rightBarButtonItem = button
         placeHolder()
         
     }
     
     //view did disappear
-    
-    func printHi() {
-        print("maybethisworks")
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.saveNote()
     }
+    
     
     init(viewModel: NoteViewModel){
         self.viewModel = viewModel
@@ -113,7 +88,7 @@ class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate 
     }
 
     func placeHolder() {
-        if viewModel.new {
+        if viewModel.id == 0 {
             self.titleField.placeholder = "Title"
         }
     }

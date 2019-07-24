@@ -15,62 +15,36 @@ class NoteViewModel {
     let note: MutableProperty<String>
     let title: MutableProperty<String>
     let date: Date
-    let (buttonSignal, buttonTapped) = Signal<(), NoError>.pipe()
-    let (saveSignal, saveTapped) = Signal<(), NoError>.pipe()
     let NoteData: NoteData
-    let new : Bool
     let id : Int
+    let total: String
     
     init(note: Note, NoteData: NoteData) {
         self.title = MutableProperty(note.title)
         self.note = MutableProperty(note.text)
+        self.total = note.title + note.text
         self.id = note.id
-        self.new = NoteViewModel.newNote(title: self.title.value)
         self.date = Date()
         self.NoteData = NoteData
     }
     
-//    var postAction: Action<UIBarButtonItem, (), NoError> {
-//        return Action<UIBarButtonItem, (), NoError> { _ in
-//            SignalProducer { observer, _ in
-//                observer.send(value: ())
-//                observer.sendCompleted()
-//            }
-//        }
-//    }
-    var postAction: Action<UIBarButtonItem, (), NoError> {
-        return Action<UIBarButtonItem, (), NoError> { _ in
-            return SignalProducer { observer , _ in
-                observer.send(value: ())
-                self.saveTapped.send(value:())
-                observer.sendCompleted()
-            }
-        }
-    }
-    
-    func tapButton() {
-        self.buttonTapped.send(value: ())
+    func saveNote() {
         let newNote = Note()
-        newNote.title = self.title.value
+        newNote.title = self.title.value == "" ? "No Title" :  self.title.value
         newNote.text = self.note.value
         newNote.lastEdited = self.date
         if self.id == 0 {
-            self.NoteData.saveNote(note: newNote)
+            if (newNote.title == "No Title" && newNote.text == "") {}
+            else {
+                self.NoteData.saveNote(note: newNote)
+            }
         }
         else {
-            newNote.id = self.id
-            self.NoteData.updateNote(note: newNote)
+            if (self.total == newNote.title + newNote.text) { }
+            else {
+                newNote.id = self.id
+                self.NoteData.updateNote(note: newNote)
+            }
         }
     }
-    
-    class func newNote(title: String) -> Bool {
-        if title.count == 0 {
-            return true
-        }
-        else {
-            return false
-            
-        }
-    }
-    
 }

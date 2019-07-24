@@ -9,13 +9,14 @@
 import ReactiveSwift
 import ReactiveCocoa
 import RealmSwift
-
+import Result
 
 class StageViewModel {
     let CeramicData: CeramicData
     var pots: Results<Pot>
     let sections: Int
     let distinctDates: Results<Pot>
+    let (singleSignal, singleObserver) = Signal<(), NoError>.pipe()
   //  let potsBySection: [Results<Pot>]
     
     init(CeramicData: CeramicData, status: Status) {
@@ -29,6 +30,17 @@ class StageViewModel {
     
     func getCeramicCellViewModel(atIndex: Int) -> CeramicCellViewModel {
         return CeramicCellViewModel(ceramic: self.pots[atIndex])
+    }
+    
+    func singleTap(section: Int, row: Int) {
+        singleObserver.send(value: ())
+        let pot = self.getTotalForDates()[section][row]
+        self.CeramicData.updateItem(pot: pot)
+    }
+    
+    func getCeramicSectionViewModel(section: Int, atIndex: Int) -> CeramicCellViewModel {
+        let myPots = self.getTotalForDates()[section]
+        return CeramicCellViewModel(ceramic: myPots[atIndex])
     }
     
     func getDistinctSection(section: Int) -> Int {

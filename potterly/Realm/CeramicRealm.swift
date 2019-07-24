@@ -28,10 +28,20 @@ protocol CeramicData {
     func saveItem(pot: Pot)
     func getPotteryData(status: Status) -> Results<Pot>
     func getSections(status: Status) -> Int
+    func updateItem(pot: Pot)
 }
 
 class CeramicRealmData: CeramicData {
     
+    func updateItem(pot: Pot) {
+        let oldPot = realm.objects(Pot.self).filter("id = %@", pot.id)
+        if let oldPot = oldPot.first {
+            try! realm.write {
+                oldPot.lastEdited = Date().removeTimeStamp()
+                oldPot.status = pot.status.getNextStatus()
+            }
+        }
+    }
 
     func saveItem(pot: Pot) {
         do {
