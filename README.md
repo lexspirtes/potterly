@@ -1,6 +1,5 @@
 # potterly
 iOS app for ceramicists to track their works-in-progress. Have all of your ceramics data all in one place! Move your ceramics through the stages of the process, take notes, and look through your past work to see how you've grown. All of the data will be stored on your phone and there is no need to create an account! 
-![image](/Users/lex/desktop/icon/icon_29pt@3x.png)
 
 ### Built With
 - [MVVM Architecture](https://blog.joanzapata.com/mvvm-reactivecocoa-5/)
