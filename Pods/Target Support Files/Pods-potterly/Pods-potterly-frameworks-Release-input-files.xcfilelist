@@ -1,10 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-potterly/Pods-potterly-frameworks.sh
-${BUILT_PRODUCTS_DIR}/Changeset/Changeset.framework
-${BUILT_PRODUCTS_DIR}/FlexLayout/FlexLayout.framework
 ${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework
-${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/LZViewPager/LZViewPager.framework
-${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework
+${BUILT_PRODUCTS_DIR}/PryntTrimmerView/PryntTrimmerView.framework
 ${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework
 ${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework
 ${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
@@ -12,4 +9,6 @@ ${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework
 ${BUILT_PRODUCTS_DIR}/Result/Result.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/SnapLayout/SnapLayout.framework
+${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework
 ${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework
+${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework

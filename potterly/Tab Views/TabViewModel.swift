@@ -34,4 +34,8 @@ class TabBarViewModel {
         return StageViewModel(CeramicData: self.CeramicData, status: Status.done)
     }
     
+    func getPickerViewModel() -> AddViewModel {
+        return AddViewModel(CeramicData: self.CeramicData)
+    }
+    
 }

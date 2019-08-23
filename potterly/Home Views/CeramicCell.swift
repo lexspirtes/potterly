@@ -48,12 +48,30 @@ class CeramicCell: UICollectionViewCell {
         let dateString = formatter.string(from: date)
         return dateString
     }
+    func checkImage() -> UIImage {
+        let image: UIImage
+        if UIImage(data: viewModel.photo!) == nil {
+            image = UIImage(named: "oops")!
+        }
+        else { image = UIImage(data: viewModel.photo!)!
+        }
+        return image
+    }
     
+    func checkNil() -> UIImage {
+        if viewModel.photo != nil {
+            return UIImage(data: viewModel.photo!)!
+        }
+        else {
+            return UIImage(named: "oops")!
+        }
+    }
+
     func configure(viewModel: CeramicCellViewModel){
         self.viewModel = viewModel
         //setting the label text
-        let image = UIImage(data: viewModel.photo!)
-        let resize = UIImage.resize(image: image!, targetSize: CGSize(width: 100, height: 100))
+        let image = checkNil()
+        let resize = UIImage.resize(image: image, targetSize: CGSize(width: 100, height: 100))
         imageView.image = resize
         dateLabel.text = formatDate(date: viewModel.date)
     }

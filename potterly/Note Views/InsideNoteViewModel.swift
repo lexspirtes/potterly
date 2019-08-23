@@ -9,7 +9,6 @@
 import RealmSwift
 import ReactiveCocoa
 import ReactiveSwift
-import Result
 
 class NoteViewModel {
     let note: MutableProperty<String>

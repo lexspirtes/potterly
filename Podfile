@@ -7,16 +7,14 @@ target 'potterly' do
 
   # pods for potterly
   pod 'SnapLayout', '1.9.7'
-  pod 'Kingfisher', '~> 4.0'
   pod 'SnapKit', '~> 4.0'
-  pod 'FlexLayout'
-  pod 'Changeset'
   pod 'XLPagerTabStrip', '~> 8.0'
   pod 'ReactiveCocoa', '~> 9.0'
   pod 'ReactiveSwift', '~> 5.0'
-  pod 'PinLayout' 
+  pod 'SwiftLint'
   pod 'IQKeyboardManagerSwift'
   pod 'RealmSwift'
+  pod 'YPImagePicker'
   pod 'LZViewPager', '~> 1.1.0'
   # Pods for potterly
 

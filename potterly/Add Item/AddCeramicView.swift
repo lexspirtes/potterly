@@ -9,7 +9,6 @@
 import UIKit
 import ReactiveCocoa
 import ReactiveSwift
-import FlexLayout
 
 
 class AddCeramicView: UIViewController {
@@ -117,7 +116,8 @@ class AddCeramicView: UIViewController {
         
         //setting imageView to chosen imave
         let image = UIImage(data: viewModel.photo!)
-        imageView.image = UIImage.resize(image: image!, targetSize: CGSize(width: 100, height: 100))
+        let myImage = UIImage(named: "oops")
+        imageView.image = UIImage.resize(image: image ?? myImage!, targetSize: CGSize(width: 100, height: 100))
         
         //bar button item
         let barButton = UIBarButtonItem(customView: addButton)

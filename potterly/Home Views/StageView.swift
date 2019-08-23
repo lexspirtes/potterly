@@ -64,20 +64,20 @@ class Stage: UIViewController, IndicatorInfoProvider {
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         view.addSubview(line)
         makeConstraints()
-        viewModel.singleSignal.observeValues(self.printHi)
+        viewModel.singleSignal.observeValues(self.reloadData)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       // collectionView.reloadData()
+        collectionView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        collectionView.reloadData()
+     //   collectionView.reloadData()
     }
     
-    func printHi(){
+    func reloadData(){
         print("talk to me")
         //currently reloadData, change to changeset
         collectionView.reloadData()
@@ -103,15 +103,15 @@ class Stage: UIViewController, IndicatorInfoProvider {
 
 extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getTotalForDates()[section].count
+        return viewModel.getItemsCount(section: section)
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CeramicCell
         cell.configure(viewModel: viewModel.getCeramicSectionViewModel(section: indexPath.section, atIndex: indexPath.row))
-        cell.backgroundColor = UIColor.customColors.midnight
-        cell.layer.cornerRadius = 5
+        cell.backgroundColor = UIColor.customColors.lilac
+        //cell.layer.cornerRadius = 5
         return cell
     }
     
@@ -124,7 +124,7 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.sections
+        return viewModel.getSectionCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

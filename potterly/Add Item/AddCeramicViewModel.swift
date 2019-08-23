@@ -11,14 +11,14 @@ import ReactiveCocoa
 import Result
 
 class AddCeramic {
-    let photo: Data?
     var status: Status
     let CeramicData: CeramicData
     let date: MutableProperty<Date>
+    let photo: Data?
     let (toggleSignal, toggleTapped) = Signal<Status, NoError>.pipe()
     let (addSignal, addTapped) = Signal<(), NoError>.pipe()
     
-    init(photo: Data?, CeramicData: CeramicData) {
+    init(CeramicData: CeramicData, photo: Data?) {
         self.CeramicData = CeramicData
         self.photo = photo
         self.status = Status.dry

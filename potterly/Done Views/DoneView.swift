@@ -118,7 +118,7 @@ extension DoneStage: UICollectionViewDataSource, UICollectionViewDelegate, UICol
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.sections
+        return viewModel.getSectionCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

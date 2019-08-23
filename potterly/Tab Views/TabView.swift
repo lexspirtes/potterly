@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabController: UITabBarController {
+class TabController: UITabBarController, UITabBarControllerDelegate {
     let viewModel: TabBarViewModel!
     //defining home VC
     lazy var homeViewController = homeTabStrip(viewModel: viewModel.getHomeViewModel())
@@ -19,12 +19,14 @@ class TabController: UITabBarController {
     lazy var notesViewController = NotesView(viewModel: viewModel.getNoteViewModel())
     
     //definine add
-    lazy var addViewController = AddView(viewModel: viewModel.getAddViewModel())
+    lazy var addViewController = YPPickerView(viewModel: viewModel.getPickerViewModel())
+        
+        //AddView(viewModel: viewModel.getAddViewModel())
     
     //defining done
     lazy var doneViewController = DoneStage(viewModel: viewModel.getStageViewModel())
    
-   
+    lazy var addNav = UINavigationController(rootViewController: addViewController)
     init(viewModel: TabBarViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -36,7 +38,7 @@ class TabController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // creating views as TabBarItems
+        // creating views as TabBarItem
         homeViewController.tabBarItem = UITabBarItem(title: "home", image: UIImage(named: "home"), tag: 0)
         homeViewController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 5)
         homeViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
@@ -64,10 +66,21 @@ class TabController: UITabBarController {
         self.tabBar.unselectedItemTintColor = UIColor.customColors.lilac
         self.tabBar.layer.borderWidth = 1
         self.tabBar.layer.borderColor = UIColor.customColors.lilac.cgColor
-        
+        self.delegate = self
 
     }
-
+    
+    //MARK: UITabbar Delegate
+    internal func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if viewController.isKind(of: YPPickerView.self) {
+            let vc =  YPPickerView(viewModel: viewModel.getPickerViewModel())
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: nil)
+            print("here")
+            return false
+        }
+        return true
+    }
 
 }
 

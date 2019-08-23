@@ -14,16 +14,16 @@ import Result
 class StageViewModel {
     let CeramicData: CeramicData
     var pots: Results<Pot>
-    let sections: Int
     let distinctDates: Results<Pot>
     let (singleSignal, singleObserver) = Signal<(), NoError>.pipe()
+    let status: Status
   //  let potsBySection: [Results<Pot>]
     
     init(CeramicData: CeramicData, status: Status) {
         self.CeramicData = CeramicData
+        self.status = status
         self.pots = self.CeramicData.getPotteryData(status: status)
         self.distinctDates = self.pots.distinct(by: ["lastEdited"]).sorted(byKeyPath: "lastEdited", ascending: false)
-        self.sections = distinctDates.count
     //    self.potsBySection = self.getTotalForDates()
      //   print(self.sections)
     }
@@ -32,10 +32,24 @@ class StageViewModel {
         return CeramicCellViewModel(ceramic: self.pots[atIndex])
     }
     
+    //make data into list of lists that knows whether to delete lists or not?
+    
+    func getItemsCount(section: Int) -> Int {
+        return getTotalForDates()[section].count
+    }
+    
+    func getSectionCount() -> Int {
+        return self.distinctDates.count
+    }
+    
     func singleTap(section: Int, row: Int) {
         singleObserver.send(value: ())
         let pot = self.getTotalForDates()[section][row]
-        self.CeramicData.updateItem(pot: pot)
+        if self.status == Status.done {}
+        else {
+            self.CeramicData.updateItem(pot: pot)
+        }
+        
     }
     
     func getCeramicSectionViewModel(section: Int, atIndex: Int) -> CeramicCellViewModel {

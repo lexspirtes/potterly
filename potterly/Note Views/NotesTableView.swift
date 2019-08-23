@@ -56,16 +56,34 @@ class NotesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
         notesTableView.dataSource = self
         notesTableView.delegate = self
         notesTableView.register(NoteTableCell.self, forCellReuseIdentifier: "noteCell")
-
-        
         viewModel.buttonSignal.observeValues(self.navigateToNewNote)
+    }
+    
+    let helloLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Karla-Bold", size: 30)
+        label.textColor = UIColor.customColors.midnight
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .white
+        label.text = "hi"
+        return label
+    }()
+    
+    //an oops add something
+    func showFlower() {
+        if viewModel.notes.count == 0 {
+            self.view.addSubview(helloLabel)
+            helloLabel.snp.makeConstraints { (make) in
+                 make.centerX.centerY.equalTo(view)
+            }
+        }
+        else {}
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.navigationItem.title = "notes"
         super.viewWillAppear(animated)
         notesTableView.reloadData()
-        
         //bar button comes up every time the view is loaded
         let buttonView = UIButton()
         buttonView.setImage(UIImage(named: "create"), for: .normal)

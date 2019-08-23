@@ -14,8 +14,6 @@ import Result
 class AddViewModel {
     let CeramicData: CeramicData
     var photo: Data?
-    let (photoSignal, photoTapped) = Signal<(), NoError>.pipe()
-    let (librarySignal, libraryTapped) = Signal<(), NoError>.pipe()
     let (navSignal, navObserver) = Signal<(), NoError>.pipe()
     
     init(CeramicData: CeramicData) {
@@ -23,18 +21,12 @@ class AddViewModel {
         self.photo = nil
     }
     
-    func tapPhoto() {
-        photoTapped.send(value: ())
+    func tapNav() {
+        navObserver.send(value: ())
+        print("im tapped")
     }
-    
-    func tapLibrary() {
-        libraryTapped.send(value: ())
-    }
-    
     
     func getAddCeramicViewModel() -> AddCeramic {
-        let newVC = AddCeramic(photo: self.photo, CeramicData: self.CeramicData)
-        newVC.addSignal.observeValues { _ in self.navObserver.send(value: ())}
-        return newVC
+        return AddCeramic(CeramicData: self.CeramicData, photo: self.photo)
     }
 }

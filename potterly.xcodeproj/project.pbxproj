@@ -10,6 +10,7 @@
 		2DD319304AF142A58129E68D /* Pods_potterlyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E294BB060E66F06DE700B985 /* Pods_potterlyTests.framework */; };
 		4A293668E85C401410D3964B /* Pods_potterlyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 546B51802731381C44B673FD /* Pods_potterlyUITests.framework */; };
 		D4A64F8CC04A612B0C2100FD /* Pods_potterly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95985F7D8789406AA8AE389E /* Pods_potterly.framework */; };
+		D70524BC231054BF00534C96 /*  addSuccession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70524BB231054BF00534C96 /*  addSuccession.swift */; };
 		D70ADA57229DA05A007AA724 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA56229DA05A007AA724 /* AppDelegate.swift */; };
 		D70ADA5B229DA05A007AA724 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA5A229DA05A007AA724 /* TabView.swift */; };
 		D70ADA60229DA05C007AA724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70ADA5F229DA05C007AA724 /* Assets.xcassets */; };
@@ -17,7 +18,6 @@
 		D70ADA79229DA05C007AA724 /* potterlyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA78229DA05C007AA724 /* potterlyUITests.swift */; };
 		D7318B6422A8236E009D14A9 /* Karla-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7318B6322A82365009D14A9 /* Karla-Regular.ttf */; };
 		D7318B6522A82370009D14A9 /* Karla-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7318B6222A82362009D14A9 /* Karla-Bold.ttf */; };
-		D7318B6922A82B62009D14A9 /* PotterlyData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7318B6722A82B62009D14A9 /* PotterlyData.xcdatamodeld */; };
 		D7318B7122A86312009D14A9 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7318B7022A86312009D14A9 /* NoteCell.swift */; };
 		D7318B7322A96AD3009D14A9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7318B7222A96AD3009D14A9 /* Extensions.swift */; };
 		D7318B7622A97EE8009D14A9 /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7318B7522A97EE8009D14A9 /* NoteDetailView.swift */; };
@@ -70,6 +70,7 @@
 		95985F7D8789406AA8AE389E /* Pods_potterly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_potterly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7AEFD2A3C96C51C2099710 /* Pods-potterly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-potterly.release.xcconfig"; path = "Target Support Files/Pods-potterly/Pods-potterly.release.xcconfig"; sourceTree = "<group>"; };
 		C131AFB8CFBB976B5C0CDBE0 /* Pods-potterlyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-potterlyUITests.release.xcconfig"; path = "Target Support Files/Pods-potterlyUITests/Pods-potterlyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D70524BB231054BF00534C96 /*  addSuccession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " addSuccession.swift"; sourceTree = "<group>"; };
 		D70ADA53229DA05A007AA724 /* potterly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = potterly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70ADA56229DA05A007AA724 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D70ADA5A229DA05A007AA724 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
@@ -83,7 +84,6 @@
 		D70ADA7A229DA05C007AA724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7318B6222A82362009D14A9 /* Karla-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Bold.ttf"; sourceTree = "<group>"; };
 		D7318B6322A82365009D14A9 /* Karla-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Regular.ttf"; sourceTree = "<group>"; };
-		D7318B6822A82B62009D14A9 /* NotesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NotesModel.xcdatamodel; sourceTree = "<group>"; };
 		D7318B7022A86312009D14A9 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		D7318B7222A96AD3009D14A9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D7318B7522A97EE8009D14A9 /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
@@ -184,7 +184,6 @@
 				D7318B7422A97ECC009D14A9 /* Note Views */,
 				D786B9B322DD126D00E18AB5 /* Add Item */,
 				D786B9B722DE2B6500E18AB5 /* Done Views */,
-				D7318B6722A82B62009D14A9 /* PotterlyData.xcdatamodeld */,
 				D7318B6622A8239C009D14A9 /* fonts */,
 				D70ADA5F229DA05C007AA724 /* Assets.xcassets */,
 				D70ADA64229DA05C007AA724 /* Info.plist */,
@@ -240,6 +239,7 @@
 				D786B9B122DD11FC00E18AB5 /* AddCeramicViewModel.swift */,
 				D786B9C422DE481200E18AB5 /* AddCeramicView.swift */,
 				D73CC20322A1A1E000B4A04B /* AddView.swift */,
+				D70524BB231054BF00534C96 /*  addSuccession.swift */,
 				D786B9C222DE306300E18AB5 /* AddViewModel.swift */,
 			);
 			path = "Add Item";
@@ -311,6 +311,7 @@
 				D70ADA50229DA05A007AA724 /* Frameworks */,
 				D70ADA51229DA05A007AA724 /* Resources */,
 				BF95C3B2955B3478D881D54E /* [CP] Embed Pods Frameworks */,
+				D786B9D422EA2A6100E18AB5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -515,6 +516,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D786B9D422EA2A6100E18AB5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -534,7 +552,6 @@
 				D786B9A322CCF52A00E18AB5 /* TabViewModel.swift in Sources */,
 				D7318B7122A86312009D14A9 /* NoteCell.swift in Sources */,
 				D70ADA57229DA05A007AA724 /* AppDelegate.swift in Sources */,
-				D7318B6922A82B62009D14A9 /* PotterlyData.xcdatamodeld in Sources */,
 				D786B9BF22DE2CFC00E18AB5 /* StageView.swift in Sources */,
 				D786B9B022D7E48D00E18AB5 /* InsideNoteViewModel.swift in Sources */,
 				D786B9CD22E0F11200E18AB5 /* HeaderView.swift in Sources */,
@@ -544,6 +561,7 @@
 				D73CC20622A1A52A00B4A04B /* NotesTableView.swift in Sources */,
 				D73CC20A22A1A59C00B4A04B /* DoneView.swift in Sources */,
 				D786B99F22C6734500E18AB5 /* NoteCellViewModel.swift in Sources */,
+				D70524BC231054BF00534C96 /*  addSuccession.swift in Sources */,
 				D786B9C122DE2D0300E18AB5 /* StageViewModel.swift in Sources */,
 				D786B9CF22E0F13100E18AB5 /* HeaderViewModel.swift in Sources */,
 				D786B9C522DE481200E18AB5 /* AddCeramicView.swift in Sources */,
@@ -863,19 +881,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D7318B6722A82B62009D14A9 /* PotterlyData.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D7318B6822A82B62009D14A9 /* NotesModel.xcdatamodel */,
-			);
-			currentVersion = D7318B6822A82B62009D14A9 /* NotesModel.xcdatamodel */;
-			path = PotterlyData.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D70ADA4B229DA05A007AA724 /* Project object */;
 }

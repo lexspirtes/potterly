@@ -17,7 +17,7 @@ import ReactiveSwift
 class AddView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     let containerView = UIView()
     var pickedImage: Bool = false
-    let viewModel: AddViewModel
+    let viewModel: AddCeramic
     
     public let libraryButton:UIButton = {
         let myString = "library"
@@ -59,7 +59,6 @@ class AddView: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         let data = image?.imageToData()
-        viewModel.photo = data
         navigateToAddItemView()
      //   imageView.image = resizedImage
         self.dismiss(animated: true, completion: nil)
@@ -78,8 +77,8 @@ class AddView: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
     
     func navigateToAddItemView() {
         self.tabBarController?.navigationItem.title = ""
-        let outputView = AddCeramicView(viewModel: viewModel.getAddCeramicViewModel())
-        self.navigationController?.pushViewController(outputView, animated: true)
+   //     let outputView = AddCeramicView(viewModel: viewModel.getAddCeramicViewModel())
+   //     self.navigationController?.pushViewController(outputView, animated: true)
     }
     
     func makeConstraints(){
@@ -110,7 +109,9 @@ class AddView: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
     }
     
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -125,19 +126,11 @@ class AddView: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
         //making constraints
         makeConstraints()
         
-        //reactive for camera
-        photoButton.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.tapPhoto()}
-        viewModel.photoSignal.observeValues(self.makeCameraAppear)
-        
-        //reactive for library
-        libraryButton.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.tapLibrary()}
-        viewModel.librarySignal.observeValues(self.makeLibraryAppear)
         
         // Do any additional setup after loading the view.
         self.title = "add"
         
         //
-        viewModel.navSignal.observeValues(self.switchTab)
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
@@ -174,7 +167,7 @@ class AddView: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
     }
     
     
-    init(viewModel: AddViewModel) {
+    init(viewModel: AddCeramic) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
