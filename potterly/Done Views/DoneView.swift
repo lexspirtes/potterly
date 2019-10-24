@@ -124,11 +124,32 @@ extension DoneStage: UICollectionViewDataSource, UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.size.width, height: 40)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.singleTap(section: indexPath.section, row: indexPath.row)
-    //    guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-    }
+    @available(iOS 13.0, *)
+      func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+          let item = indexPath
+
+            return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
+
+                // Create an action for sharing
+              let edit = UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil")) { _ in
+                  self.viewModel.edit(indexPath: item)
+              }
+              let deleteCancel = UIAction(title: "Cancel", image: UIImage(systemName: "xmark")) { _ in }
+              let deleteConfirmation = UIAction(title: "Delete", image: UIImage(systemName: "checkmark"), attributes: .destructive) { _ in self.viewModel.delete(indexPath: item)
+                  self.collectionView.reloadData()
+                  //switch to deleteItem at
+                  
+              }
+              
+              let delete = UIMenu(title: "Delete", image: UIImage(systemName: "trash"), options: .destructive, children: [deleteCancel, deleteConfirmation])
+
+              return UIMenu(title: "", children: [edit, delete])
+            }
+        }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        viewModel.singleTap(section: indexPath.section, row: indexPath.row)
+//    //    guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+//    }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {

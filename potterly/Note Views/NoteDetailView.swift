@@ -61,8 +61,11 @@ class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         titleField.text = viewModel.title.value
         viewModel.title <~ titleField.reactive.continuousTextValues
         viewModel.note <~ bodyField.reactive.continuousTextValues
+        
+        
         self.bodyField.keyboardDistanceFromTextField = -8
         print(viewModel.title.value)
+        self.bodyField.backgroundColor = .white
         makeConstraints()
         titleField.delegate = self
         bodyField.delegate = self

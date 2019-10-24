@@ -22,9 +22,9 @@ class TabBarViewModel {
         return NotesTableViewModel(NoteData: self.NoteData)
     }
     
-    func getAddViewModel() -> AddViewModel {
-        return AddViewModel(CeramicData: self.CeramicData)
-    }
+//    func getAddViewModel() -> AddViewModel {
+//        return AddViewModel(CeramicData: self.CeramicData)
+//    }
     
     func getHomeViewModel() -> HomeViewModel {
         return HomeViewModel(CeramicData: self.CeramicData)
@@ -34,8 +34,11 @@ class TabBarViewModel {
         return StageViewModel(CeramicData: self.CeramicData, status: Status.done)
     }
     
-    func getPickerViewModel() -> AddViewModel {
-        return AddViewModel(CeramicData: self.CeramicData)
-    }
+//    func getPickerViewModel() -> AddViewModel {
+//        return AddViewModel(CeramicData: self.CeramicData)
+//    }
     
+    func getAddCeramicViewModel() -> AddCeramic{
+        return AddCeramic(CeramicData: self.CeramicData, photo: nil)
+    }
 }

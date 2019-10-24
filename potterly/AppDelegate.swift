@@ -39,13 +39,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController.navigationBar.isTranslucent = false
         //writing appearance settings
         let navigationBarAppearace = UINavigationBar.appearance()
-        if let font = UIFont(name: "SFMono-Medium", size: 20) {
+        if let font = UIFont(name: "SabonLTStd-Bold", size: 28) {
             UINavigationBar.appearance().titleTextAttributes = [
                 NSAttributedString.Key.font: font,
                 NSAttributedString.Key.foregroundColor: UIColor.customColors.midnight,
-                NSAttributedString.Key.kern:CGFloat(2.0)]
+                NSAttributedString.Key.kern:CGFloat(3.0)]
         }
-        navigationBarAppearace.barTintColor = UIColor.customColors.lighty
+      //  navigationBarAppearace.barTintColor = UIColor.customColors.lighty
         navigationBarAppearace.shadowImage = UIImage()
         
         //creating window

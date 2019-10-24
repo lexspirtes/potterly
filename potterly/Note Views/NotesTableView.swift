@@ -47,6 +47,7 @@ class NotesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
         //footer so that only as many lines as there are notes
         self.notesTableView.tableFooterView = UIView()
         view.backgroundColor = .white
+        notesTableView.backgroundColor = .white
         self.title = "notes"
         notesTableView.separatorColor = UIColor.customColors.lilac
         notesTableView.tableHeaderView = cellLabel
@@ -56,6 +57,7 @@ class NotesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
         notesTableView.dataSource = self
         notesTableView.delegate = self
         notesTableView.register(NoteTableCell.self, forCellReuseIdentifier: "noteCell")
+        
         viewModel.buttonSignal.observeValues(self.navigateToNewNote)
     }
     
@@ -87,6 +89,7 @@ class NotesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
         //bar button comes up every time the view is loaded
         let buttonView = UIButton()
         buttonView.setImage(UIImage(named: "create"), for: .normal)
+        
         let button = UIBarButtonItem(customView: buttonView)
         buttonView.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.tapButton() }
         self.tabBarController?.navigationItem.rightBarButtonItem = button

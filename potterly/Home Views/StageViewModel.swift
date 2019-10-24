@@ -16,6 +16,10 @@ class StageViewModel {
     var pots: Results<Pot>
     let distinctDates: Results<Pot>
     let (singleSignal, singleObserver) = Signal<(), NoError>.pipe()
+    let (doubleSignal, doubleObserver) = Signal<(), NoError>.pipe()
+    let (deleteSignal, deleteObserver) = Signal<(IndexPath), NoError>.pipe()
+    let (editSignal, editObserver) = Signal<(), NoError>.pipe()
+
     let status: Status
   //  let potsBySection: [Results<Pot>]
     
@@ -41,17 +45,40 @@ class StageViewModel {
     func getSectionCount() -> Int {
         return self.distinctDates.count
     }
-    
-    func singleTap(section: Int, row: Int) {
-        singleObserver.send(value: ())
-        let pot = self.getTotalForDates()[section][row]
+    func doubleTap(indexPath: IndexPath) {
+        print("in double tap")
+        doubleObserver.send(value: ())
+        let pot = self.getTotalForDates()[indexPath.section][indexPath.row]
         if self.status == Status.done {}
         else {
             self.CeramicData.updateItem(pot: pot)
         }
-        
+    }
+    func singleTap(indexPath: IndexPath) {
+        singleObserver.send(value: ())
+        print("will go into view")
     }
     
+    func edit(indexPath: IndexPath) {
+        editObserver.send(value: ())
+        let pot = self.getTotalForDates()[indexPath.section][indexPath.row]
+        print("edit")
+    }
+    
+    func goView(indexPath: IndexPath) {
+        print("view")
+    }
+    
+    func delete(indexPath: IndexPath) {
+        deleteObserver.send(value: (indexPath))
+        let potID = self.getTotalForDates()[indexPath.section][indexPath.row].id
+            self.CeramicData.deletePot(potID: potID)
+        }
+    
+    func getAddCeramicViewModel(indexPath: IndexPath) {
+        let pot = self.getTotalForDates()[indexPath.section][indexPath.row]
+        return 
+    }
     func getCeramicSectionViewModel(section: Int, atIndex: Int) -> CeramicCellViewModel {
         let myPots = self.getTotalForDates()[section]
         return CeramicCellViewModel(ceramic: myPots[atIndex])

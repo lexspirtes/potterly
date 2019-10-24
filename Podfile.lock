@@ -7,16 +7,15 @@ PODS:
     - ReactiveSwift (~> 5.0)
   - ReactiveSwift (5.0.1):
     - Result (~> 4.1)
-  - Realm (3.16.1):
-    - Realm/Headers (= 3.16.1)
-  - Realm/Headers (3.16.1)
-  - RealmSwift (3.16.1):
-    - Realm (= 3.16.1)
+  - Realm (3.18.0):
+    - Realm/Headers (= 3.18.0)
+  - Realm/Headers (3.18.0)
+  - RealmSwift (3.18.0):
+    - Realm (= 3.18.0)
   - Result (4.1.0)
   - SnapKit (4.2.0)
   - SnapLayout (1.9.7)
   - SteviaLayout (4.4.4)
-  - SwiftLint (0.33.0)
   - XLPagerTabStrip (8.1.0)
   - YPImagePicker (4.0.0):
     - PryntTrimmerView (~> 3.0.0)
@@ -27,10 +26,9 @@ DEPENDENCIES:
   - LZViewPager (~> 1.1.0)
   - ReactiveCocoa (~> 9.0)
   - ReactiveSwift (~> 5.0)
-  - RealmSwift
+  - RealmSwift (~> 3.18.0)
   - SnapKit (~> 4.0)
   - SnapLayout (= 1.9.7)
-  - SwiftLint
   - XLPagerTabStrip (~> 8.0)
   - YPImagePicker
 
@@ -47,7 +45,6 @@ SPEC REPOS:
     - SnapKit
     - SnapLayout
     - SteviaLayout
-    - SwiftLint
     - XLPagerTabStrip
     - YPImagePicker
 
@@ -57,16 +54,15 @@ SPEC CHECKSUMS:
   PryntTrimmerView: 53ac64053c7ce63cb3e27f54090f52da0734891d
   ReactiveCocoa: 29709cf0cc7502ddd04a51220e10ee0336d8bec8
   ReactiveSwift: cac20a5bbe560c5806bd29c0fccf90d03b996ac1
-  Realm: 601cacc51d8be3b17a377ef787be0f6ee0e76cf1
-  RealmSwift: 486f2e09d5a8ccff63ed66e48d0846b111deb5e5
+  Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
+  RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SnapLayout: 42138ce70a8dfb09ef422937d32d576033326306
   SteviaLayout: 523469269059f2c6da02820bb2ff28a5fe0780aa
-  SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
   XLPagerTabStrip: 22d4c58200d7c105e0e407ab6bfd01a5d85014be
   YPImagePicker: 8039f89ad79281545fa868486f32d9bf5d65ede1
 
-PODFILE CHECKSUM: be8e88222526c208a63480fb31baaac6d57acce1
+PODFILE CHECKSUM: ae412dd781e87463ba0c6117a651e036c73e4fbb
 
 COCOAPODS: 1.7.1

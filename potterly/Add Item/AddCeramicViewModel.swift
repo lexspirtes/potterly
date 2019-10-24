@@ -14,9 +14,10 @@ class AddCeramic {
     var status: Status
     let CeramicData: CeramicData
     let date: MutableProperty<Date>
-    let photo: Data?
+    var photo: Data?
     let (toggleSignal, toggleTapped) = Signal<Status, NoError>.pipe()
     let (addSignal, addTapped) = Signal<(), NoError>.pipe()
+    let (photoSignal, photoTapped) = Signal<(), NoError>.pipe()
     
     init(CeramicData: CeramicData, photo: Data?) {
         self.CeramicData = CeramicData
@@ -25,13 +26,35 @@ class AddCeramic {
         self.date = MutableProperty(Date())
     }
     
+    func changePhoto(photo: Data) {
+        self.photo = photo
+        print("photo changed")
+    }
     
-    func toggleTap(buttonTitle: Status) {
-        self.toggleTapped.send(value: buttonTitle)
-        self.status = buttonTitle
+    func segmentTap(buttonTitle: String) {
+        let status: Status
+        switch buttonTitle {
+        case "to dry":
+           status = Status.dry
+        case "to trim":
+            status = Status.trim
+        case "bisqued":
+            status = Status.bisqued
+        case "glazed":
+            status = Status.glazed
+        default:
+            status = Status.done
+        }
+        self.toggleTapped.send(value: status)
+        self.status = status
+    }
+    
+    func photoTap() {
+        self.photoTapped.send(value: ())
     }
     
     func addTap() {
+        //first check if allowed
         self.addTapped.send(value: ())
         let newPot = Pot()
         newPot.status = self.status
@@ -41,8 +64,5 @@ class AddCeramic {
         self.CeramicData.saveItem(pot: newPot)
         }
 
-    func getHomeViewModel() -> HomeViewModel {
-        return HomeViewModel(CeramicData: self.CeramicData)
-    }
 }
 

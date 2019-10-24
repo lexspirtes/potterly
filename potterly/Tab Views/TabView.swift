@@ -19,7 +19,7 @@ class TabController: UITabBarController, UITabBarControllerDelegate {
     lazy var notesViewController = NotesView(viewModel: viewModel.getNoteViewModel())
     
     //definine add
-    lazy var addViewController = YPPickerView(viewModel: viewModel.getPickerViewModel())
+    lazy var addViewController = AddCeramicView(viewModel: viewModel.getAddCeramicViewModel())
         
         //AddView(viewModel: viewModel.getAddViewModel())
     
@@ -71,16 +71,16 @@ class TabController: UITabBarController, UITabBarControllerDelegate {
     }
     
     //MARK: UITabbar Delegate
-    internal func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if viewController.isKind(of: YPPickerView.self) {
-            let vc =  YPPickerView(viewModel: viewModel.getPickerViewModel())
-            vc.modalPresentationStyle = .overFullScreen
-            self.present(vc, animated: true, completion: nil)
-            print("here")
-            return false
-        }
-        return true
-    }
+//    internal func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+////        if viewController.isKind(of: YPPickerView.self) {
+////            let vc =  YPPickerView(viewModel: viewModel.getPickerViewModel())
+//            vc.modalPresentationStyle = .overFullScreen
+//            self.present(vc, animated: true, completion: nil)
+//            print("here")
+//            return false
+//        }
+//        return true
+//    }
 
 }
 

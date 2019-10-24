@@ -11,7 +11,9 @@ import Result
 import RealmSwift
 
 class NotesTableViewModel {
+    
     let (buttonSignal, buttonTapped) = Signal<(), NoError>.pipe()
+    
     var notes: Results<Note>
     let NoteData: NoteData
     
@@ -19,6 +21,7 @@ class NotesTableViewModel {
         self.NoteData = NoteData
         self.notes = self.NoteData.getNoteData()
     }
+    
     func tapButton() {
         self.buttonTapped.send(value: ())
     }

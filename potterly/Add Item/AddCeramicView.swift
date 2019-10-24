@@ -11,12 +11,14 @@ import ReactiveCocoa
 import ReactiveSwift
 
 
-class AddCeramicView: UIViewController {
+class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+    
     let viewModel: AddCeramic!
     let containerView = UIScrollView()
     
     let imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -31,6 +33,13 @@ class AddCeramicView: UIViewController {
     let statusTitle: UILabel = {
         let label = UILabel()
         let title = "status"
+        label.attributedText = title.attrBoldString(color: UIColor.customColors.midnight)
+        return label
+    }()
+    
+    let photoTitle: UILabel = {
+        let label = UILabel()
+        let title = "photo"
         label.attributedText = title.attrBoldString(color: UIColor.customColors.midnight)
         return label
     }()
@@ -51,49 +60,19 @@ class AddCeramicView: UIViewController {
         return datePicker
     }()
     
-    let toDry: UIButton = {
-        let button = UIButton()
-        let title = "to dry"
-        button.setAttributedTitle(title.attrSmallString(color: UIColor.customColors.midnight, bold: true), for: .selected)
-        button.setAttributedTitle(title.attrSmallString(color: UIColor.customColors.mauve, bold: false), for: .normal)
-        return button
-    }()
-    
-    let toTrim: UIButton = {
-        let button = UIButton()
-        let title = "to trim"
-        button.setAttributedTitle(title.attrSmallString(color: UIColor.customColors.midnight, bold: true), for: .selected)
-        button.setAttributedTitle(title.attrSmallString(color: UIColor.customColors.mauve, bold: false), for: .normal)
-        return button
-    }()
-    
-    let bisqued: UIButton = {
-        let button = UIButton()
-        let title = "bisqued"
-        button.setAttributedTitle(title.attrSmallString(color: UIColor.customColors.midnight, bold: true), for: .selected)
-        button.setAttributedTitle(title.attrSmallString(color: UIColor.customColors.mauve, bold: false), for: .normal)
-        return button
-    }()
-    
-    let glazed: UIButton = {
-        let button = UIButton()
-        let title = "glazed"
-        button.setAttributedTitle(title.attrSmallString(color: UIColor.customColors.midnight, bold: true), for: .selected)
-        button.setAttributedTitle(title.attrSmallString(color: UIColor.customColors.mauve, bold: false), for: .normal)
-        return button
-    }()
-    
-    let done: UIButton = {
-        let button = UIButton()
-        let title = "done"
-        button.setAttributedTitle(title.attrSmallString(color: UIColor.customColors.midnight, bold: true), for: .selected)
-        button.setAttributedTitle(title.attrSmallString(color: UIColor.customColors.mauve, bold: false), for: .normal)
-        return button
-    }()
-    
-    let toggleContainer: UIView = {
-        let view = UIView()
-        return view
+    let segmentedControl: UISegmentedControl = {
+        // Initialize
+        let items = ["to dry", "to trim", "bisqued", "glazed", "done"]
+        let customSC = UISegmentedControl(items: items)
+        customSC.selectedSegmentIndex = 0
+
+        // Style the Segmented Control
+        customSC.layer.cornerRadius = 5.0  // Don't let background bleed
+        customSC.backgroundColor = UIColor.customColors.lighty
+        customSC.tintColor = UIColor.customColors.midnight
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.customColors.midnight]
+        customSC.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        return customSC
     }()
     
     override func viewDidLoad() {
@@ -101,99 +80,106 @@ class AddCeramicView: UIViewController {
         view.addSubview(containerView)
         containerView.addSubview(imageView)
         containerView.addSubview(statusTitle)
-        containerView.addSubview(toggleContainer)
+        containerView.addSubview(photoTitle)
+        containerView.addSubview(segmentedControl)
+        //segmented
 
+        
+        //imagetap
+        let singleTap = UITapGestureRecognizer()
+        singleTap.reactive.stateChanged.observeValues({_ in self.viewModel.photoTap()})
+        singleTap.numberOfTapsRequired = 1
+        imageView.addGestureRecognizer(singleTap)
+        viewModel.photoSignal.observeValues(popUp)
     
-        //toggle container stuff
-        toggleContainer.addSubview(toDry)
-        toggleContainer.addSubview(toTrim)
-        toggleContainer.addSubview(bisqued)
-        toggleContainer.addSubview(glazed)
-        toggleContainer.addSubview(done)
+        //adding ddate
         containerView.addSubview(dateTitle)
         containerView.addSubview(datePicker)
         view.backgroundColor = .white
         
-        //setting imageView to chosen imave
-        let image = UIImage(data: viewModel.photo!)
-        let myImage = UIImage(named: "oops")
-        imageView.image = UIImage.resize(image: image ?? myImage!, targetSize: CGSize(width: 100, height: 100))
+        //setting imageView to chosen image
+        let myImage = viewModel.photo == nil ?  UIImage(named: "demo") : UIImage(data: viewModel.photo!)
+        imageView.image = UIImage.resize(image: myImage!.cropsToSquare(), targetSize: CGSize(width: UIScreen.main.bounds.width,
+                                                                                      height: UIScreen.main.bounds.height * 0.45))
         
-        //bar button item
-        let barButton = UIBarButtonItem(customView: addButton)
-        self.navigationItem.rightBarButtonItem = barButton
-        makeConstraints()
         
         //view model
         viewModel.date <~ datePicker.reactive.dates
-        //toggle viewModel
-        toDry.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.toggleTap(buttonTitle: Status.dry)}
-        toTrim.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.toggleTap(buttonTitle: Status.trim)}
-        bisqued.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.toggleTap(buttonTitle: Status.bisqued)}
-        glazed.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.toggleTap(buttonTitle: Status.glazed)}
-        done.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.toggleTap(buttonTitle: Status.done)}
-        viewModel.toggleSignal.observeValues { (value) in
-            self.highlight(status: value)
-        }
+        //segmentedControl
+        segmentedControl.reactive.controlEvents(.valueChanged).observeValues { _ in self.viewModel.segmentTap(buttonTitle: self.segmentedControl.titleForSegment(at: self.segmentedControl.selectedSegmentIndex) ?? "to dry")}
         //addbutton
         viewModel.addSignal.observeValues(self.navigateToHomeView)
         addButton.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.addTap() }
 
     }
+    
+    func navigateToHomeView(){
+        print("try to nav")
+        //pop up modal that was added
+        //reset image to nothing
+        // should present instead of being there?
+    }
+    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationItem.title = "new item"
-        toDry.isSelected = true
-    }
-    
-    func navigateToHomeView() {
-        //do i want to go back to home or stay in add? adding a lot of things at once?
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    func highlight(status: Status) {
-        if status == Status.dry {
-            toDry.isSelected = true
-            toTrim.isSelected = false
-            bisqued.isSelected = false
-            glazed.isSelected = false
-            done.isSelected = false
-        }
-        else if status == Status.trim {
-            toDry.isSelected = false
-            toTrim.isSelected = true
-            bisqued.isSelected = false
-            glazed.isSelected = false
-            done.isSelected = false
-        }
-        else if status == Status.bisqued {
-            toDry.isSelected = false
-            toTrim.isSelected = false
-            bisqued.isSelected = true
-            glazed.isSelected = false
-            done.isSelected = false
-        }
-        else if status == Status.glazed {
-            toDry.isSelected = false
-            toTrim.isSelected = false
-            bisqued.isSelected = false
-            glazed.isSelected = true
-            done.isSelected = false
-        }
+        self.tabBarController?.navigationItem.title = "new item"
         
-        else {
-            toDry.isSelected = false
-            toTrim.isSelected = false
-            bisqued.isSelected = false
-            glazed.isSelected = false
-            done.isSelected = true
-        }
+        //bar button item
+        let barButton = UIBarButtonItem(customView: addButton)
+        self.tabBarController?.navigationItem.rightBarButtonItem = barButton
+        makeConstraints()
     }
+    
+    func popUp() {
+        print("photo tapped")
+        let myActionSheet =  UIAlertController(title: nil, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        myActionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        myActionSheet.addAction(UIAlertAction(title: "Library", style: UIAlertAction.Style.default, handler: { _ in self.makeLibraryAppear()}))
+        myActionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertAction.Style.default, handler: { _ in self.makeCameraAppear()}))
+        self.present(myActionSheet, animated: true, completion: nil)
+    }
+    
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         containerView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height+50)
     }
+    
+    func makeLibraryAppear() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self;
+            imagePickerController.sourceType = .photoLibrary
+            imagePickerController.modalPresentationStyle = .fullScreen
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+    }
+    func makeCameraAppear() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self;
+            imagePickerController.sourceType = .camera
+            imagePickerController.modalPresentationStyle = .fullScreen
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        let data = (image?.imageToData())!
+       // imageView.image = UIImage(cgImage: (image?.cgImage!.cropping(to: CGRect(x: 0, y: 0, width: 50, height: 50)))!)
+        imageView.image = UIImage.resize(image: image!.cropsToSquare(), targetSize: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.45))
+        viewModel.changePhoto(photo: data)
+      //   imageView.image = resizedImage
+         self.dismiss(animated: true, completion: nil)
+     }
+     
     
     init(viewModel: AddCeramic){
         self.viewModel = viewModel
@@ -208,7 +194,6 @@ class AddCeramicView: UIViewController {
     
     //segmented control
     //stack views list and lays out one by one
-    //look for instagram style photo picker 
     
     func makeConstraints() {
         
@@ -219,64 +204,39 @@ class AddCeramicView: UIViewController {
         
         //image view constraints
         imageView.snp.makeConstraints { (make) in
-            make.top.equalTo(containerView).offset(16)
+            make.top.equalTo(photoTitle.snp.bottom).offset(16)
+            make.centerX.equalTo(containerView)
             make.leading.equalTo(containerView).offset(16)
+            make.trailing.equalTo(containerView).offset(-16)
         }
         
-        //image view constraints
+        //photo title constraints
+        photoTitle.snp.makeConstraints { (make) in
+            make.leading.equalTo(containerView).offset(16)
+            make.top.equalTo(containerView.snp.bottom).offset(32)
+        }
+        
+        //photo title constraints
+        segmentedControl.snp.makeConstraints { (make) in
+            make.leading.equalTo(containerView).offset(16)
+            make.top.equalTo(statusTitle.snp.bottom).offset(32)
+        }
+        
+        //status title constraints
         statusTitle.snp.makeConstraints { (make) in
-            make.leading.equalTo(imageView)
+            make.leading.equalTo(containerView).offset(16)
             make.top.equalTo(imageView.snp.bottom).offset(32)
         }
         
-        
-        //toggle constraints
-        toggleContainer.snp.makeConstraints { (make) in
-            make.width.equalTo(containerView)
-            make.top.equalTo(statusTitle.snp.bottom)
-            make.height.equalTo(containerView).multipliedBy(0.15)
-        }
-        
-        //toDry constraints
-        toDry.snp.makeConstraints { (make) in
-            make.centerY.equalTo(toggleContainer)
-            make.leading.equalTo(statusTitle).offset(16)
-        }
-        
-        //toTrim constraints
-        toTrim.snp.makeConstraints { (make) in
-            make.centerY.equalTo(toggleContainer)
-            make.leading.equalTo(toDry.snp.trailing).offset(16)
-        }
-        
-        //bisqued constraints
-        bisqued.snp.makeConstraints { (make) in
-            make.centerY.equalTo(toggleContainer)
-            make.leading.equalTo(toTrim.snp.trailing).offset(16)
-        }
-        
-        //glazed constraints
-        glazed.snp.makeConstraints { (make) in
-            make.centerY.equalTo(toggleContainer)
-            make.leading.equalTo(bisqued.snp.trailing).offset(16)
-        }
-        
-        //done constraints
-        done.snp.makeConstraints { (make) in
-            make.centerY.equalTo(toggleContainer)
-            make.leading.equalTo(glazed.snp.trailing).offset(16)
-        }
-        
-        
         //image view constraints
         dateTitle.snp.makeConstraints { (make) in
-            make.leading.equalTo(imageView)
-            make.top.equalTo(toggleContainer.snp.bottom).offset(32)
+            make.leading.equalTo(containerView).offset(16)
+            make.top.equalTo(segmentedControl.snp.bottom).offset(32)
         }
         
         //datepicker constraints
         datePicker.snp.makeConstraints { (make) in
-            make.leading.equalTo(imageView)
+            make.leading.equalTo(containerView).offset(16)
             make.top.equalTo(dateTitle.snp.bottom).offset(32)
         }
     }

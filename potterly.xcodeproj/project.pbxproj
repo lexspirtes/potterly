@@ -10,7 +10,7 @@
 		2DD319304AF142A58129E68D /* Pods_potterlyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E294BB060E66F06DE700B985 /* Pods_potterlyTests.framework */; };
 		4A293668E85C401410D3964B /* Pods_potterlyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 546B51802731381C44B673FD /* Pods_potterlyUITests.framework */; };
 		D4A64F8CC04A612B0C2100FD /* Pods_potterly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95985F7D8789406AA8AE389E /* Pods_potterly.framework */; };
-		D70524BC231054BF00534C96 /*  addSuccession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70524BB231054BF00534C96 /*  addSuccession.swift */; };
+		D70524BE2319991000534C96 /* SabonLTStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D70524BD2319991000534C96 /* SabonLTStd-Bold.otf */; };
 		D70ADA57229DA05A007AA724 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA56229DA05A007AA724 /* AppDelegate.swift */; };
 		D70ADA5B229DA05A007AA724 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA5A229DA05A007AA724 /* TabView.swift */; };
 		D70ADA60229DA05C007AA724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70ADA5F229DA05C007AA724 /* Assets.xcassets */; };
@@ -37,7 +37,6 @@
 		D786B9BD22DE2BAF00E18AB5 /* CeramicRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786B9BC22DE2BAF00E18AB5 /* CeramicRealm.swift */; };
 		D786B9BF22DE2CFC00E18AB5 /* StageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786B9BE22DE2CFC00E18AB5 /* StageView.swift */; };
 		D786B9C122DE2D0300E18AB5 /* StageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786B9C022DE2D0300E18AB5 /* StageViewModel.swift */; };
-		D786B9C322DE306300E18AB5 /* AddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786B9C222DE306300E18AB5 /* AddViewModel.swift */; };
 		D786B9C522DE481200E18AB5 /* AddCeramicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786B9C422DE481200E18AB5 /* AddCeramicView.swift */; };
 		D786B9C922DF9BF000E18AB5 /* CeramicCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786B9C822DF9BF000E18AB5 /* CeramicCellViewModel.swift */; };
 		D786B9CB22DFA04400E18AB5 /* CeramicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786B9CA22DFA04400E18AB5 /* CeramicCell.swift */; };
@@ -70,7 +69,7 @@
 		95985F7D8789406AA8AE389E /* Pods_potterly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_potterly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7AEFD2A3C96C51C2099710 /* Pods-potterly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-potterly.release.xcconfig"; path = "Target Support Files/Pods-potterly/Pods-potterly.release.xcconfig"; sourceTree = "<group>"; };
 		C131AFB8CFBB976B5C0CDBE0 /* Pods-potterlyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-potterlyUITests.release.xcconfig"; path = "Target Support Files/Pods-potterlyUITests/Pods-potterlyUITests.release.xcconfig"; sourceTree = "<group>"; };
-		D70524BB231054BF00534C96 /*  addSuccession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " addSuccession.swift"; sourceTree = "<group>"; };
+		D70524BD2319991000534C96 /* SabonLTStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SabonLTStd-Bold.otf"; sourceTree = "<group>"; };
 		D70ADA53229DA05A007AA724 /* potterly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = potterly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70ADA56229DA05A007AA724 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D70ADA5A229DA05A007AA724 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
@@ -103,7 +102,6 @@
 		D786B9BC22DE2BAF00E18AB5 /* CeramicRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeramicRealm.swift; sourceTree = "<group>"; };
 		D786B9BE22DE2CFC00E18AB5 /* StageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageView.swift; sourceTree = "<group>"; };
 		D786B9C022DE2D0300E18AB5 /* StageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageViewModel.swift; sourceTree = "<group>"; };
-		D786B9C222DE306300E18AB5 /* AddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewModel.swift; sourceTree = "<group>"; };
 		D786B9C422DE481200E18AB5 /* AddCeramicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCeramicView.swift; sourceTree = "<group>"; };
 		D786B9C822DF9BF000E18AB5 /* CeramicCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeramicCellViewModel.swift; sourceTree = "<group>"; };
 		D786B9CA22DFA04400E18AB5 /* CeramicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeramicCell.swift; sourceTree = "<group>"; };
@@ -214,6 +212,7 @@
 			children = (
 				D786B9A822D661DB00E18AB5 /* SFMono-Medium.otf */,
 				D786B9A922D661E500E18AB5 /* SFMono-Semibold.otf */,
+				D70524BD2319991000534C96 /* SabonLTStd-Bold.otf */,
 				D7318B6322A82365009D14A9 /* Karla-Regular.ttf */,
 				D7318B6222A82362009D14A9 /* Karla-Bold.ttf */,
 			);
@@ -239,8 +238,6 @@
 				D786B9B122DD11FC00E18AB5 /* AddCeramicViewModel.swift */,
 				D786B9C422DE481200E18AB5 /* AddCeramicView.swift */,
 				D73CC20322A1A1E000B4A04B /* AddView.swift */,
-				D70524BB231054BF00534C96 /*  addSuccession.swift */,
-				D786B9C222DE306300E18AB5 /* AddViewModel.swift */,
 			);
 			path = "Add Item";
 			sourceTree = "<group>";
@@ -408,6 +405,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D70524BE2319991000534C96 /* SabonLTStd-Bold.otf in Resources */,
 				D786B9AA22D679E600E18AB5 /* SFMono-Medium.otf in Resources */,
 				D7318B6522A82370009D14A9 /* Karla-Bold.ttf in Resources */,
 				D70ADA60229DA05C007AA724 /* Assets.xcassets in Resources */,
@@ -547,7 +545,6 @@
 				D786B9BD22DE2BAF00E18AB5 /* CeramicRealm.swift in Sources */,
 				D73CC20422A1A1E000B4A04B /* AddView.swift in Sources */,
 				D70ADA5B229DA05A007AA724 /* TabView.swift in Sources */,
-				D786B9C322DE306300E18AB5 /* AddViewModel.swift in Sources */,
 				D786B9A522CD061F00E18AB5 /* NotesRealm.swift in Sources */,
 				D786B9A322CCF52A00E18AB5 /* TabViewModel.swift in Sources */,
 				D7318B7122A86312009D14A9 /* NoteCell.swift in Sources */,
@@ -561,7 +558,6 @@
 				D73CC20622A1A52A00B4A04B /* NotesTableView.swift in Sources */,
 				D73CC20A22A1A59C00B4A04B /* DoneView.swift in Sources */,
 				D786B99F22C6734500E18AB5 /* NoteCellViewModel.swift in Sources */,
-				D70524BC231054BF00534C96 /*  addSuccession.swift in Sources */,
 				D786B9C122DE2D0300E18AB5 /* StageViewModel.swift in Sources */,
 				D786B9CF22E0F13100E18AB5 /* HeaderViewModel.swift in Sources */,
 				D786B9C522DE481200E18AB5 /* AddCeramicView.swift in Sources */,

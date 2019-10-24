@@ -85,6 +85,7 @@ class NoteTableCell: UITableViewCell {
         self.contentView.addSubview(containerView)
         self.contentView.addSubview(detailLabel)
         containerView.addSubview(button)
+        containerView.backgroundColor = .white
         makeConstraints()
     }
     

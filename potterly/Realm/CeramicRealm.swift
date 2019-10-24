@@ -29,9 +29,20 @@ protocol CeramicData {
     func getPotteryData(status: Status) -> Results<Pot>
     func getSections(status: Status) -> Int
     func updateItem(pot: Pot)
+    func deletePot(potID: Int)
 }
 
 class CeramicRealmData: CeramicData {
+    
+    func deletePot(potID: Int) {
+           let oldPot = realm.objects(Pot.self).filter("id = %@", potID)
+           if let oldPot = oldPot.first {
+               try! realm.write {
+                   realm.delete(oldPot)
+                    print("pot deleted")
+               }
+           }
+       }
     
     func updateItem(pot: Pot) {
         let oldPot = realm.objects(Pot.self).filter("id = %@", pot.id)

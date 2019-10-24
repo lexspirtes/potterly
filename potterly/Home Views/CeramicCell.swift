@@ -25,7 +25,6 @@ class CeramicCell: UICollectionViewCell {
     
     let imageView: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleAspectFit
         return view
     }()
     
@@ -71,7 +70,7 @@ class CeramicCell: UICollectionViewCell {
         self.viewModel = viewModel
         //setting the label text
         let image = checkNil()
-        let resize = UIImage.resize(image: image, targetSize: CGSize(width: 100, height: 100))
+        let resize = UIImage.resize(image: image.cropsToSquare(), targetSize: CGSize(width: 100, height: 100))
         imageView.image = resize
         dateLabel.text = formatDate(date: viewModel.date)
     }
