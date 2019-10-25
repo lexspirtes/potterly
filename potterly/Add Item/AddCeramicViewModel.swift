@@ -53,6 +53,9 @@ class AddCeramic {
         self.photoTapped.send(value: ())
     }
     
+    func cancelTap() {
+        self.addTapped.send(value: ())
+    }
     func addTap() {
         //first check if allowed
         self.addTapped.send(value: ())

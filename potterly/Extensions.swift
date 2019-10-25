@@ -18,6 +18,7 @@ extension UIColor {
         static let lighty = UIColor(red:0.95, green:0.95, blue:0.97, alpha:1.0)
         static let appleBlue = UIColor(red:0.0, green:0.47, blue:1.0, alpha:1.0)
         static let appleHighlight = UIColor(red:0.0, green:0.47, blue:1.0, alpha:0.4)
+        static let lightPurple = UIColor(red:0.90, green:0.88, blue:0.98, alpha:0.3)
         
     }
 }

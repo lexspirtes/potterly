@@ -30,6 +30,14 @@ class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavig
         return button
     }()
     
+    let cancelButton: UIButton = {
+        let button = UIButton()
+        let title = "cancel"
+        button.setAttributedTitle(title.attrBoldString(color: UIColor.customColors.appleBlue), for: .normal)
+        button.setAttributedTitle(title.attrBoldString(color: UIColor.customColors.appleHighlight), for: .highlighted)
+        return button
+    }()
+    
     let statusTitle: UILabel = {
         let label = UILabel()
         let title = "status"
@@ -69,7 +77,6 @@ class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Style the Segmented Control
         customSC.layer.cornerRadius = 5.0  // Don't let background bleed
         customSC.backgroundColor = UIColor.customColors.lighty
-        customSC.tintColor = UIColor.customColors.midnight
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.customColors.midnight]
         customSC.setTitleTextAttributes(titleTextAttributes, for: .normal)
         return customSC
@@ -82,7 +89,6 @@ class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavig
         containerView.addSubview(statusTitle)
         containerView.addSubview(photoTitle)
         containerView.addSubview(segmentedControl)
-        //segmented
 
         
         //imagetap
@@ -92,17 +98,15 @@ class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavig
         imageView.addGestureRecognizer(singleTap)
         viewModel.photoSignal.observeValues(popUp)
     
-        //adding ddate
+        //adding date
         containerView.addSubview(dateTitle)
         containerView.addSubview(datePicker)
         view.backgroundColor = .white
         
         //setting imageView to chosen image
-        let myImage = viewModel.photo == nil ?  UIImage(named: "demo") : UIImage(data: viewModel.photo!)
-        imageView.image = UIImage.resize(image: myImage!.cropsToSquare(), targetSize: CGSize(width: UIScreen.main.bounds.width,
-                                                                                      height: UIScreen.main.bounds.height * 0.45))
-        
-        
+        let myImage = viewModel.photo == nil ?  UIImage(named: "addPhoto") : UIImage(data: viewModel.photo!)
+        imageView.image = UIImage.resize(image: myImage!.cropsToSquare(), targetSize: CGSize(width: 150,
+                                                                                      height: 150))
         //view model
         viewModel.date <~ datePicker.reactive.dates
         //segmentedControl
@@ -110,24 +114,25 @@ class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavig
         //addbutton
         viewModel.addSignal.observeValues(self.navigateToHomeView)
         addButton.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.addTap() }
+        //cancel button
+        cancelButton.reactive.controlEvents(.touchUpInside).observeValues { _ in self.viewModel.cancelTap() }
 
     }
     
     func navigateToHomeView(){
-        print("try to nav")
-        //pop up modal that was added
-        //reset image to nothing
-        // should present instead of being there?
+       self.presentingViewController?.dismiss(animated: true, completion:nil)
     }
     
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.navigationItem.title = "new item"
+        self.navigationItem.title = "new item"
         
         //bar button item
         let barButton = UIBarButtonItem(customView: addButton)
-        self.tabBarController?.navigationItem.rightBarButtonItem = barButton
+        self.navigationItem.rightBarButtonItem = barButton
+        let cancel = UIBarButtonItem(customView: cancelButton)
+        self.navigationItem.leftBarButtonItem = cancel
         makeConstraints()
     }
     
@@ -174,7 +179,7 @@ class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavig
         let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         let data = (image?.imageToData())!
        // imageView.image = UIImage(cgImage: (image?.cgImage!.cropping(to: CGRect(x: 0, y: 0, width: 50, height: 50)))!)
-        imageView.image = UIImage.resize(image: image!.cropsToSquare(), targetSize: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.45))
+        imageView.image = UIImage.resize(image: image!.cropsToSquare(), targetSize: CGSize(width: 150, height: 150))
         viewModel.changePhoto(photo: data)
       //   imageView.image = resizedImage
          self.dismiss(animated: true, completion: nil)
@@ -205,9 +210,7 @@ class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavig
         //image view constraints
         imageView.snp.makeConstraints { (make) in
             make.top.equalTo(photoTitle.snp.bottom).offset(16)
-            make.centerX.equalTo(containerView)
             make.leading.equalTo(containerView).offset(16)
-            make.trailing.equalTo(containerView).offset(-16)
         }
         
         //photo title constraints
@@ -218,7 +221,7 @@ class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         //photo title constraints
         segmentedControl.snp.makeConstraints { (make) in
-            make.leading.equalTo(containerView).offset(16)
+            make.centerX.equalTo(containerView)
             make.top.equalTo(statusTitle.snp.bottom).offset(32)
         }
         
@@ -236,7 +239,7 @@ class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         //datepicker constraints
         datePicker.snp.makeConstraints { (make) in
-            make.leading.equalTo(containerView).offset(16)
+            make.centerX.equalTo(self.containerView)
             make.top.equalTo(dateTitle.snp.bottom).offset(32)
         }
     }

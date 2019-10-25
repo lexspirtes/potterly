@@ -84,11 +84,6 @@ class StageViewModel {
         return CeramicCellViewModel(ceramic: myPots[atIndex])
     }
     
-    func getDistinctSection(section: Int) -> Int {
-        return 4
-            //self.distinctDates[section]
-    }
-    
     func getDates() -> [Date] {
         var dateList = [Date]()
         for pot in self.distinctDates {

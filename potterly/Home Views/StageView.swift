@@ -35,6 +35,16 @@ class Stage: UIViewController, IndicatorInfoProvider {
         return lineView
     }()
     
+    //flower view
+    let nothingView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        let image = UIImageView()
+        image.image = UIImage(named: "flower")
+        let label = UILabel()
+        view.addSubview(image)
+        return view
+    }()
+    
     func makeConstraints() {
 //        scrollView.snp.makeConstraints { (make) in
 //            make.top.trailing.bottom.leading.equalTo(view.safeAreaLayoutGuide)
@@ -46,10 +56,15 @@ class Stage: UIViewController, IndicatorInfoProvider {
             make.trailing.equalTo(view.safeAreaLayoutGuide).offset(-16)
             make.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
         }
+        
         line.snp.makeConstraints { (make) in
             make.width.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(1)
             make.top.equalTo(view.safeAreaLayoutGuide)}
+        
+//        //nothing view constraints
+//        nothingView.snp.makeConstraints { (make) in
+//            make.centerX.centerY.equalTo(collectionView)}
     }
     
     override func viewDidLoad() {
@@ -59,12 +74,14 @@ class Stage: UIViewController, IndicatorInfoProvider {
         view.addSubview(collectionView)
         collectionView.addSubview(line)
         collectionView.delegate = self
+        print(self.infoTitle)
         collectionView.dataSource = self
         collectionView.register(CeramicCell.self, forCellWithReuseIdentifier: "cellId")
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         view.addSubview(line)
         makeConstraints()
         viewModel.doubleSignal.observeValues(self.reloadData)
+//        view.addSubview(nothingView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,7 +96,7 @@ class Stage: UIViewController, IndicatorInfoProvider {
     func reloadData(){
         collectionView.reloadData()
     }
-    
+        
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: self.infoTitle)
     }
@@ -142,7 +159,11 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.getSectionCount()
+        let sections = viewModel.getSectionCount()
+        if sections == 0 {
+            self.collectionView.backgroundView = self.nothingView
+        }
+        return sections
     }
     
     

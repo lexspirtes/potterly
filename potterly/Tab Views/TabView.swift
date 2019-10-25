@@ -71,16 +71,28 @@ class TabController: UITabBarController, UITabBarControllerDelegate {
     }
     
     //MARK: UITabbar Delegate
-//    internal func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-////        if viewController.isKind(of: YPPickerView.self) {
-////            let vc =  YPPickerView(viewModel: viewModel.getPickerViewModel())
-//            vc.modalPresentationStyle = .overFullScreen
-//            self.present(vc, animated: true, completion: nil)
-//            print("here")
-//            return false
-//        }
-//        return true
-//    }
+    internal func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if viewController is AddCeramicView {
+            let vc = UINavigationController(rootViewController: AddCeramicView(viewModel: viewModel.getAddCeramicViewModel()))
+            vc.modalPresentationStyle = .overFullScreen
+            
+            //navigation
+            vc.navigationBar.isTranslucent = false
+              //writing appearance settings
+              let navigationBarAppearace = UINavigationBar.appearance()
+              if let font = UIFont(name: "SabonLTStd-Bold", size: 28) {
+                  UINavigationBar.appearance().titleTextAttributes = [
+                      NSAttributedString.Key.font: font,
+                      NSAttributedString.Key.foregroundColor: UIColor.customColors.midnight,
+                      NSAttributedString.Key.kern:CGFloat(3.0)]
+              }
+              navigationBarAppearace.shadowImage = UIImage()
+              
+            self.present(vc, animated: true, completion: nil)
+            return false
+        }
+        return true
+    }
 
 }
 
