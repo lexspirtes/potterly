@@ -24,9 +24,6 @@ class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     let addButton: UIButton = {
         let button = UIButton()
-        let title = "add"
-        button.setAttributedTitle(title.attrBoldString(color: UIColor.customColors.appleBlue), for: .normal)
-        button.setAttributedTitle(title.attrBoldString(color: UIColor.customColors.appleHighlight), for: .highlighted)
         return button
     }()
     
@@ -89,7 +86,17 @@ class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavig
         containerView.addSubview(statusTitle)
         containerView.addSubview(photoTitle)
         containerView.addSubview(segmentedControl)
+        
+        //datepicking initializing
+        datePicker.date = viewModel.date.value
+        
+        //status
+        segmentedControl.selectedSegmentIndex = viewModel.getEnum()
 
+        //button fixing
+        let title = self.viewModel.id == 0 ? "add" : "update"
+        addButton.setAttributedTitle(title.attrBoldString(color: UIColor.customColors.appleBlue), for: .normal)
+        addButton.setAttributedTitle(title.attrBoldString(color: UIColor.customColors.appleHighlight), for: .highlighted)
         
         //imagetap
         let singleTap = UITapGestureRecognizer()
@@ -126,7 +133,7 @@ class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationItem.title = "new item"
+        self.navigationItem.title = self.viewModel.id == 0 ? "new pot" : "edit pot"
         
         //bar button item
         let barButton = UIBarButtonItem(customView: addButton)

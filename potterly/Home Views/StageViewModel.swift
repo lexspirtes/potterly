@@ -15,10 +15,10 @@ class StageViewModel {
     let CeramicData: CeramicData
     var pots: Results<Pot>
     let distinctDates: Results<Pot>
-    let (singleSignal, singleObserver) = Signal<(), NoError>.pipe()
+    let (singleSignal, singleObserver) = Signal<(IndexPath), NoError>.pipe()
     let (doubleSignal, doubleObserver) = Signal<(), NoError>.pipe()
     let (deleteSignal, deleteObserver) = Signal<(IndexPath), NoError>.pipe()
-    let (editSignal, editObserver) = Signal<(), NoError>.pipe()
+    let (editSignal, editObserver) = Signal<(IndexPath), NoError>.pipe()
 
     let status: Status
   //  let potsBySection: [Results<Pot>]
@@ -51,18 +51,23 @@ class StageViewModel {
         let pot = self.getTotalForDates()[indexPath.section][indexPath.row]
         if self.status == Status.done {}
         else {
-            self.CeramicData.updateItem(pot: pot)
+            self.CeramicData.progressItem(pot: pot)
         }
     }
     func singleTap(indexPath: IndexPath) {
-        singleObserver.send(value: ())
+        singleObserver.send(value: (indexPath))
         print("will go into view")
     }
     
-    func edit(indexPath: IndexPath) {
-        editObserver.send(value: ())
+    func edit(indexPath: IndexPath) -> AddCeramic {
+      //  editObserver.send(value: (indexPath))
         let pot = self.getTotalForDates()[indexPath.section][indexPath.row]
-        print("edit")
+        return AddCeramic(CeramicData: CeramicData, pot: pot)
+    }
+    
+    func getAddCeramicViewModel(indexPath: IndexPath) -> AddCeramic {
+        let pot = self.getTotalForDates()[indexPath.section][indexPath.row]
+        return AddCeramic(CeramicData: CeramicData, pot: pot)
     }
     
     func goView(indexPath: IndexPath) {
@@ -82,6 +87,11 @@ class StageViewModel {
     func getCeramicSectionViewModel(section: Int, atIndex: Int) -> CeramicCellViewModel {
         let myPots = self.getTotalForDates()[section]
         return CeramicCellViewModel(ceramic: myPots[atIndex])
+    }
+    
+    func getEnlargedViewModel(indexPath: IndexPath) -> enlargedViewModel {
+        let pot = self.getTotalForDates()[indexPath.section][indexPath.row]
+        return enlargedViewModel(ceramicData: CeramicData, photo: pot.photo!)
     }
     
     func getDates() -> [Date] {

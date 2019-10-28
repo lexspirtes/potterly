@@ -39,6 +39,8 @@ class TabBarViewModel {
 //    }
     
     func getAddCeramicViewModel() -> AddCeramic{
-        return AddCeramic(CeramicData: self.CeramicData, photo: nil)
+        let pot = Pot()
+        pot.id = 0
+        return AddCeramic(CeramicData: self.CeramicData, pot: pot)
     }
 }

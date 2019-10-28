@@ -15,7 +15,7 @@ import UIKit
 
 class Pot: Object {
     @objc dynamic var id = 0
-    @objc dynamic var status = Status.trim
+    @objc dynamic var status = Status.dry
     @objc dynamic var lastEdited = Date().removeTimeStamp()
     @objc dynamic var photo: Data? = nil
     
@@ -28,11 +28,17 @@ protocol CeramicData {
     func saveItem(pot: Pot)
     func getPotteryData(status: Status) -> Results<Pot>
     func getSections(status: Status) -> Int
-    func updateItem(pot: Pot)
+    func progressItem(pot: Pot)
     func deletePot(potID: Int)
+    func updateItem(pot: Pot)
 }
 
 class CeramicRealmData: CeramicData {
+    
+    func getSections(status: Status) -> Int {
+        return 4
+    }
+    
     
     func deletePot(potID: Int) {
            let oldPot = realm.objects(Pot.self).filter("id = %@", potID)
@@ -44,7 +50,7 @@ class CeramicRealmData: CeramicData {
            }
        }
     
-    func updateItem(pot: Pot) {
+    func progressItem(pot: Pot) {
         let oldPot = realm.objects(Pot.self).filter("id = %@", pot.id)
         if let oldPot = oldPot.first {
             try! realm.write {
@@ -61,15 +67,21 @@ class CeramicRealmData: CeramicData {
             try self.realm.write {
                 self.realm.add(pot)
             }
-            print("added pot!!")
         }
         catch {
             print(error)
         }
     }
-    func getSections(status: Status) -> Int {
-        let pots = getPotteryData(status: status)
-        return 4
+    
+    func updateItem(pot: Pot) {
+        let oldPot = realm.objects(Pot.self).filter("id = %@", pot.id)
+          if let oldPot = oldPot.first {
+          try! realm.write {
+            oldPot.lastEdited = pot.lastEdited.removeTimeStamp()
+            oldPot.status = pot.status
+            oldPot.photo = pot.photo
+          }
+          }
     }
     
     func getPotteryData(status: Status) -> Results<Pot> {

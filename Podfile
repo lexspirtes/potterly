@@ -13,8 +13,6 @@ target 'potterly' do
   pod 'ReactiveSwift', '~> 5.0'
   pod 'IQKeyboardManagerSwift'
   pod 'RealmSwift', '~> 3.18.0'
-  pod 'YPImagePicker'
-  pod 'LZViewPager', '~> 1.1.0'
   # Pods for potterly
 
   target 'potterlyTests' do

@@ -42,6 +42,8 @@
 		D786B9CB22DFA04400E18AB5 /* CeramicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786B9CA22DFA04400E18AB5 /* CeramicCell.swift */; };
 		D786B9CD22E0F11200E18AB5 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786B9CC22E0F11200E18AB5 /* HeaderView.swift */; };
 		D786B9CF22E0F13100E18AB5 /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D786B9CE22E0F13100E18AB5 /* HeaderViewModel.swift */; };
+		D7EE31E523636C7C004FDA51 /* enlargedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE31E423636C7C004FDA51 /* enlargedView.swift */; };
+		D7EE31E723636C96004FDA51 /* enlargedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE31E623636C96004FDA51 /* enlargedViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +109,8 @@
 		D786B9CA22DFA04400E18AB5 /* CeramicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeramicCell.swift; sourceTree = "<group>"; };
 		D786B9CC22E0F11200E18AB5 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		D786B9CE22E0F13100E18AB5 /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
+		D7EE31E423636C7C004FDA51 /* enlargedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enlargedView.swift; sourceTree = "<group>"; };
+		D7EE31E623636C96004FDA51 /* enlargedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enlargedViewModel.swift; sourceTree = "<group>"; };
 		E294BB060E66F06DE700B985 /* Pods_potterlyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_potterlyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3BF3D15F7E6C210D546EAEB /* Pods-potterlyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-potterlyTests.debug.xcconfig"; path = "Target Support Files/Pods-potterlyTests/Pods-potterlyTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -247,10 +251,12 @@
 			children = (
 				D786B9B422DE2B3800E18AB5 /* HomeViewModel.swift */,
 				D73CC20722A1A55500B4A04B /* HomeView.swift */,
+				D786B9C022DE2D0300E18AB5 /* StageViewModel.swift */,
 				D786B9BE22DE2CFC00E18AB5 /* StageView.swift */,
+				D7EE31E423636C7C004FDA51 /* enlargedView.swift */,
+				D7EE31E623636C96004FDA51 /* enlargedViewModel.swift */,
 				D786B9C822DF9BF000E18AB5 /* CeramicCellViewModel.swift */,
 				D786B9CA22DFA04400E18AB5 /* CeramicCell.swift */,
-				D786B9C022DE2D0300E18AB5 /* StageViewModel.swift */,
 			);
 			path = "Home Views";
 			sourceTree = "<group>";
@@ -548,7 +554,9 @@
 				D786B9A522CD061F00E18AB5 /* NotesRealm.swift in Sources */,
 				D786B9A322CCF52A00E18AB5 /* TabViewModel.swift in Sources */,
 				D7318B7122A86312009D14A9 /* NoteCell.swift in Sources */,
+				D7EE31E723636C96004FDA51 /* enlargedViewModel.swift in Sources */,
 				D70ADA57229DA05A007AA724 /* AppDelegate.swift in Sources */,
+				D7EE31E523636C7C004FDA51 /* enlargedView.swift in Sources */,
 				D786B9BF22DE2CFC00E18AB5 /* StageView.swift in Sources */,
 				D786B9B022D7E48D00E18AB5 /* InsideNoteViewModel.swift in Sources */,
 				D786B9CD22E0F11200E18AB5 /* HeaderView.swift in Sources */,

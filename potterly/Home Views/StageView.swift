@@ -46,9 +46,6 @@ class Stage: UIViewController, IndicatorInfoProvider {
     }()
     
     func makeConstraints() {
-//        scrollView.snp.makeConstraints { (make) in
-//            make.top.trailing.bottom.leading.equalTo(view.safeAreaLayoutGuide)
-//        }
         
         collectionView.snp.makeConstraints { (make) in
             make.bottom.equalTo(view.safeAreaLayoutGuide)
@@ -139,6 +136,9 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
         singleTap.numberOfTouchesRequired = 1
         cell.addGestureRecognizer(singleTap)
         singleTap.require(toFail: doubleTap)
+        viewModel.singleSignal.observeValues({ indexPath in self.enlargedView(indexPath: indexPath)} )
+        //edit
+      //  viewModel.editSignal.observeValues({indexPath in self.getEditView(indexPath: indexPath)})
         
         return cell
     }
@@ -151,11 +151,23 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
         return UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
     }
         
+//    func getEditView(indexPath: IndexPath) -> AddCeramicView {
+//        let vm = self.viewModel.getAddCeramicViewModel(indexPath: indexPath)
+//        let vc = AddCeramicView(viewModel: vm)
+//        return vc
+//    }
     @objc func gesture(_ sender: UITapGestureRecognizer) {
         let point = sender.location(in: collectionView)
         if let indexPath = collectionView.indexPathForItem(at: point) {
             print(indexPath)
         }
+    }
+    func enlargedView(indexPath: IndexPath) {
+        print("enlargedPhoto")
+        let vm = viewModel.getEnlargedViewModel(indexPath: indexPath)
+        let vc = EnlargedView(viewModel: vm)
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true, completion: nil)
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -177,9 +189,13 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
 
           return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
 
-              // Create an action for sharing
+              // Create an action for editing
             let edit = UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil")) { _ in
-                self.viewModel.edit(indexPath: item)
+                let vm = self.viewModel.edit(indexPath: item)
+                let vc = UINavigationController(rootViewController: AddCeramicView(viewModel: vm))
+                vc.navigationBar.isTranslucent = false
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true, completion: nil)
             }
             let deleteCancel = UIAction(title: "Cancel", image: UIImage(systemName: "xmark")) { _ in }
             let deleteConfirmation = UIAction(title: "Delete", image: UIImage(systemName: "checkmark"), attributes: .destructive) { _ in self.viewModel.delete(indexPath: item)

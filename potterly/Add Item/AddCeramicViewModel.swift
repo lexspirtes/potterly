@@ -15,20 +15,38 @@ class AddCeramic {
     let CeramicData: CeramicData
     let date: MutableProperty<Date>
     var photo: Data?
+    let id: Int
     let (toggleSignal, toggleTapped) = Signal<Status, NoError>.pipe()
     let (addSignal, addTapped) = Signal<(), NoError>.pipe()
     let (photoSignal, photoTapped) = Signal<(), NoError>.pipe()
     
-    init(CeramicData: CeramicData, photo: Data?) {
+    init(CeramicData: CeramicData, pot: Pot) {
         self.CeramicData = CeramicData
-        self.photo = photo
-        self.status = Status.dry
-        self.date = MutableProperty(Date())
+        self.photo = pot.photo
+        self.status = pot.status
+        self.date = MutableProperty(pot.lastEdited)
+        self.id = pot.id
     }
     
     func changePhoto(photo: Data) {
         self.photo = photo
-        print("photo changed")
+    }
+    
+    func getEnum() -> Int {
+        let stat: Int
+        switch self.status {
+        case Status.dry:
+            stat = 0
+        case Status.trim:
+            stat = 1
+        case Status.bisqued:
+            stat = 2
+        case Status.glazed:
+            stat = 3
+        default:
+            stat = 4
+        }
+        return stat
     }
     
     func segmentTap(buttonTitle: String) {
@@ -56,6 +74,7 @@ class AddCeramic {
     func cancelTap() {
         self.addTapped.send(value: ())
     }
+    
     func addTap() {
         //first check if allowed
         self.addTapped.send(value: ())
@@ -63,9 +82,16 @@ class AddCeramic {
         newPot.status = self.status
         newPot.photo = self.photo
         newPot.lastEdited = self.date.value.removeTimeStamp()
-        print(newPot.lastEdited)
-        self.CeramicData.saveItem(pot: newPot)
-        }
+        //if new then create new pot
+        if self.id == 0 {
+            self.CeramicData.saveItem(pot: newPot)
+            }
+        // if edit, then edit
+        else {
+            newPot.id = self.id
+            self.CeramicData.updateItem(pot: newPot)
+            }
+    }
 
 }
 

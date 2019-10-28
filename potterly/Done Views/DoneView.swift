@@ -65,12 +65,13 @@ class DoneStage: UIViewController {
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         //  collectionView.addSubview(line)
         makeConstraints()
-        viewModel.singleSignal.observeValues(self.printMe)
+    //    viewModel.singleSignal.observeValues(self.printMe)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.navigationItem.title = "finished work"
+        self.tabBarController?.navigationItem.title = "my pots"
+        self.collectionView.reloadData()
     }
     
     func printMe() {
@@ -132,7 +133,11 @@ extension DoneStage: UICollectionViewDataSource, UICollectionViewDelegate, UICol
 
                 // Create an action for sharing
               let edit = UIAction(title: "Edit", image: UIImage(systemName: "square.and.pencil")) { _ in
-                  self.viewModel.edit(indexPath: item)
+                let vm = self.viewModel.edit(indexPath: item)
+                let vc = UINavigationController(rootViewController: AddCeramicView(viewModel: vm))
+                vc.navigationBar.isTranslucent = false
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true, completion: nil)
               }
               let deleteCancel = UIAction(title: "Cancel", image: UIImage(systemName: "xmark")) { _ in }
               let deleteConfirmation = UIAction(title: "Delete", image: UIImage(systemName: "checkmark"), attributes: .destructive) { _ in self.viewModel.delete(indexPath: item)

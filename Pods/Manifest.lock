@@ -1,8 +1,5 @@
 PODS:
   - IQKeyboardManagerSwift (6.3.0)
-  - LZViewPager (1.1.0):
-    - SnapKit (~> 4.2.0)
-  - PryntTrimmerView (3.0.0)
   - ReactiveCocoa (9.0.0):
     - ReactiveSwift (~> 5.0)
   - ReactiveSwift (5.0.1):
@@ -15,28 +12,20 @@ PODS:
   - Result (4.1.0)
   - SnapKit (4.2.0)
   - SnapLayout (1.9.7)
-  - SteviaLayout (4.4.4)
   - XLPagerTabStrip (8.1.0)
-  - YPImagePicker (4.0.0):
-    - PryntTrimmerView (~> 3.0.0)
-    - SteviaLayout (~> 4.4.1)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
-  - LZViewPager (~> 1.1.0)
   - ReactiveCocoa (~> 9.0)
   - ReactiveSwift (~> 5.0)
   - RealmSwift (~> 3.18.0)
   - SnapKit (~> 4.0)
   - SnapLayout (= 1.9.7)
   - XLPagerTabStrip (~> 8.0)
-  - YPImagePicker
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - IQKeyboardManagerSwift
-    - LZViewPager
-    - PryntTrimmerView
     - ReactiveCocoa
     - ReactiveSwift
     - Realm
@@ -44,14 +33,10 @@ SPEC REPOS:
     - Result
     - SnapKit
     - SnapLayout
-    - SteviaLayout
     - XLPagerTabStrip
-    - YPImagePicker
 
 SPEC CHECKSUMS:
   IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
-  LZViewPager: 7f02c7f135004aaf8aca51637719fec744b5f6cc
-  PryntTrimmerView: 53ac64053c7ce63cb3e27f54090f52da0734891d
   ReactiveCocoa: 29709cf0cc7502ddd04a51220e10ee0336d8bec8
   ReactiveSwift: cac20a5bbe560c5806bd29c0fccf90d03b996ac1
   Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
@@ -59,10 +44,8 @@ SPEC CHECKSUMS:
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SnapLayout: 42138ce70a8dfb09ef422937d32d576033326306
-  SteviaLayout: 523469269059f2c6da02820bb2ff28a5fe0780aa
   XLPagerTabStrip: 22d4c58200d7c105e0e407ab6bfd01a5d85014be
-  YPImagePicker: 8039f89ad79281545fa868486f32d9bf5d65ede1
 
-PODFILE CHECKSUM: ae412dd781e87463ba0c6117a651e036c73e4fbb
+PODFILE CHECKSUM: d3a26fb0cb41f038789488606bbdf849488acaf3
 
 COCOAPODS: 1.7.1
