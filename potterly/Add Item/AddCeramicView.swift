@@ -127,7 +127,7 @@ class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func navigateToHomeView(){
-       self.presentingViewController?.dismiss(animated: true, completion:nil)
+        self.presentingViewController?.dismiss(animated: true, completion:nil)
     }
     
 

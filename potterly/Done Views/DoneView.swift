@@ -37,20 +37,17 @@ class DoneStage: UIViewController {
     }()
     
     func makeConstraints() {
-        //        scrollView.snp.makeConstraints { (make) in
-        //            make.top.trailing.bottom.leading.equalTo(view.safeAreaLayoutGuide)
-        //        }
         
         collectionView.snp.makeConstraints { (make) in
             make.bottom.equalTo(view.safeAreaLayoutGuide)
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(32)
+            make.top.equalTo(self.line.snp.bottom).offset(32)
             make.trailing.equalTo(view.safeAreaLayoutGuide).offset(-16)
             make.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
         }
         line.snp.makeConstraints { (make) in
             make.width.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(1)
-            make.top.equalTo(view.safeAreaLayoutGuide)}
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(12)}
     }
     
     override func viewDidLoad() {
@@ -58,12 +55,11 @@ class DoneStage: UIViewController {
         collectionView.backgroundColor = .white
         view.backgroundColor = .white
         view.addSubview(collectionView)
-        collectionView.addSubview(line)
+        view.addSubview(line)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(CeramicCell.self, forCellWithReuseIdentifier: "cellId")
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
-        //  collectionView.addSubview(line)
         makeConstraints()
     //    viewModel.singleSignal.observeValues(self.printMe)
     }
@@ -95,13 +91,13 @@ class DoneStage: UIViewController {
 
 extension DoneStage: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getTotalForDates()[section].count
+        return viewModel.getItemsCount(section: section)
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CeramicCell
-            cell.configure(viewModel: viewModel.getCeramicSectionViewModel(section: indexPath.section, atIndex: indexPath.row))
+            cell.configure(viewModel: viewModel.getCeramicSectionViewModel(index: indexPath))
             //uiimageview mode how to display the image scale aspect fit
             cell.backgroundColor = UIColor.customColors.lilac
             cell.layer.cornerRadius = 5
@@ -161,11 +157,11 @@ extension DoneStage: UICollectionViewDataSource, UICollectionViewDelegate, UICol
             
             case UICollectionView.elementKindSectionHeader:
                 let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! SectionHeader
-                headerView.configure(viewModel: viewModel.getSectionViewModel(date: viewModel.getDates()[indexPath.section]))
+                headerView.configure(viewModel: viewModel.getSectionViewModel(date: viewModel.distinctDates[indexPath.section]))
               //  headerView.backgroundColor = .blue
                 return headerView
             default:
-                assert(false, "Unexpected element kind")
+                fatalError("Unexpected element kind")
         }
         }
     }

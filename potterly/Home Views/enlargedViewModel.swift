@@ -20,6 +20,5 @@ class enlargedViewModel {
     
     func singleTap() {
         self.tapObserver.send(value: ())
-        print("gesture recognized")
     }
 }

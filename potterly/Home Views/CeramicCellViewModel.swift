@@ -8,15 +8,18 @@
 
 import ReactiveCocoa
 import ReactiveSwift
+import UIKit
 
 class CeramicCellViewModel {
     let date: Date
     let photo: Data?
     let status: Status
+    var image: UIImage?
     
     init(ceramic: Pot) {
         self.date = ceramic.lastEdited
         self.photo = ceramic.photo
         self.status = ceramic.status
+        self.image = nil
     }
 }

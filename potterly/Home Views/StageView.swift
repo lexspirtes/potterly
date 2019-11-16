@@ -10,11 +10,12 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 import XLPagerTabStrip
+import RealmSwift
 
 class Stage: UIViewController, IndicatorInfoProvider {
     let viewModel: StageViewModel!
     let infoTitle: String
-
+    var notificationToken : NotificationToken? = nil
     let cellId = "cellId"
     let headerId = "headerId"
     
@@ -71,28 +72,28 @@ class Stage: UIViewController, IndicatorInfoProvider {
         view.addSubview(collectionView)
         collectionView.addSubview(line)
         collectionView.delegate = self
-        print(self.infoTitle)
         collectionView.dataSource = self
         collectionView.register(CeramicCell.self, forCellWithReuseIdentifier: "cellId")
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         view.addSubview(line)
         makeConstraints()
-        viewModel.doubleSignal.observeValues(self.reloadData)
 //        view.addSubview(nothingView)
+        
+        //reloading data
+        self.notificationToken = self.viewModel.pots.observe { changes in
+            self.viewModel.reloadVM()
+            self.collectionView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        collectionView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-    func reloadData(){
-        collectionView.reloadData()
-    }
         
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: self.infoTitle)
@@ -121,7 +122,7 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CeramicCell
-        cell.configure(viewModel: viewModel.getCeramicSectionViewModel(section: indexPath.section, atIndex: indexPath.row))
+        cell.configure(viewModel: viewModel.getCeramicSectionViewModel(index: indexPath))
         cell.backgroundColor = UIColor.customColors.lilac
         //double tap
         let doubleTap = UITapGestureRecognizer()
@@ -137,8 +138,6 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
         cell.addGestureRecognizer(singleTap)
         singleTap.require(toFail: doubleTap)
         viewModel.singleSignal.observeValues({ indexPath in self.enlargedView(indexPath: indexPath)} )
-        //edit
-      //  viewModel.editSignal.observeValues({indexPath in self.getEditView(indexPath: indexPath)})
         
         return cell
     }
@@ -151,11 +150,7 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
         return UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
     }
         
-//    func getEditView(indexPath: IndexPath) -> AddCeramicView {
-//        let vm = self.viewModel.getAddCeramicViewModel(indexPath: indexPath)
-//        let vc = AddCeramicView(viewModel: vm)
-//        return vc
-//    }
+
     @objc func gesture(_ sender: UITapGestureRecognizer) {
         let point = sender.location(in: collectionView)
         if let indexPath = collectionView.indexPathForItem(at: point) {
@@ -163,7 +158,6 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
         }
     }
     func enlargedView(indexPath: IndexPath) {
-        print("enlargedPhoto")
         let vm = viewModel.getEnlargedViewModel(indexPath: indexPath)
         let vc = EnlargedView(viewModel: vm)
         vc.modalPresentationStyle = .overFullScreen
@@ -171,7 +165,7 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        let sections = viewModel.getSectionCount()
+        let sections = viewModel.distinctDates.count
         if sections == 0 {
             self.collectionView.backgroundView = self.nothingView
         }
@@ -199,7 +193,7 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
             }
             let deleteCancel = UIAction(title: "Cancel", image: UIImage(systemName: "xmark")) { _ in }
             let deleteConfirmation = UIAction(title: "Delete", image: UIImage(systemName: "checkmark"), attributes: .destructive) { _ in self.viewModel.delete(indexPath: item)
-                self.collectionView.reloadData()
+            //    self.collectionView.deleteItems(at: [item])
                 //switch to deleteItem at
                 
             }
@@ -215,11 +209,10 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
             
         case UICollectionView.elementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! SectionHeader
-            headerView.configure(viewModel: viewModel.getSectionViewModel(date: viewModel.getDates()[indexPath.section]))
-            //  headerView.backgroundColor = .blue
+            headerView.configure(viewModel: viewModel.getSectionViewModel(date: viewModel.distinctDates[indexPath.section]))
             return headerView
         default:
-            assert(false, "Unexpected element kind")
+            exit(1)
         }
     }
 }

@@ -31,8 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 }
         })
+        
         Realm.Configuration.defaultConfiguration = config
         let realm = try! Realm(configuration: config)
+        //first launch
+        
         //tabbar
         let tabBar = TabController(viewModel: TabBarViewModel(NoteData: NoteRealmData(context: realm), CeramicData: CeramicRealmData(context: realm)))
         let navigationController = UINavigationController(rootViewController: tabBar)
@@ -52,6 +55,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.rootViewController =  navigationController
         window?.makeKeyAndVisible()
+        
+        //first Launch
+        let alwaysFirstLaunch = FirstLaunch.alwaysFirst()
+        if alwaysFirstLaunch.isFirstLaunch {
+            let vc = PageVC(transitionStyle: .scroll, navigationOrientation: .horizontal)
+            vc.modalPresentationStyle = .fullScreen
+            navigationController.present(vc, animated: false)
+        }
+
         
         //jumps up keyboard
         IQKeyboardManager.shared.enable = true

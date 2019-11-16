@@ -59,7 +59,7 @@ class CeramicCell: UICollectionViewCell {
     
     func checkNil() -> UIImage {
         if viewModel.photo != nil {
-            return UIImage(data: viewModel.photo!)!
+            return UIImage(data: self.viewModel.photo!)!
         }
         else {
             return UIImage(named: "oops")!
@@ -68,11 +68,18 @@ class CeramicCell: UICollectionViewCell {
 
     func configure(viewModel: CeramicCellViewModel){
         self.viewModel = viewModel
+//        let photo = self.checkNil()
+//        self.imageView.image = UIImage.resize(image: photo.cropsToSquare(), targetSize: CGSize(width: 100, height: 100))
         //setting the label text
-        let image = checkNil()
-        let resize = UIImage.resize(image: image.cropsToSquare(), targetSize: CGSize(width: 100, height: 100))
-        imageView.image = resize
-        dateLabel.text = formatDate(date: viewModel.date)
+//        DispatchQueue.global(qos: .userInteractive).async {
+//            let image = self.checkNil()
+//            let resize = UIImage.resize(image: image.cropsToSquare(), targetSize: CGSize(width: 100, height: 100))
+        DispatchQueue.main.async {
+            let image = self.checkNil()
+            let resize = UIImage.resize(image: image.cropsToSquare(), targetSize: CGSize(width: 100, height: 100))
+            self.imageView.image = resize
+            }
+       // }
     }
     
     convenience init(frame: CGRect, viewModel: CeramicCellViewModel){

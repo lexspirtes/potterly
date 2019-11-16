@@ -16,12 +16,15 @@
 		D70ADA60229DA05C007AA724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70ADA5F229DA05C007AA724 /* Assets.xcassets */; };
 		D70ADA6E229DA05C007AA724 /* potterlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA6D229DA05C007AA724 /* potterlyTests.swift */; };
 		D70ADA79229DA05C007AA724 /* potterlyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70ADA78229DA05C007AA724 /* potterlyUITests.swift */; };
+		D721B06D2379C2CB00A7EDE6 /* FirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721B06C2379C2CB00A7EDE6 /* FirstLaunch.swift */; };
+		D721B0702379C50300A7EDE6 /* Launch1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721B06F2379C50300A7EDE6 /* Launch1.swift */; };
+		D721B0722379CB2200A7EDE6 /* Launch2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721B0712379CB2200A7EDE6 /* Launch2.swift */; };
+		D721B0742379CB8600A7EDE6 /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721B0732379CB8600A7EDE6 /* PageVC.swift */; };
 		D7318B6422A8236E009D14A9 /* Karla-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7318B6322A82365009D14A9 /* Karla-Regular.ttf */; };
 		D7318B6522A82370009D14A9 /* Karla-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7318B6222A82362009D14A9 /* Karla-Bold.ttf */; };
 		D7318B7122A86312009D14A9 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7318B7022A86312009D14A9 /* NoteCell.swift */; };
 		D7318B7322A96AD3009D14A9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7318B7222A96AD3009D14A9 /* Extensions.swift */; };
 		D7318B7622A97EE8009D14A9 /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7318B7522A97EE8009D14A9 /* NoteDetailView.swift */; };
-		D73CC20422A1A1E000B4A04B /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CC20322A1A1E000B4A04B /* AddView.swift */; };
 		D73CC20622A1A52A00B4A04B /* NotesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CC20522A1A52A00B4A04B /* NotesTableView.swift */; };
 		D73CC20822A1A55500B4A04B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CC20722A1A55500B4A04B /* HomeView.swift */; };
 		D73CC20A22A1A59C00B4A04B /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CC20922A1A59C00B4A04B /* DoneView.swift */; };
@@ -83,12 +86,15 @@
 		D70ADA74229DA05C007AA724 /* potterlyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = potterlyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70ADA78229DA05C007AA724 /* potterlyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = potterlyUITests.swift; sourceTree = "<group>"; };
 		D70ADA7A229DA05C007AA724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D721B06C2379C2CB00A7EDE6 /* FirstLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunch.swift; sourceTree = "<group>"; };
+		D721B06F2379C50300A7EDE6 /* Launch1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch1.swift; sourceTree = "<group>"; };
+		D721B0712379CB2200A7EDE6 /* Launch2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch2.swift; sourceTree = "<group>"; };
+		D721B0732379CB8600A7EDE6 /* PageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
 		D7318B6222A82362009D14A9 /* Karla-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Bold.ttf"; sourceTree = "<group>"; };
 		D7318B6322A82365009D14A9 /* Karla-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Regular.ttf"; sourceTree = "<group>"; };
 		D7318B7022A86312009D14A9 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		D7318B7222A96AD3009D14A9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D7318B7522A97EE8009D14A9 /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
-		D73CC20322A1A1E000B4A04B /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		D73CC20522A1A52A00B4A04B /* NotesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableView.swift; sourceTree = "<group>"; };
 		D73CC20722A1A55500B4A04B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D73CC20922A1A59C00B4A04B /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
@@ -180,6 +186,7 @@
 			children = (
 				D70ADA56229DA05A007AA724 /* AppDelegate.swift */,
 				D7318B7222A96AD3009D14A9 /* Extensions.swift */,
+				D721B06E2379C4E000A7EDE6 /* first launch */,
 				D786B9BB22DE2BA500E18AB5 /* Realm */,
 				D786B9B922DE2B8400E18AB5 /* Tab Views */,
 				D786B9B622DE2B5400E18AB5 /* Home Views */,
@@ -209,6 +216,17 @@
 				D70ADA7A229DA05C007AA724 /* Info.plist */,
 			);
 			path = potterlyUITests;
+			sourceTree = "<group>";
+		};
+		D721B06E2379C4E000A7EDE6 /* first launch */ = {
+			isa = PBXGroup;
+			children = (
+				D721B06C2379C2CB00A7EDE6 /* FirstLaunch.swift */,
+				D721B0732379CB8600A7EDE6 /* PageVC.swift */,
+				D721B06F2379C50300A7EDE6 /* Launch1.swift */,
+				D721B0712379CB2200A7EDE6 /* Launch2.swift */,
+			);
+			path = "first launch";
 			sourceTree = "<group>";
 		};
 		D7318B6622A8239C009D14A9 /* fonts */ = {
@@ -241,7 +259,6 @@
 			children = (
 				D786B9B122DD11FC00E18AB5 /* AddCeramicViewModel.swift */,
 				D786B9C422DE481200E18AB5 /* AddCeramicView.swift */,
-				D73CC20322A1A1E000B4A04B /* AddView.swift */,
 			);
 			path = "Add Item";
 			sourceTree = "<group>";
@@ -549,17 +566,19 @@
 				D786B9A122C6738900E18AB5 /* TableViewModel.swift in Sources */,
 				D7318B7622A97EE8009D14A9 /* NoteDetailView.swift in Sources */,
 				D786B9BD22DE2BAF00E18AB5 /* CeramicRealm.swift in Sources */,
-				D73CC20422A1A1E000B4A04B /* AddView.swift in Sources */,
 				D70ADA5B229DA05A007AA724 /* TabView.swift in Sources */,
 				D786B9A522CD061F00E18AB5 /* NotesRealm.swift in Sources */,
 				D786B9A322CCF52A00E18AB5 /* TabViewModel.swift in Sources */,
 				D7318B7122A86312009D14A9 /* NoteCell.swift in Sources */,
+				D721B0722379CB2200A7EDE6 /* Launch2.swift in Sources */,
 				D7EE31E723636C96004FDA51 /* enlargedViewModel.swift in Sources */,
 				D70ADA57229DA05A007AA724 /* AppDelegate.swift in Sources */,
 				D7EE31E523636C7C004FDA51 /* enlargedView.swift in Sources */,
 				D786B9BF22DE2CFC00E18AB5 /* StageView.swift in Sources */,
 				D786B9B022D7E48D00E18AB5 /* InsideNoteViewModel.swift in Sources */,
 				D786B9CD22E0F11200E18AB5 /* HeaderView.swift in Sources */,
+				D721B06D2379C2CB00A7EDE6 /* FirstLaunch.swift in Sources */,
+				D721B0702379C50300A7EDE6 /* Launch1.swift in Sources */,
 				D7318B7322A96AD3009D14A9 /* Extensions.swift in Sources */,
 				D786B9B222DD11FC00E18AB5 /* AddCeramicViewModel.swift in Sources */,
 				D786B9C922DF9BF000E18AB5 /* CeramicCellViewModel.swift in Sources */,
@@ -567,6 +586,7 @@
 				D73CC20A22A1A59C00B4A04B /* DoneView.swift in Sources */,
 				D786B99F22C6734500E18AB5 /* NoteCellViewModel.swift in Sources */,
 				D786B9C122DE2D0300E18AB5 /* StageViewModel.swift in Sources */,
+				D721B0742379CB8600A7EDE6 /* PageVC.swift in Sources */,
 				D786B9CF22E0F13100E18AB5 /* HeaderViewModel.swift in Sources */,
 				D786B9C522DE481200E18AB5 /* AddCeramicView.swift in Sources */,
 				D786B9CB22DFA04400E18AB5 /* CeramicCell.swift in Sources */,
