@@ -124,6 +124,19 @@ extension Stage: UICollectionViewDataSource, UICollectionViewDelegate, UICollect
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CeramicCell
         cell.configure(viewModel: viewModel.getCeramicSectionViewModel(index: indexPath))
         cell.backgroundColor = UIColor.customColors.lilac
+        //adding image here
+     //   cell.imageView.image = nil
+//        let queue = DispatchQueue.global(qos: .userInitiated)
+//        queue.async {
+//            if let data = self.viewModel.findPhoto(indexPath: indexPath) {
+//                let image = UIImage(data: data)
+//                let resize = UIImage.resize(image: image!.cropsToSquare(), targetSize: CGSize(width: 100, height: 100))
+//                DispatchQueue.main.async {
+//                    cell.imageView.image = resize
+//                }
+//            }
+//        }
+//
         //double tap
         let doubleTap = UITapGestureRecognizer()
         doubleTap.reactive.stateChanged.observeValues({_ in self.viewModel.doubleTap(indexPath: indexPath)})

@@ -22,6 +22,7 @@ class StageViewModel {
     let (reloadSignal, reloadObserver) = Signal<(), NoError>.pipe()
     var ceramicViewModels : [Int:CeramicCellViewModel]
     var collectionPots : [Date:Results<Pot>]
+    var photos: [Date:[Data?]]
 
     let status: Status
   //  let potsBySection: [Results<Pot>]
@@ -35,8 +36,20 @@ class StageViewModel {
         self.collectionPots = [:]
         print("end")
         self.ceramicViewModels = [:]
+        self.photos = [:]
         self.setDates()
         self.reducePots()
+        self.getPhotos()
+    }
+    
+    func findPhoto(indexPath: IndexPath) -> Data? {
+        let date = self.distinctDates[indexPath.section]
+        return self.photos[date]![indexPath.row]
+    }
+    
+    func getPhotos() {
+        self.photos = self.collectionPots.mapValues { $0.map() {$0.photo}}
+            //Array(self.pots).map() {$0.photo}
     }
     func reloadVM() {
         let newDates = self.getDates()
@@ -109,7 +122,6 @@ class StageViewModel {
         if self.ceramicViewModels[curPot.id] == nil {
             self.ceramicViewModels[curPot.id] = CeramicCellViewModel(ceramic: curPot)
         }
-        let before = self.ceramicViewModels[curPot.id]!
         return CeramicCellViewModel(ceramic: curPot)
     }
     

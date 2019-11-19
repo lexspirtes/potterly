@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController.navigationBar.isTranslucent = false
         //writing appearance settings
         let navigationBarAppearace = UINavigationBar.appearance()
-        if let font = UIFont(name: "SabonLTStd-Bold", size: 28) {
+        if let font = UIFont(name: "Solway-Regular", size: 23) {
             UINavigationBar.appearance().titleTextAttributes = [
                 NSAttributedString.Key.font: font,
                 NSAttributedString.Key.foregroundColor: UIColor.customColors.midnight,

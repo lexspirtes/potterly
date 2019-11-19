@@ -42,12 +42,12 @@ class TabController: UITabBarController, UITabBarControllerDelegate {
         homeViewController.tabBarItem = UITabBarItem(title: "home", image: UIImage(named: "home"), tag: 0)
         homeViewController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 5)
         homeViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
-        notesViewController.tabBarItem = UITabBarItem(title: "notes", image: UIImage(named: "notes"), tag: 1)
-        notesViewController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 5)
-        notesViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
-        addViewController.tabBarItem = UITabBarItem(title: "add", image: UIImage(named: "add"), tag: 2)
-        addViewController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 5)
-        addViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
+
+       // notesViewController.tabBarItem = UITabBarItem(title: "notes", image: UIImage(named: "notesDark"), tag: 1)
+//
+//        addViewController.tabBarItem = UITabBarItem(title: "add", image: UIImage(named: "addDark"), tag: 2)
+//        addViewController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 5)
+
         doneViewController.tabBarItem = UITabBarItem()
         doneViewController.tabBarItem.title = "done"
         doneViewController.tabBarItem.tag = 3
@@ -57,9 +57,24 @@ class TabController: UITabBarController, UITabBarControllerDelegate {
         doneViewController.tabBarItem.selectedImage = UIImage(named: "potsmall")!.withRenderingMode(.alwaysOriginal)
         doneViewController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 5)
         doneViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
-        
+        //notes
+        notesViewController.tabBarItem = UITabBarItem()
+        notesViewController.tabBarItem.title = "notes"
+        notesViewController.tabBarItem.tag = 1
+        notesViewController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 5)
+        notesViewController.tabBarItem.image = UIImage(named: "notesUnselected")!.withRenderingMode(.alwaysOriginal)
+        notesViewController.tabBarItem.selectedImage = UIImage(named: "notesDark")!.withRenderingMode(.alwaysOriginal)
+        notesViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
+        //add
+        addViewController.tabBarItem = UITabBarItem()
+        addViewController.tabBarItem.title = "add"
+        addViewController.tabBarItem.tag = 3
+        addViewController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 5)
+        addViewController.tabBarItem.image = UIImage(named: "addUnselected")!.withRenderingMode(.alwaysOriginal)
+        addViewController.tabBarItem.selectedImage = UIImage(named: "addDark")!.withRenderingMode(.alwaysOriginal)
+        addViewController.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
         //setting viewcontroller list
-        let viewControllerList = [ homeViewController, notesViewController, addViewController, doneViewController]
+        let viewControllerList = [ homeViewController,  addViewController, notesViewController, doneViewController]
         viewControllers = viewControllerList
         UITabBar.appearance().barTintColor = UIColor.white
         self.tabBar.tintColor = UIColor.customColors.midnight
@@ -79,14 +94,14 @@ class TabController: UITabBarController, UITabBarControllerDelegate {
             //navigation
             vc.navigationBar.isTranslucent = false
               //writing appearance settings
-              let navigationBarAppearace = UINavigationBar.appearance()
-              if let font = UIFont(name: "SabonLTStd-Bold", size: 28) {
+              let navigationBarAppearance = UINavigationBar.appearance()
+              if let font = UIFont(name: "Solway-Regular", size: 23) {
                   UINavigationBar.appearance().titleTextAttributes = [
                       NSAttributedString.Key.font: font,
                       NSAttributedString.Key.foregroundColor: UIColor.customColors.midnight,
                       NSAttributedString.Key.kern:CGFloat(3.0)]
               }
-              navigationBarAppearace.shadowImage = UIImage()
+              navigationBarAppearance.shadowImage = UIImage()
               
             self.present(vc, animated: true, completion: nil)
             return false

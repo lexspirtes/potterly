@@ -20,6 +20,8 @@
 		D721B0702379C50300A7EDE6 /* Launch1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721B06F2379C50300A7EDE6 /* Launch1.swift */; };
 		D721B0722379CB2200A7EDE6 /* Launch2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721B0712379CB2200A7EDE6 /* Launch2.swift */; };
 		D721B0742379CB8600A7EDE6 /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721B0732379CB8600A7EDE6 /* PageVC.swift */; };
+		D721B07A23837CE000A7EDE6 /* Solway-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D721B07923837CE000A7EDE6 /* Solway-Medium.ttf */; };
+		D721B07C23837D6400A7EDE6 /* Solway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D721B07B23837D6400A7EDE6 /* Solway-Regular.ttf */; };
 		D7318B6422A8236E009D14A9 /* Karla-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7318B6322A82365009D14A9 /* Karla-Regular.ttf */; };
 		D7318B6522A82370009D14A9 /* Karla-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7318B6222A82362009D14A9 /* Karla-Bold.ttf */; };
 		D7318B7122A86312009D14A9 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7318B7022A86312009D14A9 /* NoteCell.swift */; };
@@ -90,6 +92,8 @@
 		D721B06F2379C50300A7EDE6 /* Launch1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch1.swift; sourceTree = "<group>"; };
 		D721B0712379CB2200A7EDE6 /* Launch2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch2.swift; sourceTree = "<group>"; };
 		D721B0732379CB8600A7EDE6 /* PageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
+		D721B07923837CE000A7EDE6 /* Solway-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Solway-Medium.ttf"; sourceTree = "<group>"; };
+		D721B07B23837D6400A7EDE6 /* Solway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Solway-Regular.ttf"; sourceTree = "<group>"; };
 		D7318B6222A82362009D14A9 /* Karla-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Bold.ttf"; sourceTree = "<group>"; };
 		D7318B6322A82365009D14A9 /* Karla-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Regular.ttf"; sourceTree = "<group>"; };
 		D7318B7022A86312009D14A9 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
@@ -233,7 +237,9 @@
 			isa = PBXGroup;
 			children = (
 				D786B9A822D661DB00E18AB5 /* SFMono-Medium.otf */,
+				D721B07B23837D6400A7EDE6 /* Solway-Regular.ttf */,
 				D786B9A922D661E500E18AB5 /* SFMono-Semibold.otf */,
+				D721B07923837CE000A7EDE6 /* Solway-Medium.ttf */,
 				D70524BD2319991000534C96 /* SabonLTStd-Bold.otf */,
 				D7318B6322A82365009D14A9 /* Karla-Regular.ttf */,
 				D7318B6222A82362009D14A9 /* Karla-Bold.ttf */,
@@ -429,8 +435,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D70524BE2319991000534C96 /* SabonLTStd-Bold.otf in Resources */,
+				D721B07A23837CE000A7EDE6 /* Solway-Medium.ttf in Resources */,
 				D786B9AA22D679E600E18AB5 /* SFMono-Medium.otf in Resources */,
 				D7318B6522A82370009D14A9 /* Karla-Bold.ttf in Resources */,
+				D721B07C23837D6400A7EDE6 /* Solway-Regular.ttf in Resources */,
 				D70ADA60229DA05C007AA724 /* Assets.xcassets in Resources */,
 				D786B9AB22D679E900E18AB5 /* SFMono-Semibold.otf in Resources */,
 				D7318B6422A8236E009D14A9 /* Karla-Regular.ttf in Resources */,

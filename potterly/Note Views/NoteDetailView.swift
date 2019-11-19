@@ -29,10 +29,17 @@ class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate 
     
     let bodyField:UITextView = {
         let field = UITextView()
-        field.font = UIFont(name: "Karla", size: 14)
+        field.font = UIFont(name: "Karla", size: 16)
         field.keyboardType = UIKeyboardType.default
         return field
     }()
+    
+    let line: UIView = {
+        let lineView = UIView()
+        lineView.backgroundColor = UIColor.customColors.lilac
+        return lineView
+    }()
+    
     
     func makeConstraints() {
         
@@ -49,6 +56,11 @@ class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate 
             make.leading.trailing.equalTo(titleField)
             make.bottom.equalTo(view.safeAreaInsets).offset(-24)
         }
+        
+        line.snp.makeConstraints { (make) in
+            make.width.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(1)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(12)}
 
     }
     
@@ -61,8 +73,7 @@ class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         titleField.text = viewModel.title.value
         viewModel.title <~ titleField.reactive.continuousTextValues
         viewModel.note <~ bodyField.reactive.continuousTextValues
-        
-        
+        view.addSubview(line)
         self.bodyField.keyboardDistanceFromTextField = -8
         print(viewModel.title.value)
         self.bodyField.backgroundColor = .white
@@ -94,11 +105,29 @@ class NoteDetailView: UIViewController, UITextFieldDelegate, UITextViewDelegate 
         if viewModel.id == 0 {
             self.titleField.placeholder = "Title"
         }
+        if viewModel.note.value == "" {
+            self.bodyField.text = "note text here..."
+            self.bodyField.textColor = .lightGray
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "..."
+            textView.textColor = UIColor.lightGray
+        }
     }
     
 }

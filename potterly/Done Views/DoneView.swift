@@ -40,7 +40,7 @@ class DoneStage: UIViewController {
         
         collectionView.snp.makeConstraints { (make) in
             make.bottom.equalTo(view.safeAreaLayoutGuide)
-            make.top.equalTo(self.line.snp.bottom).offset(32)
+            make.top.equalTo(self.line.snp.bottom)
             make.trailing.equalTo(view.safeAreaLayoutGuide).offset(-16)
             make.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
         }
@@ -67,6 +67,7 @@ class DoneStage: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "my pots"
+        self.tabBarController?.navigationItem.rightBarButtonItem = nil
         self.collectionView.reloadData()
     }
     
@@ -115,7 +116,7 @@ extension DoneStage: UICollectionViewDataSource, UICollectionViewDelegate, UICol
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.getSectionCount()
+        return viewModel.distinctDates.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

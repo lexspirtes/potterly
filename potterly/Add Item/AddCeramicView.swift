@@ -79,6 +79,14 @@ class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavig
         return customSC
     }()
     
+    let line: UIView = {
+        let lineView = UIView()
+        lineView.backgroundColor = UIColor.customColors.lilac
+        return lineView
+    }()
+    
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(containerView)
@@ -86,7 +94,7 @@ class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavig
         containerView.addSubview(statusTitle)
         containerView.addSubview(photoTitle)
         containerView.addSubview(segmentedControl)
-        
+        view.addSubview(line)
         //datepicking initializing
         datePicker.date = viewModel.date.value
         
@@ -249,6 +257,12 @@ class AddCeramicView: UIViewController, UIImagePickerControllerDelegate, UINavig
             make.centerX.equalTo(self.containerView)
             make.top.equalTo(dateTitle.snp.bottom).offset(32)
         }
+        
+        //line constrinats
+        line.snp.makeConstraints { (make) in
+            make.width.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(1)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(12)}
     }
 }
 

@@ -1,5 +1,8 @@
 PODS:
   - IQKeyboardManagerSwift (6.3.0)
+  - Kingfisher (5.8.1):
+    - Kingfisher/Core (= 5.8.1)
+  - Kingfisher/Core (5.8.1)
   - ReactiveCocoa (9.0.0):
     - ReactiveSwift (~> 5.0)
   - ReactiveSwift (5.0.1):
@@ -16,6 +19,7 @@ PODS:
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
+  - Kingfisher (~> 5.0)
   - ReactiveCocoa (~> 9.0)
   - ReactiveSwift (~> 5.0)
   - RealmSwift (~> 3.18.0)
@@ -26,6 +30,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - IQKeyboardManagerSwift
+    - Kingfisher
     - ReactiveCocoa
     - ReactiveSwift
     - Realm
@@ -37,6 +42,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
+  Kingfisher: de969e451c81ca6c07a454bc36fea84b8b08c3c7
   ReactiveCocoa: 29709cf0cc7502ddd04a51220e10ee0336d8bec8
   ReactiveSwift: cac20a5bbe560c5806bd29c0fccf90d03b996ac1
   Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
@@ -46,6 +52,6 @@ SPEC CHECKSUMS:
   SnapLayout: 42138ce70a8dfb09ef422937d32d576033326306
   XLPagerTabStrip: 22d4c58200d7c105e0e407ab6bfd01a5d85014be
 
-PODFILE CHECKSUM: d3a26fb0cb41f038789488606bbdf849488acaf3
+PODFILE CHECKSUM: 6a9d0dd6f49e4521f6b8724c857f7c1185d4c9b6
 
 COCOAPODS: 1.7.1

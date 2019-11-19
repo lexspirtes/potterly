@@ -18,8 +18,13 @@ class NotesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var viewModel : NotesTableViewModel!
     func makeConstraints(){
         notesTableView.snp.makeConstraints{ (make) in
-            make.top.left.right.bottom.equalTo(self.view.safeAreaInsets)
+            make.top.equalTo(line.snp.bottom)
+            make.left.right.bottom.equalTo(self.view.safeAreaInsets)
         }
+        line.snp.makeConstraints { (make) in
+            make.width.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(1)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(12)}
     }
     
     let cellLabel: UILabel = {
@@ -29,6 +34,12 @@ class NotesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .white
         return label
+    }()
+    
+    let line: UIView = {
+        let lineView = UIView()
+        lineView.backgroundColor = UIColor.customColors.lilac
+        return lineView
     }()
     
     
@@ -45,6 +56,7 @@ class NotesView: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //footer so that only as many lines as there are notes
+        view.addSubview(line)
         self.notesTableView.tableFooterView = UIView()
         view.backgroundColor = .white
         notesTableView.backgroundColor = .white

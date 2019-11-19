@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-potterly/Pods-potterly-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework
+${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework
 ${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework
 ${BUILT_PRODUCTS_DIR}/Realm/Realm.framework

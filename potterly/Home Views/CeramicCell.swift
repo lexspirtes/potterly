@@ -10,6 +10,7 @@ import UIKit
 import ReactiveCocoa
 import ReactiveSwift
 import SnapKit
+import Kingfisher
 
 
 class CeramicCell: UICollectionViewCell {
@@ -68,18 +69,31 @@ class CeramicCell: UICollectionViewCell {
 
     func configure(viewModel: CeramicCellViewModel){
         self.viewModel = viewModel
-//        let photo = self.checkNil()
-//        self.imageView.image = UIImage.resize(image: photo.cropsToSquare(), targetSize: CGSize(width: 100, height: 100))
+     //   let photo = self.checkNil()
+        DispatchQueue.global(qos: .default).sync(execute: {() -> Void in
+            var image = UIImage(data: self.viewModel.photo!)
+            image = UIImage.resize(image: image!.cropsToSquare(), targetSize: CGSize(width: 100, height: 100))
+            DispatchQueue.main.async(execute: {() -> Void in
+                self.imageView.image = image
+            })
+        })
+
+      //  self.imageView.image = UIImage.resize(image: photo.cropsToSquare(), targetSize: CGSize(width: 100, height: 100))
         //setting the label text
 //        DispatchQueue.global(qos: .userInteractive).async {
 //            let image = self.checkNil()
-//            let resize = UIImage.resize(image: image.cropsToSquare(), targetSize: CGSize(width: 100, height: 100))
-        DispatchQueue.main.async {
-            let image = self.checkNil()
-            let resize = UIImage.resize(image: image.cropsToSquare(), targetSize: CGSize(width: 100, height: 100))
-            self.imageView.image = resize
-            }
-       // }
+//            let resize = UIImage.resize(image: image.cropsToSquare(), targetSize: CGSize(width: 100, height: 100)
+//        let queue = DispatchQueue.global(qos: .userInitiated)
+//        queue.async {
+//            if let data = viewModel.photo {
+//                let image = UIImage(data: data)
+//                let resize = UIImage.resize(image: image!.cropsToSquare(), targetSize: CGSize(width: 100, height: 100))
+//                DispatchQueue.main.async {
+//                      self.imageView.image = resize
+//                }
+//            }
+//        }
+//
     }
     
     convenience init(frame: CGRect, viewModel: CeramicCellViewModel){
